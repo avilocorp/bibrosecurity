@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePurchaseOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePurchaseOrderLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{purchaseOrderController.selected.id}" title="#{bundle.CreatePurchaseOrderTitle_id}" required="true" requiredMessage="#{bundle.CreatePurchaseOrderRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreatePurchaseOrderLabel_datetimeCreate}" for="datetimeCreate" />
+                    <h:inputText id="datetimeCreate" value="#{purchaseOrderController.selected.datetimeCreate}" title="#{bundle.CreatePurchaseOrderTitle_datetimeCreate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePurchaseOrderLabel_subtotal}" for="subtotal" />
+                    <h:inputText id="subtotal" value="#{purchaseOrderController.selected.subtotal}" title="#{bundle.CreatePurchaseOrderTitle_subtotal}" required="true" requiredMessage="#{bundle.CreatePurchaseOrderRequiredMessage_subtotal}"/>
+                    <h:outputLabel value="#{bundle.CreatePurchaseOrderLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{purchaseOrderController.selected.total}" title="#{bundle.CreatePurchaseOrderTitle_total}" required="true" requiredMessage="#{bundle.CreatePurchaseOrderRequiredMessage_total}"/>
+                    <h:outputLabel value="#{bundle.CreatePurchaseOrderLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{purchaseOrderController.selected.status}" title="#{bundle.CreatePurchaseOrderTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreatePurchaseOrderLabel_partnerId}" for="partnerId" />
+                    <h:inputText id="partnerId" value="#{purchaseOrderController.selected.partnerId}" title="#{bundle.CreatePurchaseOrderTitle_partnerId}" required="true" requiredMessage="#{bundle.CreatePurchaseOrderRequiredMessage_partnerId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseOrderController.create}" value="#{bundle.CreatePurchaseOrderSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{purchaseOrderController.prepareList}" value="#{bundle.CreatePurchaseOrderShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePurchaseOrderIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

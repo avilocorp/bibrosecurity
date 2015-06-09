@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMultimediaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMultimediaLabel_id}"/>
+                    <h:outputText value="#{multimediaController.selected.id}" title="#{bundle.ViewMultimediaTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewMultimediaLabel_ruta}"/>
+                    <h:outputText value="#{multimediaController.selected.ruta}" title="#{bundle.ViewMultimediaTitle_ruta}"/>
+                    <h:outputText value="#{bundle.ViewMultimediaLabel_tipo}"/>
+                    <h:outputText value="#{multimediaController.selected.tipo}" title="#{bundle.ViewMultimediaTitle_tipo}"/>
+                    <h:outputText value="#{bundle.ViewMultimediaLabel_productId}"/>
+                    <h:outputText value="#{multimediaController.selected.productId}" title="#{bundle.ViewMultimediaTitle_productId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{multimediaController.destroyAndView}" value="#{bundle.ViewMultimediaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMultimediaEditLink}"/>
+                <br />
+                <h:commandLink action="#{multimediaController.prepareCreate}" value="#{bundle.ViewMultimediaCreateLink}" />
+                <br />
+                <h:commandLink action="#{multimediaController.prepareList}" value="#{bundle.ViewMultimediaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMultimediaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

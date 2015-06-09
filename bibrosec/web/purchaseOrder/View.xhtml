@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPurchaseOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_id}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.id}" title="#{bundle.ViewPurchaseOrderTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_datetimeCreate}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.datetimeCreate}" title="#{bundle.ViewPurchaseOrderTitle_datetimeCreate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_subtotal}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.subtotal}" title="#{bundle.ViewPurchaseOrderTitle_subtotal}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_total}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.total}" title="#{bundle.ViewPurchaseOrderTitle_total}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_status}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.status}" title="#{bundle.ViewPurchaseOrderTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderLabel_partnerId}"/>
+                    <h:outputText value="#{purchaseOrderController.selected.partnerId}" title="#{bundle.ViewPurchaseOrderTitle_partnerId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseOrderController.destroyAndView}" value="#{bundle.ViewPurchaseOrderDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPurchaseOrderEditLink}"/>
+                <br />
+                <h:commandLink action="#{purchaseOrderController.prepareCreate}" value="#{bundle.ViewPurchaseOrderCreateLink}" />
+                <br />
+                <h:commandLink action="#{purchaseOrderController.prepareList}" value="#{bundle.ViewPurchaseOrderShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPurchaseOrderIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

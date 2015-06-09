@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProductImageTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProductImageLabel_id}"/>
+                    <h:outputText value="#{productImageController.selected.id}" title="#{bundle.ViewProductImageTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewProductImageLabel_productId}"/>
+                    <h:outputText value="#{productImageController.selected.productId}" title="#{bundle.ViewProductImageTitle_productId}"/>
+                    <h:outputText value="#{bundle.ViewProductImageLabel_image}"/>
+                    <h:outputText value="#{productImageController.selected.image}" title="#{bundle.ViewProductImageTitle_image}"/>
+                    <h:outputText value="#{bundle.ViewProductImageLabel_description}"/>
+                    <h:outputText value="#{productImageController.selected.description}" title="#{bundle.ViewProductImageTitle_description}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{productImageController.destroyAndView}" value="#{bundle.ViewProductImageDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProductImageEditLink}"/>
+                <br />
+                <h:commandLink action="#{productImageController.prepareCreate}" value="#{bundle.ViewProductImageCreateLink}" />
+                <br />
+                <h:commandLink action="#{productImageController.prepareList}" value="#{bundle.ViewProductImageShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProductImageIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
