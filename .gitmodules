@@ -1,0 +1,3 @@
+[submodule "bibrosecurity/lib/themes"]
+	path = bibrosecurity/lib/themes
+	url = git@github.com:primefaces/themes.git
