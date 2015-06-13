@@ -1,13 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <p:spinner />  
-    </h:body>
-</html>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <body>
+        <ui:define name="Title">Index</ui:define>
+        <ui:composition template="./templates/maintemplate.xhtml">
+            <ui:define name="content">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
 
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                      <center>
+                      <img src="./resources/images/b1.png" height="500px"/></center>
+                    <div class="carousel-caption">
+                        <h1 class="animationTextLeftToRigth">Prueba de animacion 1</h1>
+                        <h1 class="animationTextRigthToLeft">Prueba de animacion 1</h1>
+                    </div>
+                  </div>
+                  <div class="item text">
+                    <center><img src="./resources/images/b2.png" height="500px"/></center>
+                    <div class="carousel-caption">
+                       <h1 class="animationTextLeftToRigth">Prueba de animacion 2</h1>
+                       <h1 class="animationTextRigthToLeft">Prueba de animacion 2</h1>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <center><img src="./resources/images/b3.png" height="500px"/></center>
+                    <div class="carousel-caption">
+                       <h1 class="animationTextLeftToRigth">Prueba de animacion 3</h1>
+                       <h1 class="animationTextRigthToLeft">Prueba de animacion 3</h1>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+                <div class="row">
+                    <div class="col-lg-12"><h1>QUIENES SOMOS</h1></div>
+                    <div class="col-lg-4">
+                        <h3 class="glyphicon glyphicon-tower">MISIÓN</h3>
+                        <p>Es el enunciado que sintetiza los principales propósitos estratégicos, así como los valores esenciales que deberían ser conocidos, comprendidos y compartidos por todos los individuos que conforman una organización.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h3 class="glyphicon glyphicon-road">VISIÓN</h3>
+                        <p>Se refiere a lo que la empresa quiere crear, la imagén futura de la organización.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h3 class="glyphicon glyphicon-leaf">VALORES</h3>
+                        <p>Cada vez son más los directivos de las empresas que estan conscientes de la necesidad de un liderazgo estratégico basado en los valores compartidos, los cuales deben estar en concordancia con objetivos y realidad.</p>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
