@@ -24,7 +24,7 @@ public class DAO {
     }
     
     
-    public void conectar(){
+    public void connect(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/"
@@ -34,7 +34,7 @@ public class DAO {
         }
     }
     
-    public void cerrar(){
+    public void close(){
         try {
             if(con != null){
                 if(con.isClosed()==false){
