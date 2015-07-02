@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:bnu="http://bootsfaces.net/ui">
 
         <ui:composition template="./../generals/templates/maintemplate.xhtml">
 
@@ -13,36 +14,47 @@
 
             <ui:define name="content">
                 <h:form>
-                    <div class="ui-grid ui-grid-responsive">
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2"></div>
-                            <div class="ui-grid-col-8">
-                                <div class="well bs-component">
-                                    <fieldset>
-                                        <center>
-                                            <h:panelGrid columns="2">
-                                                <h:outputText value="Name: " />
-                                                <p:inputText id="name" style="width:80%;"/>
-                                                <h:outputText value="Last Name: " />
-                                                <p:inputText id="lastName" style="width:80%;"/>
-                                                <h:outputText value="Email " />
-                                                <p:inputText id="email" style="width:80%;"/>
-                                                <h:outputText value="Password: " />
-                                                <p:password id="inlineFeedback" feedback="true" inline="true" style="width:80%;"/>
-                                                <h:outputText value="Password Confirm: " />
-                                                <p:password id="nonFeedback" value="#{passwordView.password1}" style="width:80%;"/>
-                                            </h:panelGrid>
-                                        </center>
-                                    </fieldset>
-                                </div>
-                            </div>
-                            <div class="ui-grid-col-2"></div>
-                         </div>
-                    </div>
-                                            
-                </h:form>
+                    <bnu:row>
+                        <bnu:column span="8" offset="2" class="well bs-component">
+                            <bnu:row>
+                                <bnu:column offset="2" span="8" class="text-center">
+                                    <img src="../resources/images/BiBroSecurity.png" alt="BibroSecurity" width="60%" height="60%"/>
+                                </bnu:column>
+                                <bnu:column span="6">
+                                    <h:outputLabel for="txtName" value="Name: "/>
+                                    <bnu:inputText id="txtName" required="true" />
+                                </bnu:column>
+                                <bnu:column span="6">
+                                    <h:outputLabel for="txtLastName" value="Last Name: "/>
+                                    <bnu:inputText id="txtLastName" required="true" />
+                                </bnu:column>  
+                            </bnu:row>
+                            <bnu:row>
+                                <bnu:column>
+                                    <h:outputLabel for="txtEmail" value="User Name: "/>
+                                    <bnu:inputText type="email" id="txtEmail" required="true" placeholder="user@example.com"/>
+                                </bnu:column>  
+                            </bnu:row>
+                            <bnu:row>
+                                <bnu:column>
+                                    <h:outputLabel for="txtPassword" value="Password: "/>
+                                    <bnu:inputSecret id="txtPassword" required="true"/>
+                                </bnu:column>  
+                            </bnu:row>
+                            <bnu:row>
+                                <bnu:column>
+                                    <h:outputLabel for="txtPasswordConfirmed" value="Password confirm: "/>
+                                    <bnu:inputSecret id="txtPasswordConfirmed" required="true"/>
+                                </bnu:column>  
+                            </bnu:row>
+                            <bnu:row>
+                                <bnu:column class="text-center">
+                                    <bnu:commandButton look="primary" value="Success"/>
+                                </bnu:column>
+                            </bnu:row>
+                        </bnu:column>
+                    </bnu:row>
+                </h:form>                   
             </ui:define>
-
         </ui:composition>
-
 </html>
