@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:bnu="http://bootsfaces.net/ui">
+    <h:head>
+                 
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+                 <f:event type="preRenderView" listener="#{partnersBean.LeerId_Actualizar(manejador_de_sesiones.part)}"/>
+               <h:form >
+                   <p:commandButton   value="Agregar" action="#{partnersBean.recargaAgregar()}"  />
+            <p:commandButton  value="Actualizar"  actionListener="#{partnersBean.LeerId_Actualizar(manejador_de_sesiones.part)}"  oncomplete="PF('wdlgRegistro').show();" update=":dlgRegistro"  />
+            
+            <p:commandButton  value="Eliminar" icon="ui-icon-trash" actionListener="#{partnersBean.eliminar(manejador_de_sesiones.part)}" action="#{partnersBean.recargarIndex()}" >
+                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+            </p:commandButton>
+            <p:confirmDialog  global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"    />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+         </p:confirmDialog>
+             <p/>
+             <p/>
+             <p:outputLabel value="Id del partner"/> <p:outputLabel value="#{manejador_de_sesiones.part}"></p:outputLabel>
+             <p/>
+             <p:outputLabel value="Nombre del partners:"/> <p:outputLabel value="#{partnersBean.partner.name}"></p:outputLabel>
+             <p/>
+             <p:outputLabel value="Apellido del partners:"/> <p:outputLabel value="#{partnersBean.partner.lastName}"></p:outputLabel>
+             <p/>
+             <p:outputLabel value="Calle del partners:"/> <p:outputLabel value="#{partnersBean.partner.street}"></p:outputLabel>  
+               </h:form>
+                 <p:dialog header="Registro" id="dlgRegistro"  widgetVar="wdlgRegistro" showEffect="explode" hideEffect="bounce">
+            <ui:include src="./partials/CamposActualizar.xhtml"/>
+        </p:dialog>
+    </h:body>
+</html>
