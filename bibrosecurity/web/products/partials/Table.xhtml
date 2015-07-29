@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:bnu="http://bootsfaces.net/ui">
+    <h:body>
+        <bnu:container>
+            <p:growl id="mjs" autoUpdate="true" showDetail="true"/>
+            <h:form>
+                <f:event type="preRenderView" listener="#{productBean.listar()}"/>
+                <p:dataTable id="table" var="part" value="#{productBean.lstProducts}" >
+                    <p:column headerText="Id">
+                        <h:outputText value="#{part.id}"/>
+                    </p:column>
+                     <p:column headerText="Nombre">
+                        <h:outputText value="#{part.name}"/>
+                    </p:column> 
+                    <p:column headerText="DEscripcion ">
+                        <h:outputText value="#{part.description}"/>
+                    </p:column>
+                    <p:column headerText="Categoria">
+                        <h:outputText value="#{part.category_id}"/>
+                    </p:column>
+                    <p:column headerText="EAN13">
+                        <h:outputText value="#{part.ean13}"/>
+                    </p:column>
+                    <p:column headerText="Cantidad a recibir">
+                        <h:outputText value="#{part.incomingQty}"/>
+                    </p:column>
+                    <p:column headerText="Precio de compra">
+                        <h:outputText value="#{part.purchasePrice}"/>
+                    </p:column>
+                    <p:column headerText="Cantidad disponible">
+                        <h:outputText value="#{part.qtyAvailable}"/>
+                    </p:column>
+                    <p:column headerText="Precio de venta">
+                        <h:outputText value="#{part.salePrice}"/>
+                    </p:column>
+                    <p:column headerText="Unidad de medida">
+                        <h:outputText value="#{part.uom}"/>
+                    </p:column>
+                    <p:column headerText="Disponibilidad virtual">
+                        <h:outputText value="#{part.virtualAvailable}"/>
+                    </p:column>
+                    <p:column headerText="Mostrar" >
+                        <p:commandLink value="Mostrar"  actionListener="#{productBean.LeerId(part)}" oncomplete="PF('wdlgRegistro').show();" update=":dlgRegistro"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            
+            <p:dialog id="dlgRegistro" header="Registro" widgetVar="wdlgRegistro" showEffect="explode" hideEffect="bounce">
+                <h:form>
+                    <p:panelGrid id="pgdial" columns="2">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{productBean.product.id}"/>
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{productBean.product.name}"/>
+                        </p:column> 
+                        <p:column headerText="DEscripcion ">
+                            <h:outputText value="#{productBean.product.description}"/>
+                        </p:column>
+                        <p:column headerText="Categoria">
+                            <h:outputText value="#{productBean.product.category_id}"/>
+                        </p:column>
+                        <p:column headerText="EAN13">
+                            <h:outputText value="#{productBean.product.ean13}"/>
+                        </p:column>
+                        <p:column headerText="Cantidad a recibir">
+                            <h:outputText value="#{productBean.product.incomingQty}"/>
+                        </p:column>
+                        <p:column headerText="Precio de compra">
+                            <h:outputText value="#{productBean.product.purchasePrice}"/>
+                        </p:column>
+                        <p:column headerText="Cantidad disponible">
+                            <h:outputText value="#{productBean.product.qtyAvailable}"/>
+                        </p:column>
+                        <p:column headerText="Precio de venta">
+                            <h:outputText value="#{productBean.product.salePrice}"/>
+                        </p:column>
+                        <p:column headerText="Unidad de medida">
+                            <h:outputText value="#{productBean.product.uom}"/>
+                        </p:column>
+                        <p:column headerText="Disponibilidad virtual">
+                            <h:outputText value="#{productBean.product.virtualAvailable}"/>
+                        </p:column>
+
+                        <p:commandButton value="Modificar" actionListener="#{productBean.modificar}" oncomplete="PF('wdlgRegistro').hide();" style="width: 130px; height: 10px;"/>
+                        <p:commandButton value="Eliminar" actionListener="#{productBean.eliminar()}" oncomplete="PF('wdlgRegistro').hide();" style="width: 130px; height: 10px;" />
+                        <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgRegistro').hide();" style="width: 130px; height: 10px;" />
+                        <br/>
+                    </p:panelGrid>
+                </h:form>
+            </p:dialog>
+        </bnu:container>
+    </h:body>
+</html>
