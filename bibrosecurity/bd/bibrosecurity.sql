@@ -335,7 +335,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bibroSecurity`;
-INSERT INTO `user` (`id`, `name`, `lastName`, `email`, `password`, `partner_id`, `active`, `userType_id`) VALUES (1, 'Administrador', 'Administrador', 'admin@bibrosecurity.com', 'admin', 1, 1, NULL);
+INSERT INTO `user` (`id`, `name`, `lastName`, `email`, `password`, `partner_id`, `active`, `userType_id`) VALUES (1, 'Administrador', 'Administrador', 'admin@bibrosecurity.com', 'admin', 1, 1, 1);
 
 COMMIT;
 

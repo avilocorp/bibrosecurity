@@ -24,15 +24,14 @@ public class loginDAO extends DAO{
         try {
             this.connect();
             PreparedStatement st = this.getCon().prepareStatement(
-                    "select * from user where email=? and password=? and activo=1;"
+                    "select * from user where email=? and password=? and active=1;"
             );
             st.setString(1, email);
             st.setString(2, password);
             rs = st.executeQuery();
             while (rs.next()) {
-                user.setNombre(rs.getString("nombre"));
-                user.setApP(rs.getString("apP"));
-                user.setApM(rs.getString("apM"));
+                user.setName(rs.getString("nombre"));
+                user.setLastName(rs.getString("apP"));
             }
         } catch (Exception e) {
             throw e;
