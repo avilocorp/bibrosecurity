@@ -3,16 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:bnu="http://bootsfaces.net/ui">
     <h:head>
         
     </h:head>
     <h:body>
          <ui:composition template="./../generals/templates/maintemplate.xhtml">
             <ui:define name="Title">
-                Partners
+                <i class="fa fa-users fa-2x"></i> Partners
             </ui:define>
-
+             <ui:define name="buttons">
+                 <bnu:button value="Agregar" outcome="create"  look="success"/>
+            </ui:define>
             <ui:define name="content">
                 <ui:include src="./partials/table.xhtml"/>
             </ui:define>

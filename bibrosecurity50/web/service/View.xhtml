@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.ViewServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{views.ViewServiceLabel_id}"/>
+                    <h:outputText value="#{serviceController.selected.id}" title="#{views.ViewServiceTitle_id}"/>
+                    <h:outputText value="#{views.ViewServiceLabel_alias}"/>
+                    <h:outputText value="#{serviceController.selected.alias}" title="#{views.ViewServiceTitle_alias}"/>
+                    <h:outputText value="#{views.ViewServiceLabel_createDate}"/>
+                    <h:outputText value="#{serviceController.selected.createDate}" title="#{views.ViewServiceTitle_createDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{views.ViewServiceLabel_partnerId}"/>
+                    <h:outputText value="#{serviceController.selected.partnerId}" title="#{views.ViewServiceTitle_partnerId}"/>
+                    <h:outputText value="#{views.ViewServiceLabel_active}"/>
+                    <h:outputText value="#{serviceController.selected.active}" title="#{views.ViewServiceTitle_active}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{serviceController.destroyAndView}" value="#{views.ViewServiceDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{views.ViewServiceEditLink}"/>
+                <br />
+                <h:commandLink action="#{serviceController.prepareCreate}" value="#{views.ViewServiceCreateLink}" />
+                <br />
+                <h:commandLink action="#{serviceController.prepareList}" value="#{views.ViewServiceShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.ViewServiceIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.ViewMultimediaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{views.ViewMultimediaLabel_id}"/>
+                    <h:outputText value="#{multimediaController.selected.id}" title="#{views.ViewMultimediaTitle_id}"/>
+                    <h:outputText value="#{views.ViewMultimediaLabel_ruta}"/>
+                    <h:outputText value="#{multimediaController.selected.ruta}" title="#{views.ViewMultimediaTitle_ruta}"/>
+                    <h:outputText value="#{views.ViewMultimediaLabel_tipo}"/>
+                    <h:outputText value="#{multimediaController.selected.tipo}" title="#{views.ViewMultimediaTitle_tipo}"/>
+                    <h:outputText value="#{views.ViewMultimediaLabel_productId}"/>
+                    <h:outputText value="#{multimediaController.selected.productId}" title="#{views.ViewMultimediaTitle_productId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{multimediaController.destroyAndView}" value="#{views.ViewMultimediaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{views.ViewMultimediaEditLink}"/>
+                <br />
+                <h:commandLink action="#{multimediaController.prepareCreate}" value="#{views.ViewMultimediaCreateLink}" />
+                <br />
+                <h:commandLink action="#{multimediaController.prepareList}" value="#{views.ViewMultimediaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.ViewMultimediaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

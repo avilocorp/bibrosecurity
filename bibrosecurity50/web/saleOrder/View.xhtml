@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.ViewSaleOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{views.ViewSaleOrderLabel_id}"/>
+                    <h:outputText value="#{saleOrderController.selected.id}" title="#{views.ViewSaleOrderTitle_id}"/>
+                    <h:outputText value="#{views.ViewSaleOrderLabel_datetimeCreate}"/>
+                    <h:outputText value="#{saleOrderController.selected.datetimeCreate}" title="#{views.ViewSaleOrderTitle_datetimeCreate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{views.ViewSaleOrderLabel_subTotal}"/>
+                    <h:outputText value="#{saleOrderController.selected.subTotal}" title="#{views.ViewSaleOrderTitle_subTotal}"/>
+                    <h:outputText value="#{views.ViewSaleOrderLabel_discount}"/>
+                    <h:outputText value="#{saleOrderController.selected.discount}" title="#{views.ViewSaleOrderTitle_discount}"/>
+                    <h:outputText value="#{views.ViewSaleOrderLabel_total}"/>
+                    <h:outputText value="#{saleOrderController.selected.total}" title="#{views.ViewSaleOrderTitle_total}"/>
+                    <h:outputText value="#{views.ViewSaleOrderLabel_type}"/>
+                    <h:outputText value="#{saleOrderController.selected.type}" title="#{views.ViewSaleOrderTitle_type}"/>
+                    <h:outputText value="#{views.ViewSaleOrderLabel_status}"/>
+                    <h:outputText value="#{saleOrderController.selected.status}" title="#{views.ViewSaleOrderTitle_status}"/>
+                    <h:outputText value="#{views.ViewSaleOrderLabel_partnerId}"/>
+                    <h:outputText value="#{saleOrderController.selected.partnerId}" title="#{views.ViewSaleOrderTitle_partnerId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{saleOrderController.destroyAndView}" value="#{views.ViewSaleOrderDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{views.ViewSaleOrderEditLink}"/>
+                <br />
+                <h:commandLink action="#{saleOrderController.prepareCreate}" value="#{views.ViewSaleOrderCreateLink}" />
+                <br />
+                <h:commandLink action="#{saleOrderController.prepareList}" value="#{views.ViewSaleOrderShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.ViewSaleOrderIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

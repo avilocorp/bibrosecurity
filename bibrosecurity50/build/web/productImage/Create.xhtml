@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.CreateProductImageTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{views.CreateProductImageLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{productImageController.selected.id}" title="#{views.CreateProductImageTitle_id}" required="true" requiredMessage="#{views.CreateProductImageRequiredMessage_id}"/>
+                    <h:outputLabel value="#{views.CreateProductImageLabel_productId}" for="productId" />
+                    <h:inputText id="productId" value="#{productImageController.selected.productId}" title="#{views.CreateProductImageTitle_productId}" required="true" requiredMessage="#{views.CreateProductImageRequiredMessage_productId}"/>
+                    <h:outputLabel value="#{views.CreateProductImageLabel_image}" for="image" />
+                    <h:inputText id="image" value="#{productImageController.selected.image}" title="#{views.CreateProductImageTitle_image}" required="true" requiredMessage="#{views.CreateProductImageRequiredMessage_image}"/>
+                    <h:outputLabel value="#{views.CreateProductImageLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{productImageController.selected.description}" title="#{views.CreateProductImageTitle_description}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{productImageController.create}" value="#{views.CreateProductImageSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{productImageController.prepareList}" value="#{views.CreateProductImageShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.CreateProductImageIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

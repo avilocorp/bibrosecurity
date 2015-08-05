@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.CreateServiceCameraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{views.CreateServiceCameraLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{serviceCameraController.selected.id}" title="#{views.CreateServiceCameraTitle_id}" required="true" requiredMessage="#{views.CreateServiceCameraRequiredMessage_id}"/>
+                    <h:outputLabel value="#{views.CreateServiceCameraLabel_serviceId}" for="serviceId" />
+                    <h:inputText id="serviceId" value="#{serviceCameraController.selected.serviceId}" title="#{views.CreateServiceCameraTitle_serviceId}" required="true" requiredMessage="#{views.CreateServiceCameraRequiredMessage_serviceId}"/>
+                    <h:outputLabel value="#{views.CreateServiceCameraLabel_cameraId}" for="cameraId" />
+                    <h:inputText id="cameraId" value="#{serviceCameraController.selected.cameraId}" title="#{views.CreateServiceCameraTitle_cameraId}" required="true" requiredMessage="#{views.CreateServiceCameraRequiredMessage_cameraId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{serviceCameraController.create}" value="#{views.CreateServiceCameraSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{serviceCameraController.prepareList}" value="#{views.CreateServiceCameraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.CreateServiceCameraIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

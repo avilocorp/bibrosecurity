@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:bnu="http://bootsfaces.net/ui">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+         <ui:composition template="./../generals/templates/maintemplate.xhtml">
+                <ui:define name="buttons">
+                    <h:form enctype="multipart/form-data" >
+                    <bnu:commandButton value="Registrar" update="grid" actionListener="#{partnersBean.registrar()}" look="primary"/>
+                    <bnu:button  icon="ok" value="Regresar" outcome="index" look="danger"/> 
+                </ui:define>
+
+                <ui:define name="Title">
+                   <i class="fa fa-user-plus fa-2x"></i> Agregar Partners
+                </ui:define>
+                <ui:define name="content">
+                    <ui:include src="./partials/inputs.xhtml"/>
+                    </h:form>
+                </ui:define>
+        </ui:composition>
+       
+    </h:body>
+</html>

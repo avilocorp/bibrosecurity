@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.CreatePurchaseOrderLineTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{purchaseOrderLineController.selected.id}" title="#{views.CreatePurchaseOrderLineTitle_id}" required="true" requiredMessage="#{views.CreatePurchaseOrderLineRequiredMessage_id}"/>
+                    <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_qty}" for="qty" />
+                    <h:inputText id="qty" value="#{purchaseOrderLineController.selected.qty}" title="#{views.CreatePurchaseOrderLineTitle_qty}" />
+                    <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_unitPrice}" for="unitPrice" />
+                    <h:inputText id="unitPrice" value="#{purchaseOrderLineController.selected.unitPrice}" title="#{views.CreatePurchaseOrderLineTitle_unitPrice}" />
+                    <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_subtotal}" for="subtotal" />
+                    <h:inputText id="subtotal" value="#{purchaseOrderLineController.selected.subtotal}" title="#{views.CreatePurchaseOrderLineTitle_subtotal}" />
+                    <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_productId}" for="productId" />
+                    <h:inputText id="productId" value="#{purchaseOrderLineController.selected.productId}" title="#{views.CreatePurchaseOrderLineTitle_productId}" required="true" requiredMessage="#{views.CreatePurchaseOrderLineRequiredMessage_productId}"/>
+                    <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_purchaseOrderid}" for="purchaseOrderid" />
+                    <h:inputText id="purchaseOrderid" value="#{purchaseOrderLineController.selected.purchaseOrderid}" title="#{views.CreatePurchaseOrderLineTitle_purchaseOrderid}" required="true" requiredMessage="#{views.CreatePurchaseOrderLineRequiredMessage_purchaseOrderid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseOrderLineController.create}" value="#{views.CreatePurchaseOrderLineSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{purchaseOrderLineController.prepareList}" value="#{views.CreatePurchaseOrderLineShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.CreatePurchaseOrderLineIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
