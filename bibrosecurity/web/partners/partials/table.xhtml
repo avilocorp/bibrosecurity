@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <h:form>
+            <f:event type="preRenderView" listener="#{partnersBean.listar()}"/>
+            <p:dataTable id="table" var="part" 
+                         value="#{partnersBean.lsPartner}" 
+                         class="table table-hover"
+                         rows="15"
+                         reflow="true" 
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                <p:column headerText="Image">
+                    <h:outputText value="#{part.image}"/>
+                </p:column>
+                <p:column headerText="Nombre" sortBy="#{part.name}">
+                     <h:outputText value="#{part.name}"/>
+                </p:column> 
+                 <p:column headerText="Apellidos" sortBy="#{part.lastName}">
+                     <h:outputText value="#{part.lastName}"/>
+                </p:column>
+                <p:column headerText="Email" sortBy="#{part.email}">
+                    <h:outputText value="#{part.email}"/>
+                </p:column>
+                <p:column headerText="Mostrar" >
+                    <p:commandButton value="Mostrar"  action="#{partnersBean.recarga(part)}"   />
+                </p:column>
+            </p:dataTable>
+         </h:form>
+    </h:body>
+</html>

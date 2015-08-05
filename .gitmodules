@@ -4,3 +4,6 @@
 [submodule "bibrosecurity/web/resources/bootswatch"]
 	path = bibrosecurity/web/resources/bootswatch
 	url = git@github.com:thomaspark/bootswatch.git
+[submodule "bibrosecurity50/web/resources/bootswatch"]
+	path = bibrosecurity50/web/resources/bootswatch
+	url = git@github.com:thomaspark/bootswatch.git

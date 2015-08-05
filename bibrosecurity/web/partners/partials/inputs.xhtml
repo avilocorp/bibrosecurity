@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:bnu="http://bootsfaces.net/ui">
+    
+    <h:body>    
+        <p:outputLabel value="Nombre"/>
+        <bnu:inputText  id="txtNombre"  value="#{partnersBean.partner.name}"/>
+        <p:outputLabel value="Apellido"/>
+        <bnu:inputText  id="txtApellido"  value="#{partnersBean.partner.lastName}"/>
+        <p:outputLabel value="Calle"/>
+        <bnu:inputText  id="txtCalle"  value="#{partnersBean.partner.street}"/>
+        <p:outputLabel value="noExt"/>
+        <bnu:inputText  id="txtNoExt"  value="#{partnersBean.partner.noExt}"/>
+        <p:outputLabel value="noInt"/>
+        <bnu:inputText  id="txtNoInt"  value="#{partnersBean.partner.noInt}"/>
+        <p:outputLabel value="Colonia"/>
+        <bnu:inputText  id="txtColonia"  value="#{partnersBean.partner.colony}"/>
+        <p:outputLabel value="Zip"/>
+        <bnu:inputText  id="txtZip"  value="#{partnersBean.partner.zip}"/>
+        <p:outputLabel value="Localidad"/>
+        <bnu:inputText  id="txtLocalidad"  value="#{partnersBean.partner.locality}"/>
+        <p:outputLabel value="Telefono"/>
+        <bnu:inputText  id="txtTelefono"  value="#{partnersBean.partner.phone}"/>
+        <p:outputLabel value="Celular"/>
+        <bnu:inputText  id="txtCelular"  value="#{partnersBean.partner.mobile}"/>
+        <p:outputLabel value="E-mail"/>
+        <bnu:inputText  id="txtEmail"  value="#{partnersBean.partner.email}"/>
+        <p:outputLabel value="Customer"/>
+        <bnu:inputText  id="txtCostumer"  value="#{partnersBean.partner.customer}"/>
+        <p:outputLabel value="Supplier"/>
+        <bnu:inputText  id="txtSupleir"  value="#{partnersBean.partner.supplier}"/>
+        <h:outputLabel value="Imagen"/>
+        <h:panelGroup>
+            <p:fileUpload id="fillPa" mode="single" uploadLabel="Subir" label="Elegir" update="graficsPa" cancelLabel="Cancelar" fileUploadListener="#{partnersBean.subirImagen}" sizeLimit="5120000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+            <p:graphicImage id="graficsPa" value="#{partnersBean.partner.image}" width="250" height="220"/>
+        </h:panelGroup>
+        <p:outputLabel value="Id Ciudad"/>
+        <bnu:inputText  id="txtCiudad"  value="#{partnersBean.partner.city_id}"/>
+        <p:outputLabel value="Id Estado"/>
+        <bnu:inputText  id="txtEstado"  value="#{partnersBean.partner.state_id}"/>
+        <p:outputLabel value="Id Pais"/>
+        <bnu:inputText  id="txtPais"  value="#{partnersBean.partner.country_id}"/>
+        <p:outputLabel value="Activado"/>
+        <bnu:inputText  id="txtActivado"  value="#{partnersBean.partner.active}"/>
+    </h:body>
+</html>

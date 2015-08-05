@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.ViewSaleOrderPackageTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{views.ViewSaleOrderPackageLabel_id}"/>
+                    <h:outputText value="#{saleOrderPackageController.selected.id}" title="#{views.ViewSaleOrderPackageTitle_id}"/>
+                    <h:outputText value="#{views.ViewSaleOrderPackageLabel_packageId}"/>
+                    <h:outputText value="#{saleOrderPackageController.selected.packageId}" title="#{views.ViewSaleOrderPackageTitle_packageId}"/>
+                    <h:outputText value="#{views.ViewSaleOrderPackageLabel_saleOrderid}"/>
+                    <h:outputText value="#{saleOrderPackageController.selected.saleOrderid}" title="#{views.ViewSaleOrderPackageTitle_saleOrderid}"/>
+                    <h:outputText value="#{views.ViewSaleOrderPackageLabel_guideNumber}"/>
+                    <h:outputText value="#{saleOrderPackageController.selected.guideNumber}" title="#{views.ViewSaleOrderPackageTitle_guideNumber}"/>
+                    <h:outputText value="#{views.ViewSaleOrderPackageLabel_sendingDate}"/>
+                    <h:outputText value="#{saleOrderPackageController.selected.sendingDate}" title="#{views.ViewSaleOrderPackageTitle_sendingDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{views.ViewSaleOrderPackageLabel_arrivalDate}"/>
+                    <h:outputText value="#{saleOrderPackageController.selected.arrivalDate}" title="#{views.ViewSaleOrderPackageTitle_arrivalDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{views.ViewSaleOrderPackageLabel_status}"/>
+                    <h:outputText value="#{saleOrderPackageController.selected.status}" title="#{views.ViewSaleOrderPackageTitle_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{saleOrderPackageController.destroyAndView}" value="#{views.ViewSaleOrderPackageDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{views.ViewSaleOrderPackageEditLink}"/>
+                <br />
+                <h:commandLink action="#{saleOrderPackageController.prepareCreate}" value="#{views.ViewSaleOrderPackageCreateLink}" />
+                <br />
+                <h:commandLink action="#{saleOrderPackageController.prepareList}" value="#{views.ViewSaleOrderPackageShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.ViewSaleOrderPackageIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.ViewProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{views.ViewProductLabel_id}"/>
+                    <h:outputText value="#{productController.selected.id}" title="#{views.ViewProductTitle_id}"/>
+                    <h:outputText value="#{views.ViewProductLabel_name}"/>
+                    <h:outputText value="#{productController.selected.name}" title="#{views.ViewProductTitle_name}"/>
+                    <h:outputText value="#{views.ViewProductLabel_description}"/>
+                    <h:outputText value="#{productController.selected.description}" title="#{views.ViewProductTitle_description}"/>
+                    <h:outputText value="#{views.ViewProductLabel_purchasePrice}"/>
+                    <h:outputText value="#{productController.selected.purchasePrice}" title="#{views.ViewProductTitle_purchasePrice}"/>
+                    <h:outputText value="#{views.ViewProductLabel_salePrice}"/>
+                    <h:outputText value="#{productController.selected.salePrice}" title="#{views.ViewProductTitle_salePrice}"/>
+                    <h:outputText value="#{views.ViewProductLabel_qtyAvailable}"/>
+                    <h:outputText value="#{productController.selected.qtyAvailable}" title="#{views.ViewProductTitle_qtyAvailable}"/>
+                    <h:outputText value="#{views.ViewProductLabel_incomingQty}"/>
+                    <h:outputText value="#{productController.selected.incomingQty}" title="#{views.ViewProductTitle_incomingQty}"/>
+                    <h:outputText value="#{views.ViewProductLabel_virtualAvailable}"/>
+                    <h:outputText value="#{productController.selected.virtualAvailable}" title="#{views.ViewProductTitle_virtualAvailable}"/>
+                    <h:outputText value="#{views.ViewProductLabel_ean13}"/>
+                    <h:outputText value="#{productController.selected.ean13}" title="#{views.ViewProductTitle_ean13}"/>
+                    <h:outputText value="#{views.ViewProductLabel_uom}"/>
+                    <h:outputText value="#{productController.selected.uom}" title="#{views.ViewProductTitle_uom}"/>
+                    <h:outputText value="#{views.ViewProductLabel_categoryId}"/>
+                    <h:outputText value="#{productController.selected.categoryId}" title="#{views.ViewProductTitle_categoryId}"/>
+                    <h:outputText value="#{views.ViewProductLabel_active}"/>
+                    <h:outputText value="#{productController.selected.active}" title="#{views.ViewProductTitle_active}"/>
+                    <h:outputText value="#{views.ViewProductLabel_partnerId}"/>
+                    <h:outputText value="#{productController.selected.partnerId}" title="#{views.ViewProductTitle_partnerId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{productController.destroyAndView}" value="#{views.ViewProductDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{views.ViewProductEditLink}"/>
+                <br />
+                <h:commandLink action="#{productController.prepareCreate}" value="#{views.ViewProductCreateLink}" />
+                <br />
+                <h:commandLink action="#{productController.prepareList}" value="#{views.ViewProductShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.ViewProductIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

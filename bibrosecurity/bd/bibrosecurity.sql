@@ -6,12 +6,12 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema bibroSecurity
+-- Schema bibrosecurity
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `bibroSecurity` ;
-CREATE SCHEMA IF NOT EXISTS `bibroSecurity` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+DROP SCHEMA IF EXISTS `bibrosecurity` ;
+CREATE SCHEMA IF NOT EXISTS `bibrosecurity` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 SHOW WARNINGS;
-USE `bibroSecurity` ;
+USE `bibrosecurity` ;
 
 -- -----------------------------------------------------
 -- Table `partner`
@@ -313,7 +313,7 @@ SHOW WARNINGS;
 -- Data for table `partner`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `bibroSecurity`;
+USE `bibrosecurity`;
 INSERT INTO `partner` (`id`, `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES (1, 'Administrador', 'Administrador', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin@bibrosecurity.com', 1, 1, NULL, NULL, NULL, NULL, 1);
 
 COMMIT;
@@ -323,7 +323,7 @@ COMMIT;
 -- Data for table `userType`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `bibroSecurity`;
+USE `bibrosecurity`;
 INSERT INTO `userType` (`id`, `name`, `active`) VALUES (1, 'Administrador', 1);
 INSERT INTO `userType` (`id`, `name`, `active`) VALUES (2, 'Usuario', 1);
 
@@ -334,7 +334,7 @@ COMMIT;
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `bibroSecurity`;
+USE `bibrosecurity`;
 INSERT INTO `user` (`id`, `name`, `lastName`, `email`, `password`, `partner_id`, `active`, `userType_id`) VALUES (1, 'Administrador', 'Administrador', 'admin@bibrosecurity.com', 'admin', 1, 1, 1);
 
 COMMIT;

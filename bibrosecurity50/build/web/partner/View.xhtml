@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.ViewPartnerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{views.ViewPartnerLabel_id}"/>
+                    <h:outputText value="#{partnerController.selected.id}" title="#{views.ViewPartnerTitle_id}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_name}"/>
+                    <h:outputText value="#{partnerController.selected.name}" title="#{views.ViewPartnerTitle_name}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_lastName}"/>
+                    <h:outputText value="#{partnerController.selected.lastName}" title="#{views.ViewPartnerTitle_lastName}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_street}"/>
+                    <h:outputText value="#{partnerController.selected.street}" title="#{views.ViewPartnerTitle_street}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_noExt}"/>
+                    <h:outputText value="#{partnerController.selected.noExt}" title="#{views.ViewPartnerTitle_noExt}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_noInt}"/>
+                    <h:outputText value="#{partnerController.selected.noInt}" title="#{views.ViewPartnerTitle_noInt}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_colony}"/>
+                    <h:outputText value="#{partnerController.selected.colony}" title="#{views.ViewPartnerTitle_colony}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_zip}"/>
+                    <h:outputText value="#{partnerController.selected.zip}" title="#{views.ViewPartnerTitle_zip}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_locality}"/>
+                    <h:outputText value="#{partnerController.selected.locality}" title="#{views.ViewPartnerTitle_locality}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_phone}"/>
+                    <h:outputText value="#{partnerController.selected.phone}" title="#{views.ViewPartnerTitle_phone}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_mobile}"/>
+                    <h:outputText value="#{partnerController.selected.mobile}" title="#{views.ViewPartnerTitle_mobile}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_email}"/>
+                    <h:outputText value="#{partnerController.selected.email}" title="#{views.ViewPartnerTitle_email}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_customer}"/>
+                    <h:outputText value="#{partnerController.selected.customer}" title="#{views.ViewPartnerTitle_customer}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_supplier}"/>
+                    <h:outputText value="#{partnerController.selected.supplier}" title="#{views.ViewPartnerTitle_supplier}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_image}"/>
+                    <h:outputText value="#{partnerController.selected.image}" title="#{views.ViewPartnerTitle_image}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_cityId}"/>
+                    <h:outputText value="#{partnerController.selected.cityId}" title="#{views.ViewPartnerTitle_cityId}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_stateId}"/>
+                    <h:outputText value="#{partnerController.selected.stateId}" title="#{views.ViewPartnerTitle_stateId}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_countryId}"/>
+                    <h:outputText value="#{partnerController.selected.countryId}" title="#{views.ViewPartnerTitle_countryId}"/>
+                    <h:outputText value="#{views.ViewPartnerLabel_active}"/>
+                    <h:outputText value="#{partnerController.selected.active}" title="#{views.ViewPartnerTitle_active}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{partnerController.destroyAndView}" value="#{views.ViewPartnerDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{views.ViewPartnerEditLink}"/>
+                <br />
+                <h:commandLink action="#{partnerController.prepareCreate}" value="#{views.ViewPartnerCreateLink}" />
+                <br />
+                <h:commandLink action="#{partnerController.prepareList}" value="#{views.ViewPartnerShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{views.ViewPartnerIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

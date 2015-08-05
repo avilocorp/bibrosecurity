@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
+
+    <h:body>
+
+        <ui:composition template="/template_public.xhtml">
+
+            <ui:define name="title">
+                Logueo
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <bnu:row>
+                        <bnu:column span="8" offset="2" class="well bs-component">
+                            <bnu:row>
+                                <bnu:column offset="2" span="8" class="text-center">
+                                    <img src="../resources/images/BiBroSecurity.png" alt="BibroSecurity"/>
+                                </bnu:column>
+                                <bnu:column span="8" offset="2">
+                                    <bnu:inputText id="txtEmail" placeholder="Email"/>
+                                </bnu:column>
+                                <bnu:column span="8" offset="2">
+                                    <bnu:inputSecret id="nonFeedback" placeholder="Password"/>
+                                </bnu:column>
+                                <bnu:column span="9" offset="3" class="pull-right text-center">
+                                    <bnu:button value="Enter" class="btn btn-primary btn-lg"/>
+                                </bnu:column>
+                            </bnu:row>
+                        </bnu:column>
+                    </bnu:row>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
