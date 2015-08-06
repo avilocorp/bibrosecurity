@@ -1,83 +1,89 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#{facesContext.externalContext.requestContextPath}/index.xhtml">Bibrosecurity</a>
-    </div>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#{facesContext.externalContext.requestContextPath}/index.xhtml">Bibrosecurity</a>
+              </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          
-            <li><a href="#{facesContext.externalContext.requestContextPath}/catalog/index.xhtml">Catálogo <span class="sr-only">(current)</span></a></li>
-            <li><a href="#{facesContext.externalContext.requestContextPath}/installers/index.xhtml">Directorio de instaladores</a></li>
-            <li><a href="#">Contactanos</a></li>
-            
-            
-            
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/product/List.xhtml">Productos</a></li>
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/category/List.xhtml">Categorías de productos</a></li>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/catalog/index.xhtml">Catálogo <span class="sr-only">(current)</span></a></li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/installers/index.xhtml">Directorio de instaladores</a></li>
+                      <li><a href="#">Contactanos</a></li>
+
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/product/List.xhtml">Productos</a></li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/category/List.xhtml">Categorías de productos</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/product/List.xhtml">Productos <span class="sr-only">(current)</span></a></li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Socios <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/partner/List.xhtml">Clientes</a></li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/partner/List.xhtml">Proveedores</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/multimedia/List.xhtml">Multimedía</a></li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/saleOrder/List.xhtml">Ordenes de venta</a></li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/purchaseOrder/List.xhtml">Ordenes de compra</a></li>
+
+
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuración <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li role="separator" class="divider">Usuarios</li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/user/List.xhtml">Usuarios</a></li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/userType/List.xhtml">Tipos de usuario</a></li>
+                            <li role="separator" class="divider">Paqueterías</li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/package/List.xhtml">Paqueterías</a></li>
+                          </ul>
+                      </li>
+          <!--          <h:link outcome="/camera/List" value="Show All Camera Items"/>
+                  <br />-->
+                  <!--<h:link outcome="/category/List" value="Show All Category Items"/>-->
+                  <!--<h:link outcome="/multimedia/List" value="Show All Multimedia Items"/>-->
+                  <!--<h:link outcome="/package/List" value="Show All Package Items"/>-->
+                  <!--<h:link outcome="/partner/List" value="Show All Partner Items"/>-->
+                  <!--<h:link outcome="/product/List" value="Show All Product Items"/>-->
+                  <!--<h:link outcome="/productImage/List" value="Show All ProductImage Items"/> *****-->
+          <!--        <h:link outcome="/purchaseOrder/List" value="Show All PurchaseOrder Items"/>
+                  <h:link outcome="/purchaseOrderLine/List" value="Show All PurchaseOrderLine Items"/>
+                  <h:link outcome="/saleOrder/List" value="Show All SaleOrder Items"/>
+                  <h:link outcome="/saleOrderLine/List" value="Show All SaleOrderLine Items"/>
+                  <h:link outcome="/saleOrderPackage/List" value="Show All SaleOrderPackage Items"/>-->
+          <!--     <h:link outcome="/service/List" value="Show All Service Items"/>******
+                  <h:link outcome="/serviceCamera/List" value="Show All ServiceCamera Items"/>******-->
+                  <!--<h:link outcome="/userType/List" value="Show All UserType Items"/>-->
                 </ul>
-            </li>
-            <li><a href="#{facesContext.externalContext.requestContextPath}/product/List.xhtml">Productos <span class="sr-only">(current)</span></a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Socios <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/partner/List.xhtml">Clientes</a></li>
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/partner/List.xhtml">Proveedores</a></li>
+          <!--      <form class="navbar-form navbar-left" role="search">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search"/>
+                  </div>
+                  <button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
+                </form>-->
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#{facesContext.externalContext.requestContextPath}/auth/register.xhtml">Registrate</a></li>
+                  <li><a href="#{facesContext.externalContext.requestContextPath}/auth/login.xhtml">Ingresa</a></li>
                 </ul>
-            </li>
-            <li><a href="#{facesContext.externalContext.requestContextPath}/multimedia/List.xhtml">Multimedía</a></li>
-            <li><a href="#{facesContext.externalContext.requestContextPath}/saleOrder/List.xhtml">Ordenes de venta</a></li>
-            <li><a href="#{facesContext.externalContext.requestContextPath}/purchaseOrder/List.xhtml">Ordenes de compra</a></li>
-            
-            
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuración <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li role="separator" class="divider">Usuarios</li>
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/user/List.xhtml">Usuarios</a></li>
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/userType/List.xhtml">Tipos de usuario</a></li>
-                  <li role="separator" class="divider">Paqueterías</li>
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/package/List.xhtml">Paqueterías</a></li>
-                </ul>
-            </li>
-<!--          <h:link outcome="/camera/List" value="Show All Camera Items"/>
-        <br />-->
-        <!--<h:link outcome="/category/List" value="Show All Category Items"/>-->
-        <!--<h:link outcome="/multimedia/List" value="Show All Multimedia Items"/>-->
-        <!--<h:link outcome="/package/List" value="Show All Package Items"/>-->
-        <!--<h:link outcome="/partner/List" value="Show All Partner Items"/>-->
-        <!--<h:link outcome="/product/List" value="Show All Product Items"/>-->
-        <!--<h:link outcome="/productImage/List" value="Show All ProductImage Items"/> *****-->
-<!--        <h:link outcome="/purchaseOrder/List" value="Show All PurchaseOrder Items"/>
-        <h:link outcome="/purchaseOrderLine/List" value="Show All PurchaseOrderLine Items"/>
-        <h:link outcome="/saleOrder/List" value="Show All SaleOrder Items"/>
-        <h:link outcome="/saleOrderLine/List" value="Show All SaleOrderLine Items"/>
-        <h:link outcome="/saleOrderPackage/List" value="Show All SaleOrderPackage Items"/>-->
-<!--     <h:link outcome="/service/List" value="Show All Service Items"/>******
-        <h:link outcome="/serviceCamera/List" value="Show All ServiceCamera Items"/>******-->
-        <!--<h:link outcome="/userType/List" value="Show All UserType Items"/>-->
-      </ul>
-<!--      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search"/>
-        </div>
-        <button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
-      </form>-->
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="#{facesContext.externalContext.requestContextPath}/auth/register.xhtml">Registrate</a></li>
-        <li><a href="#{facesContext.externalContext.requestContextPath}/auth/login.xhtml">Ingresa</a></li>
-      </ul>
-  </div><!-- /.container-fluid -->
-  </div>
-</nav>
+            </div><!-- /.container-fluid -->
+            </div>
+          </nav>
+    </h:body>
+</html>
+
