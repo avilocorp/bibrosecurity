@@ -1,6 +1,9 @@
 [submodule "bibrosecurity/lib/themes"]
 	path = bibrosecurity/lib/themes
 	url = git@github.com:primefaces/themes.git
+[submodule "bibrosecurity50/lib/themes"]
+        path = bibrosecurity50/lib/themes
+        url = git@github.com:primefaces/themes.git
 [submodule "bibrosecurity/web/resources/bootswatch"]
 	path = bibrosecurity/web/resources/bootswatch
 	url = git@github.com:thomaspark/bootswatch.git
