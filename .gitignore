@@ -2,3 +2,18 @@
 /bibrosec/build/
 /bibrosecurity/nbproject/private/
 /bibrosecurity/build/
+
+/bibrosecurity50/nbproject/private/
+/bibrosecurity50/build/
+
+
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
