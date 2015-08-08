@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition template="/template_public.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{views.ListProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{views.ListProductEmpty}" rendered="#{productController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{productController.items.rowCount > 0}">
+                    <bnu:row>
+                        <bnu:column col-sm="6" class="pull-right text-right">
+                            <h:outputText value="#{productController.pagination.pageFirstItem + 1}..#{productController.pagination.pageLastItem + 1}/#{productController.pagination.itemsCount}"/>
+                            <h:commandLink action="#{productController.previous}" value="#{views.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>
+                            <h:commandLink action="#{productController.next}" value="#{views.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>
+                        </bnu:column>
+                    </bnu:row>
+                    <bnu:row>
+                        <ui:repeat var="item" value="#{productController.items}">
+                            <bnu:column col-sm="6" col-md="4">
+                                <bnu:thumbnail>
+                                    <h3 class="text-center"><strong>#{item.name}</strong></h3>
+                                    <img src="https://placehold.it/250x200" alt="#{item.name}"/>
+                                    <f:facet name="caption">
+                                        <p>#{item.description}</p>
+                                        <p><h1 class="text-danger text-center"><strong>$ #{item.salePrice}</strong></h1></p>
+                                        <bnu:row class="text-center">
+                                            <bnu:column col-sm="3" col-md="6">
+                                                <bnu:inputText value="" placeholder="Cantidad">
+                                                    <f:validateDoubleRange minimum="1" maximum="10"/>
+                                                </bnu:inputText> 
+                                            </bnu:column>
+                                            <bnu:column col-sm="3" col-md="6">
+                                                <bnu:button look="success" value="Añadir a carrito"/>
+                                            </bnu:column>
+                                        </bnu:row>
+                                    </f:facet>
+                                </bnu:thumbnail>
+                            </bnu:column>
+                        </ui:repeat>
+                    </bnu:row>
+                </h:panelGroup>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

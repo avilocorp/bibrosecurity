@@ -6,8 +6,41 @@
     <h:body>
         <ui:define name="Title">Index</ui:define>
         <ui:composition template="template_public.xhtml">
-            <ui:define name="body">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ui:define name="gallery">
+                <!--<div class="hero-wrapper">
+                    <div id="hero" class="bg">
+                        <video preload="auto" autoplay="1" loop="loop" muted="" poster="http://www.easytaxi.com/wp-content/uploads/2015/03/home-banner.jpg" id="pretzel-video" class="video-playing">
+                            <source src="http://www.easytaxi.com/wp-content/uploads/2015/03/easy-taxi.mp4" type="video/mp4"/>
+                            <source src="http://www.easytaxi.com/wp-content/uploads/2015/03/easy-taxi.webm" type="video/webm"/>
+                        </video>
+                    </div>
+                    <div class="container intro-area">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="banner text-center">
+                                    <h1 class="wow fadeInDown" data-wow-delay=".4s">Your ride, one touch away</h1>
+                                    <h3 class="wow fadeInDown" data-wow-delay=".5s">&mdash; The number one taxi solution for consumers and businesses in 420 cities worldwide &mdash;</h3>
+                                    <a class="btn btn-border" data-wow-delay=".3s" href="http://www.easytaxi.com/passenger" target="">
+                                    How it works                            </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    #video-background {
+                        height: 100%;
+                        position: fixed;
+                        width: 100%;
+                    }
+                </style>
+                <iframe id="video-background" disable="true" width="560" height="315" src="//www.youtube.com/embed/Xxus7tBHxtc?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;html5=1&amp;allowfullscreen=true&amp;wmode=transparent" frameborder="0" allowfullscreen="true"></iframe>-->
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                   <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -50,36 +83,32 @@
                   <span class="fa fa-forward" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
-              </div>
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://181.210.16.2:81/img/mision.png" alt="Misión" width="300px" height="400px"/>
-                          <div class="caption">
-                            <h3>Misión</h3>
-                            <p>Es el enunciado que sintetiza los principales propósitos estratégicos, así como los valores esenciales que deberían ser conocidos, comprendidos y compartidos por todos los individuos que conforman una organización.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                          <img src="http://kydoco.com.mx/ESW/Images/vision-2.png" alt="Visión" width="300px" height="400px"/>
-                          <div class="caption">
-                            <h3>Visión</h3>
-                            <p>Se refiere a lo que la empresa quiere crear, la imagén futura de la organización.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                          <img src="http://www.liceodelcarmen.educ.do/images/valores.png" alt="Valores" width="300px" height="400px"/>
-                          <div class="caption">
-                            <h3>Valores</h3>
-                            <p>Cada vez son más los directivos de las empresas que estan conscientes de la necesidad de un liderazgo estratégico basado en los valores compartidos, los cuales deben estar en concordancia con objetivos y realidad.</p>
-                          </div>
-                        </div>
-                    </div>
+             </div>
+            </ui:define>
+            <ui:define name="body">    
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                        <img src="http://181.210.16.2:81/img/mision.png" alt="Misión" style="width:300px;height:300px"/>
+                      <div class="caption">
+                        <h3>Misión</h3>
+                        <p>Es el enunciado que sintetiza los principales propósitos estratégicos, así como los valores esenciales que deberían ser conocidos, comprendidos y compartidos por todos los individuos que conforman una organización.</p>
+                      </div>
                 </div>
+                <div class="col-sm-6 col-md-4">
+                      <img src="http://kydoco.com.mx/ESW/Images/vision-2.png" alt="Visión" style="width:300px;height:300px"/>
+                      <div class="caption">
+                        <h3>Visión</h3>
+                        <p>Se refiere a lo que la empresa quiere crear, la imagén futura de la organización.</p>
+                      </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                      <img src="http://www.liceodelcarmen.educ.do/images/valores.png" alt="Valores" style="width:300px;height:300px"/>
+                      <div class="caption">
+                        <h3>Valores</h3>
+                        <p>Cada vez son más los directivos de las empresas que estan conscientes de la necesidad de un liderazgo estratégico basado en los valores compartidos, los cuales deben estar en concordancia con objetivos y realidad.</p>
+                      </div>
+                </div>
+            </div>
             </ui:define>
         </ui:composition>
     </h:body>
