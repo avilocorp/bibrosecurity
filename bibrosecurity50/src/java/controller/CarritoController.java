@@ -13,6 +13,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.ejb.EJB;
@@ -39,31 +40,30 @@ public class CarritoController implements Serializable {
     private ProductController productController;
     @Inject
     //private UsuarioController usuarioController;
-    private ArrayList<Product> carrito = new ArrayList<Product>();
+    private ArrayList<Product> carrito;
     private Product productoSelecionado;
     private int idProductoSeleccionado;
     private double totalCompra = 0.0;
 
     public CarritoController() {
+        this.carrito = new ArrayList<Product>();
     }
 
     //metodos
     public String agregarAlCarrito(int idProducto) {
         setIdProductoSeleccionado(idProducto);
         Product p = buscarProductoCarrito(idProductoSeleccionado);
-        if (p != null && p.getQtyAvailable()> 0) {
+        if (p != null && p.getQuantity()> 0) {
             int n = carrito.indexOf(p);
-            carrito.get(n).setCantidad(carrito.get(n).getCantidad() + 1);
+            carrito.get(n).setQuantity(carrito.get(n).getQuantity()+ 1);
             totalCompra+=p.getPurchasePrice();
         } else {
-                productoSelecionado = productController.
-                        productController.doBuscarProductoParaElCarrito(idProductoSeleccionado);
-                productoSelecionado.setCantidad(1);
-                if(productoSelecionado.getStock()>0){
+                productoSelecionado = productController.doBuscarProductoParaElCarrito(idProductoSeleccionado);
+                productoSelecionado.setQuantity(1);
+                if(productoSelecionado.getQtyAvailable()>0){
                     carrito.add(productoSelecionado);
-                    totalCompra+=productoSelecionado.getPrecio().doubleValue();
-                }
-                    
+                    totalCompra+=productoSelecionado.getPurchasePrice();
+                }        
         }        
         return "carritoactual";
     }
@@ -71,7 +71,7 @@ public class CarritoController implements Serializable {
     private Product buscarProductoCarrito(int idProducto) {
         Product p = null;
         for (Product prod : carrito) {
-            if (prod.getIdproducto() == idProducto) {
+            if (prod.getId() == idProducto) {
                 p = prod;
                 break;
             }
@@ -83,8 +83,8 @@ public class CarritoController implements Serializable {
         boolean encontrado = false;
         int i = 0;
         while (!encontrado) {
-            if (carrito.get(i).getIdproducto() == idProducto) {
-                totalCompra-=carrito.get(i).getPrecio().doubleValue();
+            if (carrito.get(i).getId() == idProducto) {
+                totalCompra-=carrito.get(i).getPurchasePrice();
                 carrito.remove(i);                
                 encontrado = true;
             }
@@ -98,20 +98,23 @@ public class CarritoController implements Serializable {
         ArrayList<SaleOrderLine> pedidos = new ArrayList<SaleOrderLine>();
 //        if (usuarioController.getIdcliente() > 0) {
 //            Pedido pedido = new Pedido(date, usuarioController.getIdcliente(), 'a');
-            SaleOrder pedido = new SaleOrder(date, 'a');
+            SaleOrder pedido = new SaleOrder(date, "a");
             for (Product p : carrito) {
-                Number n = p.getCantidad();
+                Number n = p.getQuantity();
                 BigDecimal cant = new BigDecimal(n.toString());
-                BigDecimal monto = p.getPrecio().multiply(cant);
+                BigDecimal purchase_price = new BigDecimal(String.valueOf(p.getPurchasePrice()));
+                BigDecimal monto = purchase_price.multiply(cant);
                 BigDecimal descuento = new BigDecimal(0.0);
-                if (p.getCantidad() >= 10) {
+                if (p.getQuantity() >= 10) {
                     descuento = monto.multiply(new BigDecimal(0.1));
                 }
                 SaleOrderLine linea = 
                         new SaleOrderLine(
-                                pedido,
-                                p.getIdproducto(),
-                                descuento, p.getCantidad(), monto);
+                                pedido.getId(),
+                                p.getId(),
+                                p.getQuantity(),
+                                p.getPurchasePrice(),
+                                monto.doubleValue());
                 pedidos.add(linea);
             }
             pedido.setPedidos(pedidos);

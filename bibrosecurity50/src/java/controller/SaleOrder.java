@@ -7,7 +7,9 @@ package controller;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -75,12 +78,27 @@ public class SaleOrder implements Serializable {
     @NotNull
     @Column(name = "partner_id")
     private int partnerId;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "SaleOrder")
+    private List<SaleOrderLine> pedidos;
+
+    public List<SaleOrderLine> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<SaleOrderLine> pedidos) {
+        this.pedidos = pedidos;
+    }
 
     public SaleOrder() {
     }
 
     public SaleOrder(Integer id) {
         this.id = id;
+    }
+    
+    public SaleOrder(Date datetimeCreate, String status){
+        this.status = status;
+        this.datetimeCreate = datetimeCreate;
     }
 
     public SaleOrder(Integer id, double subTotal, double discount, double total, String type, String status, int partnerId) {

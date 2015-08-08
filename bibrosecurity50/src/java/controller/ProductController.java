@@ -4,6 +4,8 @@ import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -26,6 +28,7 @@ public class ProductController implements Serializable {
     private controller.ProductFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private ArrayList<Product> productos = new ArrayList<>();
 
     public ProductController() {
     }
@@ -58,6 +61,19 @@ public class ProductController implements Serializable {
             };
         }
         return pagination;
+    }
+    
+    public String doListarTodosProductos(){
+        productos.clear();
+        List<Product> lista = getFacade().findAll();
+        for(Product p:lista){
+            productos.add(p);                     
+        }
+        return "carrito";
+    }
+    
+    public Product doBuscarProductoParaElCarrito(int idProducto){
+        return getFacade().find(idProducto);
     }
 
     public String prepareList() {
@@ -113,7 +129,7 @@ public class ProductController implements Serializable {
         recreateModel();
         return "List";
     }
-
+    
     public String destroyAndView() {
         performDestroy();
         recreateModel();
