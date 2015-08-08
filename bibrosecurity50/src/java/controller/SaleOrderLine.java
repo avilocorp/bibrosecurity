@@ -68,6 +68,16 @@ public class SaleOrderLine implements Serializable {
         this.saleOrderid = saleOrderid;
         this.productId = productId;
     }
+    
+    public SaleOrderLine(int saleOrderid, int productId, 
+                        double  qty, double  unitPrice,
+                        double subtotal) {
+        this.saleOrderid = saleOrderid;
+        this.productId = productId;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
+        this.subtotal = subtotal;
+    }
 
     public Integer getId() {
         return id;
