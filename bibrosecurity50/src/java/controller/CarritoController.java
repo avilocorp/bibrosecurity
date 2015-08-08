@@ -38,15 +38,13 @@ public class CarritoController implements Serializable {
      */
     @Inject
     private ProductController productController;
-    @Inject
     //private UsuarioController usuarioController;
-    private ArrayList<Product> carrito;
+    private ArrayList<Product> carrito = new ArrayList<Product>();
     private Product productoSelecionado;
     private int idProductoSeleccionado;
     private double totalCompra = 0.0;
 
     public CarritoController() {
-        this.carrito = new ArrayList<Product>();
     }
 
     //metodos
