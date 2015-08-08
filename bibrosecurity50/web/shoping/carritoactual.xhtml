@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/template_public.xhtml">
+
+            <ui:define name="body">
+                <h1>Carrito hasta el momento</h1>
+                <f:view>
+                    <h:form>                        
+                        <h:dataTable value="#{carritoController.carrito}" var="productos" rules="all" border="1" cellpadding="5" cellspacing="0" rendered="#{not empty carritoController.carrito}">                            
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="producto"/>
+                                </f:facet>
+                                <h:outputText value="#{productos.detalle}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="marca"/>
+                                </f:facet>
+                                <h:outputText value="#{productos.marca}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="cantidad"/>
+                                </f:facet>
+                                <h:outputText value="#{productos.cantidad}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="precio"/>
+                                </f:facet>
+                                <h:outputText value="#{productos.precio}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value=""/>
+                                </f:facet>
+                                <h:commandLink value="Borrar del carrito" action="#{carritoController.borrarDelCarrito(productos.idproducto)}"/>
+                            </h:column>
+                        </h:dataTable>
+                        <br/>
+                        <br/>
+                        <h:outputLabel value="Total: $"/>
+                        <h:outputText value="#{carritoController.totalCompra}" rendered="#{not empty carritoController.carrito}"/>
+                        <br/>
+                        <br/>
+                        <h:commandLink value="Confirmar compra" action="#{carritoController.confirmarPedido()}"/>
+                         | 
+                         <h:commandLink value="Seguir comprando" action="#{carritoController.doIrCarrito()}"/>
+                                                   
+                             <h:message id="mensajeError" for="mensajeError"/>
+                         
+                    </h:form>
+                </f:view>
+            </ui:define>
+
+            <ui:define name="bottom">
+                <ui:include src="./paginasInclude/vistaPie.xhtml"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
