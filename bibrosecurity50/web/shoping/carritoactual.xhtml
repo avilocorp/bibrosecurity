@@ -18,25 +18,19 @@
                                 <f:facet name="header">
                                     <h:outputText value="producto"/>
                                 </f:facet>
-                                <h:outputText value="#{productos.detalle}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="marca"/>
-                                </f:facet>
-                                <h:outputText value="#{productos.marca}"/>
+                                <h:outputText value="#{productos.description}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="cantidad"/>
                                 </f:facet>
-                                <h:outputText value="#{productos.cantidad}"/>
+                                <h:outputText value="#{productos.quantity}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="precio"/>
                                 </f:facet>
-                                <h:outputText value="#{productos.precio}"/>
+                                <h:outputText value="#{productos.purchasePrice}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -60,11 +54,6 @@
                     </h:form>
                 </f:view>
             </ui:define>
-
-            <ui:define name="bottom">
-                <ui:include src="./paginasInclude/vistaPie.xhtml"/>
-            </ui:define>
-
         </ui:composition>
 
     </body>

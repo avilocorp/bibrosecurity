@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
@@ -19,54 +20,61 @@
                     <h:outputText value="#{saleOrderPackageController.pagination.pageFirstItem + 1}..#{saleOrderPackageController.pagination.pageLastItem + 1}/#{saleOrderPackageController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{saleOrderPackageController.previous}" value="#{views.Previous} #{saleOrderPackageController.pagination.pageSize}" rendered="#{saleOrderPackageController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{saleOrderPackageController.next}" value="#{views.Next} #{saleOrderPackageController.pagination.pageSize}" rendered="#{saleOrderPackageController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{saleOrderPackageController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                                <p:dataTable value="#{partnerController.items}" 
+                                 var="item" 
+                                 class="table table-hover"
+                                    rows="15"
+                                    reflow="true" 
+                                    paginator="true"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15">    
+                               <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListSaleOrderPackageTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListSaleOrderPackageTitle_packageId}"/>
                             </f:facet>
                             <h:outputText value="#{item.packageId}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListSaleOrderPackageTitle_saleOrderid}"/>
                             </f:facet>
                             <h:outputText value="#{item.saleOrderid}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListSaleOrderPackageTitle_guideNumber}"/>
                             </f:facet>
                             <h:outputText value="#{item.guideNumber}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListSaleOrderPackageTitle_sendingDate}"/>
                             </f:facet>
                             <h:outputText value="#{item.sendingDate}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListSaleOrderPackageTitle_arrivalDate}"/>
                             </f:facet>
                             <h:outputText value="#{item.arrivalDate}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListSaleOrderPackageTitle_status}"/>
                             </f:facet>
                             <h:outputText value="#{item.status}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
@@ -75,8 +83,8 @@
                             <h:commandLink action="#{saleOrderPackageController.prepareEdit}" value="#{views.ListSaleOrderPackageEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{saleOrderPackageController.destroy}" value="#{views.ListSaleOrderPackageDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
                 <h:commandLink action="#{saleOrderPackageController.prepareCreate}" value="#{views.ListSaleOrderPackageCreateLink}"/>

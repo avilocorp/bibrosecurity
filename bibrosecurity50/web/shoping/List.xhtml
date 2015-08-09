@@ -4,15 +4,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:bnu="http://bootsfaces.net/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:bnu="http://bootsfaces.net/ui">
 
     <ui:composition template="/template_public.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListProductTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
+            <h:form>
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
@@ -24,34 +23,33 @@
                             <h:commandLink action="#{productController.previous}" value="#{views.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>
                             <h:commandLink action="#{productController.next}" value="#{views.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>
                         </bnu:column>
-                        <h:commandLink action="#{carritoController.doIrCarritoActual()}" value="Carrito hasta el momento"/>
+                        <h:commandLink action="carritoactual" value="Carrito hasta el momento"/>
 
                     </bnu:row>
                     <bnu:row>
-                        <ui:repeat var="item" value="#{productController.items}">
-                            <bnu:column col-sm="6" col-md="4">
-                                <bnu:thumbnail>
-                                    <h3 class="text-center"><strong>#{item.name}</strong></h3>
-                                    <img src="https://placehold.it/250x200" alt="#{item.name}"/>
-                                    <f:facet name="caption">
-                                        <p>#{item.description}</p>
-                                        <p><h1 class="text-danger text-center"><strong>$ #{item.salePrice}</strong></h1></p>
-                                        <bnu:row class="text-center">
-                                            <bnu:column col-sm="3" col-md="6">
-                                                <bnu:inputText value="" placeholder="Cantidad">
-                                                    <f:validateDoubleRange minimum="1" maximum="10"/>
-                                                </bnu:inputText> 
-                                            </bnu:column>
-                                            <bnu:column col-sm="3" col-md="6">
-                                                <h:commandLink action="#{carritoController.agregarAlCarrito(productos.idproducto)}" value="Agregar al carrito"/>
-
-                                                <bnu:button look="success" value="Añadir a carrito"/>
-                                            </bnu:column>
-                                        </bnu:row>
-                                    </f:facet>
-                                </bnu:thumbnail>
-                            </bnu:column>
-                        </ui:repeat>
+                        <h:form>
+                            <ui:repeat var="item" value="#{productController.items}">
+                                <bnu:column col-sm="6" col-md="4">
+                                    <bnu:thumbnail>
+                                        <h3 class="text-center"><b>#{item.name}</b></h3>
+                                        <img src="https://placehold.it/250x200" alt="#{item.name}"/>
+                                        <f:facet name="caption">
+                                            <h:outputLabel>#{item.description}</h:outputLabel>
+                                            <h1 class="text-danger text-center"><b>$ #{item.salePrice}</b></h1>
+                                            <bnu:row class="text-center">
+                                                <bnu:column col-sm="3" col-md="6">
+                                                    <bnu:inputText placeholder="Cantidad" id="quantity" class="pull-right"></bnu:inputText>
+                                                </bnu:column>
+                                                <bnu:column col-sm="3" col-md="6">
+                                                    <bnu:commandButton action="#{carritoController.agregarAlCarrito(item.id)}"  value="Añadir al carrito" look="success" class="btn btn-block pull-left"/>
+                                                    <!--<h:commandLink action="" value="Agregar al carrito"/>-->
+                                                </bnu:column>
+                                            </bnu:row>
+                                        </f:facet>
+                                    </bnu:thumbnail>
+                                </bnu:column>
+                            </ui:repeat>
+                        </h:form>
                     </bnu:row>
                 </h:panelGroup>
             </h:form>

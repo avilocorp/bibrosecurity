@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -19,26 +20,33 @@
                     <h:outputText value="#{serviceCameraController.pagination.pageFirstItem + 1}..#{serviceCameraController.pagination.pageLastItem + 1}/#{serviceCameraController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{serviceCameraController.previous}" value="#{views.Previous} #{serviceCameraController.pagination.pageSize}" rendered="#{serviceCameraController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{serviceCameraController.next}" value="#{views.Next} #{serviceCameraController.pagination.pageSize}" rendered="#{serviceCameraController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{serviceCameraController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                     <p:dataTable value="#{serviceCameraController.items}" 
+                                 var="item" 
+                                 class="table table-hover"
+                                    rows="15"
+                                    reflow="true" 
+                                    paginator="true"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15">
+                            <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListServiceCameraTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListServiceCameraTitle_serviceId}"/>
                             </f:facet>
                             <h:outputText value="#{item.serviceId}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListServiceCameraTitle_cameraId}"/>
                             </f:facet>
                             <h:outputText value="#{item.cameraId}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
@@ -47,8 +55,8 @@
                             <h:commandLink action="#{serviceCameraController.prepareEdit}" value="#{views.ListServiceCameraEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{serviceCameraController.destroy}" value="#{views.ListServiceCameraDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
                 <h:commandLink action="#{serviceCameraController.prepareCreate}" value="#{views.ListServiceCameraCreateLink}"/>

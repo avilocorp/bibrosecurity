@@ -78,8 +78,8 @@ public class SaleOrder implements Serializable {
     @NotNull
     @Column(name = "partner_id")
     private int partnerId;
-//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "SaleOrder")
-//    private List<SaleOrderLine> pedidos;
+    //@OneToMany(cascade = CascadeType.ALL,mappedBy = "SaleOrder")
+    //private List<SaleOrderLine> pedidos;
 //
 //    public List<SaleOrderLine> getPedidos() {
 //        return pedidos;

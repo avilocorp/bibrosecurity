@@ -4,6 +4,8 @@ import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -20,6 +22,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "productController")
 @SessionScoped
+
 public class ProductController implements Serializable {
 
     private Product current;
@@ -73,7 +76,7 @@ public class ProductController implements Serializable {
     }
     
     public Product doBuscarProductoParaElCarrito(int idProducto){
-        return getFacade().find(idProducto);
+        return ejbFacade.find(idProducto); 
     }
 
     public String prepareList() {

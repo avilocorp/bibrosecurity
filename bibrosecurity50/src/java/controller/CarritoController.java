@@ -4,11 +4,6 @@
  */
 package controller;
 
-import controller.SaleOrderLineFacade;
-import controller.SaleOrderFacade;
-import controller.SaleOrder;
-import controller.SaleOrderLine;
-import controller.Product;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -18,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -25,26 +21,25 @@ import javax.inject.Inject;
  *
  * @author dansan
  */
-@Named(value = "carritoController")
+@ManagedBean(name = "carritoController")
 @SessionScoped
+
 public class CarritoController implements Serializable {
 
     @EJB
     private SaleOrderLineFacade saleOrderLineFacade;
     @EJB
     private SaleOrderFacade saleOrderFacade;
-    /**
-     * Atributos utiles para el controlador Carrito
-     */
-    @Inject
     private ProductController productController;
     //private UsuarioController usuarioController;
-    private ArrayList<Product> carrito = new ArrayList<Product>();
+    private ArrayList<Product> carrito = null;
     private Product productoSelecionado;
     private int idProductoSeleccionado;
     private double totalCompra = 0.0;
 
     public CarritoController() {
+        carrito = new ArrayList<Product>();
+        productController = new ProductController();
     }
 
     //metodos
@@ -53,10 +48,10 @@ public class CarritoController implements Serializable {
         Product p = buscarProductoCarrito(idProductoSeleccionado);
         if (p != null && p.getQuantity()> 0) {
             int n = carrito.indexOf(p);
-            carrito.get(n).setQuantity(carrito.get(n).getQuantity()+ 1);
+            carrito.get(n).setQuantity(carrito.get(n).getQuantity() + 1);
             totalCompra+=p.getPurchasePrice();
         } else {
-                productoSelecionado = productController.doBuscarProductoParaElCarrito(idProductoSeleccionado);
+                productoSelecionado = productController.doBuscarProductoParaElCarrito(idProducto);
                 productoSelecionado.setQuantity(1);
                 if(productoSelecionado.getQtyAvailable()>0){
                     carrito.add(productoSelecionado);
@@ -103,7 +98,7 @@ public class CarritoController implements Serializable {
                 BigDecimal purchase_price = new BigDecimal(String.valueOf(p.getPurchasePrice()));
                 BigDecimal monto = purchase_price.multiply(cant);
                 BigDecimal descuento = new BigDecimal(0.0);
-                if (p.getQuantity() >= 10) {
+                if (p.getQuantity() >= 20) {
                     descuento = monto.multiply(new BigDecimal(0.1));
                 }
                 SaleOrderLine linea = 
@@ -113,9 +108,9 @@ public class CarritoController implements Serializable {
                                 p.getQuantity(),
                                 p.getPurchasePrice(),
                                 monto.doubleValue());
-                pedidos.add(linea);
+                saleOrderLineFacade.create(linea);
             }
-            pedido.setPedidos(pedidos);
+            //pedido.setPedidos(pedidos);
             saleOrderFacade.create(pedido);            
             carrito.clear();
             totalCompra = 0.0;
@@ -129,7 +124,7 @@ public class CarritoController implements Serializable {
 
     public String doIrCarrito() {
         productController.doListarTodosProductos();
-        return "carrito";
+        return "List";
     }
 
     public String doIrCarritoActual() {
@@ -199,6 +194,5 @@ public class CarritoController implements Serializable {
     public void setTotalCompra(double totalCompra) {
         this.totalCompra = totalCompra;
     }
-
   
 }
