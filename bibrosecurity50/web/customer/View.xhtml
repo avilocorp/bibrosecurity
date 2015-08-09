@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -14,14 +15,21 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{views.ViewPartnerLabel_id}"/>
-                    <h:outputText value="#{partnerController.selected.id}" title="#{views.ViewPartnerTitle_id}"/>
-                    <h:outputText value="#{views.ViewPartnerLabel_name}"/>
+                <bnu:row>
+                    <bnu:column>
+                        <h:outputText value="#{partnerController.selected.image}" title="#{views.ViewPartnerTitle_image}"/>
+                    </bnu:column>
+                </bnu:row>
+                 <bnu:row>
+                    <bnu:column>
+                         <h:outputText value="#{views.ViewPartnerLabel_name}"/>
                     <h:outputText value="#{partnerController.selected.name}" title="#{views.ViewPartnerTitle_name}"/>
-                    <h:outputText value="#{views.ViewPartnerLabel_lastName}"/>
                     <h:outputText value="#{partnerController.selected.lastName}" title="#{views.ViewPartnerTitle_lastName}"/>
-                    <h:outputText value="#{views.ViewPartnerLabel_street}"/>
+                    </bnu:column>
+                </bnu:row>
+                 <bnu:row>
+                    <bnu:column>
+                          <h:outputText value="#{views.ViewPartnerLabel_street}"/>
                     <h:outputText value="#{partnerController.selected.street}" title="#{views.ViewPartnerTitle_street}"/>
                     <h:outputText value="#{views.ViewPartnerLabel_noExt}"/>
                     <h:outputText value="#{partnerController.selected.noExt}" title="#{views.ViewPartnerTitle_noExt}"/>
@@ -29,7 +37,11 @@
                     <h:outputText value="#{partnerController.selected.noInt}" title="#{views.ViewPartnerTitle_noInt}"/>
                     <h:outputText value="#{views.ViewPartnerLabel_colony}"/>
                     <h:outputText value="#{partnerController.selected.colony}" title="#{views.ViewPartnerTitle_colony}"/>
-                    <h:outputText value="#{views.ViewPartnerLabel_zip}"/>
+                    </bnu:column>
+                </bnu:row>
+                 <bnu:row>
+                    <bnu:column>
+                     <h:outputText value="#{views.ViewPartnerLabel_zip}"/>
                     <h:outputText value="#{partnerController.selected.zip}" title="#{views.ViewPartnerTitle_zip}"/>
                     <h:outputText value="#{views.ViewPartnerLabel_locality}"/>
                     <h:outputText value="#{partnerController.selected.locality}" title="#{views.ViewPartnerTitle_locality}"/>
@@ -39,12 +51,14 @@
                     <h:outputText value="#{partnerController.selected.mobile}" title="#{views.ViewPartnerTitle_mobile}"/>
                     <h:outputText value="#{views.ViewPartnerLabel_email}"/>
                     <h:outputText value="#{partnerController.selected.email}" title="#{views.ViewPartnerTitle_email}"/>
+                    </bnu:column>
+                </bnu:row>
+                    <!--   
                     <h:outputText value="#{views.ViewPartnerLabel_customer}"/>
                     <h:outputText value="#{partnerController.selected.customer}" title="#{views.ViewPartnerTitle_customer}"/>
                     <h:outputText value="#{views.ViewPartnerLabel_supplier}"/>
                     <h:outputText value="#{partnerController.selected.supplier}" title="#{views.ViewPartnerTitle_supplier}"/>
-                    <h:outputText value="#{views.ViewPartnerLabel_image}"/>
-                    <h:outputText value="#{partnerController.selected.image}" title="#{views.ViewPartnerTitle_image}"/>
+                    
                     <h:outputText value="#{views.ViewPartnerLabel_cityId}"/>
                     <h:outputText value="#{partnerController.selected.cityId}" title="#{views.ViewPartnerTitle_cityId}"/>
                     <h:outputText value="#{views.ViewPartnerLabel_stateId}"/>
@@ -53,8 +67,8 @@
                     <h:outputText value="#{partnerController.selected.countryId}" title="#{views.ViewPartnerTitle_countryId}"/>
                     <h:outputText value="#{views.ViewPartnerLabel_active}"/>
                     <h:outputText value="#{partnerController.selected.active}" title="#{views.ViewPartnerTitle_active}"/>
-                </h:panelGrid>
-                <br />
+               -->
+                    <br />
                 <h:commandLink action="#{partnerController.destroyAndView}" value="#{views.ViewPartnerDestroyLink}"/>
                 <br />
                 <br />
