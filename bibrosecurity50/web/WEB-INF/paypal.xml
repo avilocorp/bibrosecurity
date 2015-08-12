@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<paypal>
+    <!--<authToke>YHTkCXEEs4PSLaYV#-#-S0oUuvf3AijTe6qPfSMiXzKHpQEXP7uOAwTeFb-a4</authToke>-->
+    <authToke>ACUe-E7Hjxmeel8FjYAtjnx-yjHAA2A1GQZCSBezxUknynCj8UB6SPm5</authToke>
+    <postutl>https://www.sandbox.paypal.com/cgi-bin/webscr</postutl>
+     
+    
+</paypal>

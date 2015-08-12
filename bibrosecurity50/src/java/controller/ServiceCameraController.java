@@ -1,5 +1,7 @@
 package controller;
 
+import DAOS.ServiceCameraFacade;
+import models.ServiceCamera;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
@@ -23,7 +25,7 @@ public class ServiceCameraController implements Serializable {
     private ServiceCamera current;
     private DataModel items = null;
     @EJB
-    private controller.ServiceCameraFacade ejbFacade;
+    private DAOS.ServiceCameraFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

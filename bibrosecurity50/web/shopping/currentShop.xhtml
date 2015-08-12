@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="/template_public.xhtml">
+            <ui:define name="body">
+                <h:form>
+                <h1>Tú compra al momento:</h1>
+                <bnu:row rendered="#{not empty sp.car}">
+                    <bnu:column class="col-lg-8 col-lg-offset-4">
+                        <bnu:row>
+                            <bnu:column class="col-lg-3 col-xs-6 text-center">
+                                <bnu:commandButton action="List" iconAwesome="fa fa-list" value="Seguir comprando" class="btn btn-info"></bnu:commandButton>
+                            </bnu:column>
+                            <bnu:column class="col-lg-3 col-xs-6 text-center">
+                               <bnu:commandButton action="#{sp.clearCar()}" iconAwesome="fa fa-trash-o" value="Limpiar Carrito" class="btn btn-danger"></bnu:commandButton>
+                            </bnu:column>
+                            <bnu:column class="col-lg-2 col-xs-6 text-center">
+                                <bnu:commandButton action="#{sp.paymetCar()}" iconAwesome="fa fa-paypal" value="Pagar" class="btn btn-success"></bnu:commandButton>
+                            </bnu:column>
+                            <bnu:column class="col-lg-2 col-xs-6 text-center">
+                                <bnu:label text="Articulos: "><bnu:badge value="#{sp.carCount()}"></bnu:badge></bnu:label>
+                            </bnu:column>
+                            <bnu:column class="col-lg-2 col-xs-6 text-center">
+                                <h4><strong>Total $ #{sp.total}</strong></h4>
+                            </bnu:column>
+                        </bnu:row>
+                    </bnu:column>
+                </bnu:row>
+                
+                <f:view>
+                    <h:form>                        
+                        <h:dataTable value="#{sp.car}" var="item" rendered="#{not empty sp.car}" class="table table-striped">                            
+                            <h:column>
+                                <f:facet name="header" class="text-center">
+                                    <h:outputText value="Producto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.p.description}" class="text-center"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Cantidad" class="text-center"/>
+                                </f:facet>
+                                <h:outputText value="#{item.quantity}" class="text-center"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Precio" class="text-center"/>
+                                </f:facet>
+                                <h:outputText value="#{item.p.purchasePrice}" class="text-center"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header" class="text-center">
+                                    <h:outputText value="SubTotal"/>
+                                </f:facet>
+                                <h:outputText value="#{item.subtotal}" class="text-center"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value=""/>
+                                </f:facet>
+                                <h:commandLink action="#{sp.removeItem(item)}"><i class="fa fa-trash-o"></i></h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+
+                        <h:message id="mensajeError" for="mensajeError"/>
+                         
+                    </h:form>
+                </f:view>
+                </h:form> 
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
