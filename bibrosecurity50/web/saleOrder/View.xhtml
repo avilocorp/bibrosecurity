@@ -11,11 +11,12 @@
         <ui:define name="title">
             <h:outputText value="#{views.ViewSaleOrderTitle}"></h:outputText>
         </ui:define>
-     <ui:define name="buttons">
+        <ui:define name="buttons">
             <bnu:commandButton action="#{saleOrderController.destroyAndView}" value="#{views.ViewSaleOrderDestroyLink}" look="danger"/><span>      </span>            <bnu:commandButton  action="#{saleOrderController.prepareCreate}" value="#{views.ViewSaleOrderCreateLink}" immediate="true" look="info"/>
+ <bnu:commandButton action="#{saleOrderController.prepareList}" value="#{views.ViewSaleOrderShowAllLink}"/>
+
         </ui:define>
 
-  <f:event type="preRenderView" listener="#{SaleOrderLineBean.verLineas()}"/>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -49,26 +50,30 @@
                 <h:link outcome="Edit" value="#{views.ViewSaleOrderEditLink}"/>
                 <br />
                                <br />
-                <p:commandLink action="#{saleOrderController.prepareList}" value="#{views.ViewSaleOrderShowAllLink}"/>
+               
                 <br />
                 <br />
+                 
+                <p:commandLink update="table" action="#{saleOrderLineBean.verLineas(saleOrderController.selected.id)}"  value="Listar" />   <span>      </span>           
+                
                 <h:link outcome="/index" value="#{views.ViewSaleOrderIndexLink}"/>
- <p:dataTable id="table" var="sale" value="#{SaleOrederBean.lsSale}" >
+               
+                <p:dataTable id="table" var="sale" value="#{saleOrderLineBean.lstSaleOrderLine}" >
                     
                      <p:column headerText="SaleOrder_id">
-                         <h:outputText value="#{sale.saleOrder}"/>
+                         <h:outputText value="#{sale.saleOrderid}"/>
                     </p:column> 
                      <p:column headerText="QTY">
                          <h:outputText value="#{sale.qty}"/>
                     </p:column>
                      <p:column headerText="Unit_price">
-                         <h:outputText value="#{sale.Unit_price}"/>
+                         <h:outputText value="#{sale.unitPrice}"/>
                     </p:column>
                      <p:column headerText="Subtotal">
                          <h:outputText value="#{sale.subtotal}"/>
                     </p:column>
                      <p:column headerText="Producto_id">
-                         <h:outputText value="#{part.product_id}"/>
+                         <h:outputText value="#{saleOrderLineController.selected.}" />
                     </p:column>
         </p:dataTable>
             </h:form>
