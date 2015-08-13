@@ -80,18 +80,16 @@ public class SaleOrderLineBean {
     public void setLstSaleOrderLine(List<SaleOrderLine> lstSaleOrderLine) {
         this.lstSaleOrderLine = lstSaleOrderLine;
     }
-     public List<SaleOrderLine> verLineas(String sol) throws Exception {
+    
+    public List<SaleOrderLine> verLineas(String sol) throws Exception {
         SaleOrderLineDao dao;
         try {
-            System.out.println("Esta llegando");
              System.out.println(sol);
             dao = new SaleOrderLineDao();
             lstSaleOrderLine=dao.wachById(Integer.parseInt(sol));
             
             this.message = "Informacion enviada";
-            usuario = null; //Limpiamos los inputs principales
-            // Actualizamos la tabla, al momento de registrar un alumno
-            //this.listar();
+            usuario = null; 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO,"Registro Nuevo","Registro Nuevo"));
             usuario = new SaleOrderLine(); //generamos de nuevo el objeto alumno
             httpServletRequest.getSession().setAttribute("session",usuario.getId());
@@ -104,6 +102,29 @@ public class SaleOrderLineBean {
 
         }
         return lstSaleOrderLine;
+    }
+    
+    public Product wachProduct(int product_id) throws Exception {
+        SaleOrderLineDao dao;
+        Product product= null;
+        try {
+            dao = new SaleOrderLineDao();
+            product=dao.wachProduct(product_id);
+            
+            this.message = "Informacion enviada";
+            usuario = null; 
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO,"Registro Nuevo","Registro Nuevo"));
+            usuario = new SaleOrderLine(); //generamos de nuevo el objeto alumno
+            httpServletRequest.getSession().setAttribute("session",usuario.getId());
+            
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(
+                            FacesMessage.SEVERITY_ERROR,
+                            "Registro No Registrado","Registro No Registrado"));
+
+        }
+        return product;
     }
     
 }

@@ -85,16 +85,9 @@ public class ShoppingCart implements Serializable{
             //if (usuarioController.getIdcliente() > 0) {
                 
                 SaleOrder so = new SaleOrder(date, subTotal, 0.0 , total, "invoice", 1);
-                //so_facade.create(so);
                 shoppingSaleOrderDAO insertar = new shoppingSaleOrderDAO();
                 so_id = insertar.registrarSaleOrder(so);
                 for (Item  item: car) {
-//                    SaleOrderLine linea = new SaleOrderLine(
-//                            so.getId(), item.getP().getId(),
-//                            item.getQuantity(),
-//                            item.getP().getPurchasePrice(),
-//                            item.getSubtotal());
-//                    //sl_ids.add(linea);
                     insertar.registrarSaleOrderLine(item,so_id);
                 }
             car.clear();

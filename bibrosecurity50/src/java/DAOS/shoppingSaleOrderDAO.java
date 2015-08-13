@@ -41,9 +41,7 @@ public class shoppingSaleOrderDAO extends DAO{
             st.setDouble(3, so.getTotal());
             st.setString(4, so.getType());
             st.setInt(5, so.getPartnerId());
-
             sale_id = st.executeUpdate();
-            System.out.println("****************************************************");
         } catch (Exception e) {
              throw e;
         }finally{

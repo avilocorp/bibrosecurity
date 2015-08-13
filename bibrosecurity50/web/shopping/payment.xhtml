@@ -2,37 +2,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="POST">
-            <c:set var="dem" value="1"/>
-            <c:forEach items="#{sp.car}" var="i">
-                <input type="hidden"
-                       name="item_number_#{dem}"
-                       value="#{i.p.id}"/>
-                <input type="hidden"
-                       name="item_name_#{dem}"
-                       value="#{i.p.name}"/>
-                <input type="hidden"
-                       name="quantity_#{dem}"
-                       value="#{i.quantity}"/>
-                <input type="hidden"
-                       name="amount_#{dem}"
-                       value="#{i.p.purchasePrice}"/>
-                <c:set var="dem" value="#{dem+1}"/>
-            </c:forEach>
-            <input type="hidden" name="cmd" value="_cart"/>
-            <input type="hidden" name="business" value="bibrosec-facilitator_api1@gmail.com"/>
-            <input type="hidden" name="return" value="http://localhost:8080/bibrosecurity50/shopping/success.xhtml?payment=success"/>
-            <input type="hidden" name="cancel" value="http://localhost:8080/bibrosecurity50/shopping/cancel.xhtml"/>
-            <input type="hidden" name="upload" value="1"/>
-            <input type="image"
-                   class="img-responsive text-center"
-                   src="https://www.paypal.com/es_ES/i/btn/btn_paynowCC_lg.gif"/>
-        </form>
+        <ui:composition template="/template_public.xhtml">
+        <ui:define name="title">Pago</ui:define>
+        <ui:define name="body">
+            <div class="row">
+                
+                <div class="col-lg-8">
+                    <div class="row">
+                        Total $ #{sp.total}
+                    </div>
+                    <div class="row"></div>
+                </div>
+                <div class="col-lg-4">
+                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="POST">
+                        <c:set var="dem" value="1"/>
+                        <c:forEach items="#{sp.car}" var="i">
+                            <input type="hidden"
+                                   name="item_number_#{dem}"
+                                   value="#{i.p.id}"/>
+                            <input type="hidden"
+                                   name="item_name_#{dem}"
+                                   value="#{i.p.name}"/>
+                            <input type="hidden"
+                                   name="quantity_#{dem}"
+                                   value="#{i.quantity}"/>
+                            <input type="hidden"
+                                   name="amount_#{dem}"
+                                   value="#{i.p.purchasePrice}"/>
+                            <c:set var="dem" value="#{dem+1}"/>
+                        </c:forEach>
+                        <input type="hidden" name="cmd" value="_cart"/>
+                        <input type="hidden" name="business" value="bibrosec-facilitator_api1@gmail.com"/>
+                        <input type="hidden" name="return" value="http://localhost:8080/bibrosecurity50/shopping/success.xhtml?payment=success"/>
+                        <input type="hidden" name="cancel" value="http://localhost:8080/bibrosecurity50/shopping/cancel.xhtml"/>
+                        <input type="hidden" name="upload" value="1"/>
+                        <input type="image"
+                               class="img-responsive text-center"
+                               src="https://www.paypal.com/es_ES/i/btn/btn_paynowCC_lg.gif"/>
+                    </form>
+                </div>
+            </div>
+            </ui:define>
+    </ui:composition>
     </h:body>
 </html>
 
