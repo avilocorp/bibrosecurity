@@ -17,6 +17,7 @@
 
             <ui:define name="body">
                 <h:form>
+                    <p:growl id="mjs" autoUpdate="true" showDetail="true"/>
                     <bnu:row>
                         <bnu:column span="8" offset="2" class="well bs-component">
                             <bnu:row>
@@ -24,13 +25,13 @@
                                     <img src="../resources/images/BiBroSecurity.png" alt="BibroSecurity"/>
                                 </bnu:column>
                                 <bnu:column span="8" offset="2">
-                                    <bnu:inputText id="txtEmail" placeholder="Email"/>
+                                    <bnu:inputText id="txtEmail" placeholder="Email" value="#{mbLogin.usuario}"/>
                                 </bnu:column>
                                 <bnu:column span="8" offset="2">
-                                    <bnu:inputSecret id="nonFeedback" placeholder="Password"/>
+                                    <bnu:inputSecret id="nonFeedback" placeholder="Password" value="#{mbLogin.contrasenia}"/>
                                 </bnu:column>
                                 <bnu:column span="9" offset="3" class="pull-right text-center">
-                                    <bnu:button value="Enter" class="btn btn-primary btn-lg"/>
+                                    <bnu:commandButton value="Enter" class="btn btn-primary btn-lg" action="#{mbLogin.login()}"/>
                                 </bnu:column>
                             </bnu:row>
                         </bnu:column>

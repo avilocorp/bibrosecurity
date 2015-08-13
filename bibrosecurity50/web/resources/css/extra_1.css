@@ -1,0 +1,72 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30/05/2015, 10:54:23 PM
+    Author     : taxque
+*/
+
+.animationTextRigthToLeft {
+      -moz-animation-duration: 3s;
+      -webkit-animation-duration: 3s;
+      -moz-animation-name: slidein;
+      -webkit-animation-name: slidein;
+    }
+    
+    @-moz-keyframes slidein {
+      from {
+        margin-left:100%;
+        width:300%
+      }
+      
+      to {
+        margin-left:0%;
+        width:100%;
+      }
+    }
+    
+    @-webkit-keyframes slidein {
+      from {
+        margin-left:100%;
+        width:300%
+      }
+      
+      to {
+        margin-left:0%;
+        width:100%;
+      }
+    }
+
+    .animationTextLeftToRigth {
+      -moz-animation-duration: 3s;
+      -webkit-animation-duration: 3s;
+      -moz-animation-name: slidein2;
+      -webkit-animation-name: slidein2;
+    }
+    
+    @-moz-keyframes slidein2 {
+              
+      from {
+        margin-right:0%;
+        width:0%;
+      }
+      
+      to {
+        margin-right:100%;
+        width:100%
+      }
+
+    }
+    
+    @-webkit-keyframes slidein2 {
+      from {
+        margin-right:0%;
+        width:0%;
+      }
+      to {
+        margin-right:100%;
+        width:100%
+      }
+    }
