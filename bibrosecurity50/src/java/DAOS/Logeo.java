@@ -28,7 +28,7 @@ public class Logeo extends DAO{
     {
         //Object[] datos=null;
         User us=null;
-        String consulta="SELECT * FROM USER WHERE email LIKE ?;";
+        String consulta="SELECT * FROM user WHERE email LIKE ?;";
         user=user.replace("'", "");
         this.connect();
         try
