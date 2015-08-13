@@ -7,6 +7,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:bnu="http://bootsfaces.net/ui">
 
+    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.EditMultimediaTitle}"></h:outputText>

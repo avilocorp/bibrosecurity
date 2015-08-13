@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/taxque/NetBeansProjects/bibrosecurity/bibrosecurity50/src/java/controller/ShoppingCart.java</file>
-            <file>file:/home/taxque/NetBeansProjects/bibrosecurity/bibrosecurity50/web/WEB-INF/paypal.xml</file>
-            <file>file:/home/taxque/NetBeansProjects/bibrosecurity/bibrosecurity50/web/shopping/success.xhtml</file>
-            <file>file:/home/taxque/NetBeansProjects/bibrosecurity/bibrosecurity50/web/shopping/payment.xhtml</file>
-            <file>file:/home/taxque/NetBeansProjects/bibrosecurity/bibrosecurity50/src/java/models/SaleOrderLine.java</file>
-            <file>file:/home/taxque/NetBeansProjects/bibrosecurity/bibrosecurity50/src/java/models/SaleOrder.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
