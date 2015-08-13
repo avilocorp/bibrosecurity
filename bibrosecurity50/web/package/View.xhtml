@@ -25,14 +25,14 @@
                     <h:outputText value="#{packageController.selected.active}" title="#{views.ViewPackageTitle_active}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{packageController.destroyAndView}" value="#{views.ViewPackageDestroyLink}"/>
+                <p:commandLink action="#{packageController.destroyAndView}" value="#{views.ViewPackageDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewPackageEditLink}"/>
                 <br />
-                <h:commandLink action="#{packageController.prepareCreate}" value="#{views.ViewPackageCreateLink}" />
+                <p:commandLink action="#{packageController.prepareCreate}" value="#{views.ViewPackageCreateLink}" />
                 <br />
-                <h:commandLink action="#{packageController.prepareList}" value="#{views.ViewPackageShowAllLink}"/>
+                <p:commandLink action="#{packageController.prepareList}" value="#{views.ViewPackageShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewPackageIndexLink}"/>

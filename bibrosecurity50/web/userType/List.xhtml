@@ -22,8 +22,8 @@
                 <h:outputText escape="false" value="#{views.ListUserTypeEmpty}" rendered="#{userTypeController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{userTypeController.items.rowCount > 0}">
                     <h:outputText value="#{userTypeController.pagination.pageFirstItem + 1}..#{userTypeController.pagination.pageLastItem + 1}/#{userTypeController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{userTypeController.previous}" value="#{views.Previous} #{userTypeController.pagination.pageSize}" rendered="#{userTypeController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{userTypeController.next}" value="#{views.Next} #{userTypeController.pagination.pageSize}" rendered="#{userTypeController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{userTypeController.previous}" value="#{views.Previous} #{userTypeController.pagination.pageSize}" rendered="#{userTypeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{userTypeController.next}" value="#{views.Next} #{userTypeController.pagination.pageSize}" rendered="#{userTypeController.pagination.hasNextPage}"/>&nbsp;
                     <p:dataTable value="#{userTypeController.items}" 
                                  var="item" 
                                  class="table table-hover"
@@ -63,7 +63,7 @@
                     </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{userTypeController.prepareCreate}" value="#{views.ListUserTypeCreateLink}"/>
+                <p:commandLink action="#{userTypeController.prepareCreate}" value="#{views.ListUserTypeCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ListUserTypeIndexLink}"/>

@@ -24,12 +24,12 @@
                     <h:outputLabel value="#{views.EditProductImageLabel_description}" for="description" />
                     <h:inputText id="description" value="#{productImageController.selected.description}" title="#{views.EditProductImageTitle_description}" />
                 </h:panelGrid>
-                <h:commandLink action="#{productImageController.update}" value="#{views.EditProductImageSaveLink}"/>
+                <p:commandLink action="#{productImageController.update}" value="#{views.EditProductImageSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditProductImageViewLink}"/>
                 <br />
-                <h:commandLink action="#{productImageController.prepareList}" value="#{views.EditProductImageShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{productImageController.prepareList}" value="#{views.EditProductImageShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditProductImageIndexLink}" />

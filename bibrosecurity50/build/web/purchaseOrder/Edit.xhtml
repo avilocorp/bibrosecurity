@@ -30,12 +30,12 @@
                     <h:outputLabel value="#{views.EditPurchaseOrderLabel_partnerId}" for="partnerId" />
                     <h:inputText id="partnerId" value="#{purchaseOrderController.selected.partnerId}" title="#{views.EditPurchaseOrderTitle_partnerId}" required="true" requiredMessage="#{views.EditPurchaseOrderRequiredMessage_partnerId}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{purchaseOrderController.update}" value="#{views.EditPurchaseOrderSaveLink}"/>
+                <p:commandLink action="#{purchaseOrderController.update}" value="#{views.EditPurchaseOrderSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditPurchaseOrderViewLink}"/>
                 <br />
-                <h:commandLink action="#{purchaseOrderController.prepareList}" value="#{views.EditPurchaseOrderShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{purchaseOrderController.prepareList}" value="#{views.EditPurchaseOrderShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditPurchaseOrderIndexLink}" />

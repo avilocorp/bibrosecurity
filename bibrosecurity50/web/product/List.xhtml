@@ -22,8 +22,8 @@
                 <h:outputText escape="false" value="#{views.ListProductEmpty}" rendered="#{productController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{productController.items.rowCount > 0}">
                     <h:outputText value="#{productController.pagination.pageFirstItem + 1}..#{productController.pagination.pageLastItem + 1}/#{productController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{productController.previous}" value="#{views.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{productController.next}" value="#{views.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{productController.previous}" value="#{views.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{productController.next}" value="#{views.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>&nbsp;
            <p:dataTable value="#{productController.items}" 
                                  var="item" 
                                  class="table table-hover"
@@ -123,7 +123,7 @@
                     </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{productController.prepareCreate}" value="#{views.ListProductCreateLink}"/>
+                <p:commandLink action="#{productController.prepareCreate}" value="#{views.ListProductCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ListProductIndexLink}"/>

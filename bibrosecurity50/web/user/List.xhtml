@@ -24,8 +24,8 @@
                 <h:outputText escape="false" value="#{views.ListUserEmpty}" rendered="#{userController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{userController.items.rowCount > 0}">
                     <h:outputText value="#{userController.pagination.pageFirstItem + 1}..#{userController.pagination.pageLastItem + 1}/#{userController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{userController.previous}" value="#{views.Previous} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{userController.next}" value="#{views.Next} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{userController.previous}" value="#{views.Previous} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{userController.next}" value="#{views.Next} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasNextPage}"/>&nbsp;
                     <p:dataTable value="#{userController.items}" 
                                  var="item" 
                                  class="table table-hover"

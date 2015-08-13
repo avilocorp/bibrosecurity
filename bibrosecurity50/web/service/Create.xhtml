@@ -29,10 +29,10 @@
                     <h:inputText id="active" value="#{serviceController.selected.active}" title="#{views.CreateServiceTitle_active}" required="true" requiredMessage="#{views.CreateServiceRequiredMessage_active}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{serviceController.create}" value="#{views.CreateServiceSaveLink}" />
+                <p:commandLink action="#{serviceController.create}" value="#{views.CreateServiceSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{serviceController.prepareList}" value="#{views.CreateServiceShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{serviceController.prepareList}" value="#{views.CreateServiceShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.CreateServiceIndexLink}"/>

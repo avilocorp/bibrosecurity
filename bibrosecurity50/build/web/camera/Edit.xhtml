@@ -24,12 +24,12 @@
                     <h:outputLabel value="#{views.EditCameraLabel_active}" for="active" />
                     <h:inputText id="active" value="#{cameraController.selected.active}" title="#{views.EditCameraTitle_active}" required="true" requiredMessage="#{views.EditCameraRequiredMessage_active}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{cameraController.update}" value="#{views.EditCameraSaveLink}"/>
+                <p:commandLink action="#{cameraController.update}" value="#{views.EditCameraSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditCameraViewLink}"/>
                 <br />
-                <h:commandLink action="#{cameraController.prepareList}" value="#{views.EditCameraShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{cameraController.prepareList}" value="#{views.EditCameraShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditCameraIndexLink}" />

@@ -31,10 +31,10 @@
                     <h:inputText id="partnerId" value="#{purchaseOrderController.selected.partnerId}" title="#{views.CreatePurchaseOrderTitle_partnerId}" required="true" requiredMessage="#{views.CreatePurchaseOrderRequiredMessage_partnerId}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{purchaseOrderController.create}" value="#{views.CreatePurchaseOrderSaveLink}" />
+                <p:commandLink action="#{purchaseOrderController.create}" value="#{views.CreatePurchaseOrderSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{purchaseOrderController.prepareList}" value="#{views.CreatePurchaseOrderShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{purchaseOrderController.prepareList}" value="#{views.CreatePurchaseOrderShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.CreatePurchaseOrderIndexLink}"/>

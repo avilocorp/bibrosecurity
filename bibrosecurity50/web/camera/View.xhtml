@@ -25,14 +25,14 @@
                     <h:outputText value="#{cameraController.selected.active}" title="#{views.ViewCameraTitle_active}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{cameraController.destroyAndView}" value="#{views.ViewCameraDestroyLink}"/>
+                <p:commandLink action="#{cameraController.destroyAndView}" value="#{views.ViewCameraDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewCameraEditLink}"/>
                 <br />
-                <h:commandLink action="#{cameraController.prepareCreate}" value="#{views.ViewCameraCreateLink}" />
+                <p:commandLink action="#{cameraController.prepareCreate}" value="#{views.ViewCameraCreateLink}" />
                 <br />
-                <h:commandLink action="#{cameraController.prepareList}" value="#{views.ViewCameraShowAllLink}"/>
+                <p:commandLink action="#{cameraController.prepareList}" value="#{views.ViewCameraShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewCameraIndexLink}"/>

@@ -28,12 +28,12 @@
                     <h:outputLabel value="#{views.EditPurchaseOrderLineLabel_purchaseOrderid}" for="purchaseOrderid" />
                     <h:inputText id="purchaseOrderid" value="#{purchaseOrderLineController.selected.purchaseOrderid}" title="#{views.EditPurchaseOrderLineTitle_purchaseOrderid}" required="true" requiredMessage="#{views.EditPurchaseOrderLineRequiredMessage_purchaseOrderid}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{purchaseOrderLineController.update}" value="#{views.EditPurchaseOrderLineSaveLink}"/>
+                <p:commandLink action="#{purchaseOrderLineController.update}" value="#{views.EditPurchaseOrderLineSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditPurchaseOrderLineViewLink}"/>
                 <br />
-                <h:commandLink action="#{purchaseOrderLineController.prepareList}" value="#{views.EditPurchaseOrderLineShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{purchaseOrderLineController.prepareList}" value="#{views.EditPurchaseOrderLineShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditPurchaseOrderLineIndexLink}" />

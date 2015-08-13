@@ -29,14 +29,14 @@
                     <h:outputText value="#{purchaseOrderLineController.selected.purchaseOrderid}" title="#{views.ViewPurchaseOrderLineTitle_purchaseOrderid}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{purchaseOrderLineController.destroyAndView}" value="#{views.ViewPurchaseOrderLineDestroyLink}"/>
+                <p:commandLink action="#{purchaseOrderLineController.destroyAndView}" value="#{views.ViewPurchaseOrderLineDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewPurchaseOrderLineEditLink}"/>
                 <br />
-                <h:commandLink action="#{purchaseOrderLineController.prepareCreate}" value="#{views.ViewPurchaseOrderLineCreateLink}" />
+                <p:commandLink action="#{purchaseOrderLineController.prepareCreate}" value="#{views.ViewPurchaseOrderLineCreateLink}" />
                 <br />
-                <h:commandLink action="#{purchaseOrderLineController.prepareList}" value="#{views.ViewPurchaseOrderLineShowAllLink}"/>
+                <p:commandLink action="#{purchaseOrderLineController.prepareList}" value="#{views.ViewPurchaseOrderLineShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewPurchaseOrderLineIndexLink}"/>

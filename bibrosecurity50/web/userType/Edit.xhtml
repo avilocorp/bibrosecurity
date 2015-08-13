@@ -27,12 +27,12 @@
                     <h:outputLabel value="#{views.EditUserTypeLabel_active}" for="active" />
                     <h:inputText id="active" value="#{userTypeController.selected.active}" title="#{views.EditUserTypeTitle_active}" required="true" requiredMessage="#{views.EditUserTypeRequiredMessage_active}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{userTypeController.update}" value="#{views.EditUserTypeSaveLink}"/>
+                <p:commandLink action="#{userTypeController.update}" value="#{views.EditUserTypeSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditUserTypeViewLink}"/>
                 <br />
-                <h:commandLink action="#{userTypeController.prepareList}" value="#{views.EditUserTypeShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{userTypeController.prepareList}" value="#{views.EditUserTypeShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditUserTypeIndexLink}" />

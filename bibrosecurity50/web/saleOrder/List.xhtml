@@ -22,8 +22,8 @@ xmlns:p="http://primefaces.org/ui"
                 <h:outputText escape="false" value="#{views.ListSaleOrderEmpty}" rendered="#{saleOrderController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{saleOrderController.items.rowCount > 0}">
                     <h:outputText value="#{saleOrderController.pagination.pageFirstItem + 1}..#{saleOrderController.pagination.pageLastItem + 1}/#{saleOrderController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{saleOrderController.previous}" value="#{views.Previous} #{saleOrderController.pagination.pageSize}" rendered="#{saleOrderController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{saleOrderController.next}" value="#{views.Next} #{saleOrderController.pagination.pageSize}" rendered="#{saleOrderController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{saleOrderController.previous}" value="#{views.Previous} #{saleOrderController.pagination.pageSize}" rendered="#{saleOrderController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{saleOrderController.next}" value="#{views.Next} #{saleOrderController.pagination.pageSize}" rendered="#{saleOrderController.pagination.hasNextPage}"/>&nbsp;
                   <p:dataTable value="#{saleOrderController.items}" 
                                  var="item" 
                                  class="table table-hover"
@@ -94,7 +94,7 @@ xmlns:p="http://primefaces.org/ui"
                     </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{saleOrderController.prepareCreate}" value="#{views.ListSaleOrderCreateLink}"/>
+                <p:commandLink action="#{saleOrderController.prepareCreate}" value="#{views.ListSaleOrderCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ListSaleOrderIndexLink}"/>

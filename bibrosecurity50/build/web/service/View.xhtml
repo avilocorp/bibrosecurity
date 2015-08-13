@@ -29,14 +29,14 @@
                     <h:outputText value="#{serviceController.selected.active}" title="#{views.ViewServiceTitle_active}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{serviceController.destroyAndView}" value="#{views.ViewServiceDestroyLink}"/>
+                <p:commandLink action="#{serviceController.destroyAndView}" value="#{views.ViewServiceDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewServiceEditLink}"/>
                 <br />
-                <h:commandLink action="#{serviceController.prepareCreate}" value="#{views.ViewServiceCreateLink}" />
+                <p:commandLink action="#{serviceController.prepareCreate}" value="#{views.ViewServiceCreateLink}" />
                 <br />
-                <h:commandLink action="#{serviceController.prepareList}" value="#{views.ViewServiceShowAllLink}"/>
+                <p:commandLink action="#{serviceController.prepareList}" value="#{views.ViewServiceShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewServiceIndexLink}"/>

@@ -34,12 +34,12 @@
                     <h:outputLabel value="#{views.EditSaleOrderPackageLabel_status}" for="status" />
                     <h:inputText id="status" value="#{saleOrderPackageController.selected.status}" title="#{views.EditSaleOrderPackageTitle_status}" required="true" requiredMessage="#{views.EditSaleOrderPackageRequiredMessage_status}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{saleOrderPackageController.update}" value="#{views.EditSaleOrderPackageSaveLink}"/>
+                <p:commandLink action="#{saleOrderPackageController.update}" value="#{views.EditSaleOrderPackageSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditSaleOrderPackageViewLink}"/>
                 <br />
-                <h:commandLink action="#{saleOrderPackageController.prepareList}" value="#{views.EditSaleOrderPackageShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{saleOrderPackageController.prepareList}" value="#{views.EditSaleOrderPackageShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditSaleOrderPackageIndexLink}" />

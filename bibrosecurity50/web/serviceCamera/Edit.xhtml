@@ -27,12 +27,12 @@
                     <h:outputLabel value="#{views.EditServiceCameraLabel_cameraId}" for="cameraId" />
                     <h:inputText id="cameraId" value="#{serviceCameraController.selected.cameraId}" title="#{views.EditServiceCameraTitle_cameraId}" required="true" requiredMessage="#{views.EditServiceCameraRequiredMessage_cameraId}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{serviceCameraController.update}" value="#{views.EditServiceCameraSaveLink}"/>
+                <p:commandLink action="#{serviceCameraController.update}" value="#{views.EditServiceCameraSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditServiceCameraViewLink}"/>
                 <br />
-                <h:commandLink action="#{serviceCameraController.prepareList}" value="#{views.EditServiceCameraShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{serviceCameraController.prepareList}" value="#{views.EditServiceCameraShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditServiceCameraIndexLink}" />

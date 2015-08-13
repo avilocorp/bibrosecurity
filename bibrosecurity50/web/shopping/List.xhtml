@@ -20,10 +20,10 @@
                     <bnu:row>
                         <bnu:column col-sm="6" class="pull-right text-right">
                             <h:outputText value="#{productController.pagination.pageFirstItem + 1}..#{productController.pagination.pageLastItem + 1}/#{productController.pagination.itemsCount}"/>
-                            <h:commandLink action="#{productController.previous}" value="#{views.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>
-                            <h:commandLink action="#{productController.next}" value="#{views.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>
+                            <p:commandLink action="#{productController.previous}" value="#{views.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>
+                            <p:commandLink action="#{productController.next}" value="#{views.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>
                         </bnu:column>
-                        <h:commandLink action="carritoactual" value="Carrito hasta el momento"/>
+                        <p:commandLink action="carritoactual" value="Carrito hasta el momento"/>
 
                     </bnu:row>
                     <bnu:row>

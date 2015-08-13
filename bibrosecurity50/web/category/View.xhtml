@@ -22,14 +22,14 @@
                     <h:outputText value="#{categoryController.selected.fullName}" title="#{views.ViewCategoryTitle_fullName}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{categoryController.destroyAndView}" value="#{views.ViewCategoryDestroyLink}"/>
+                <p:commandLink action="#{categoryController.destroyAndView}" value="#{views.ViewCategoryDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewCategoryEditLink}"/>
                 <br />
-                <h:commandLink action="#{categoryController.prepareCreate}" value="#{views.ViewCategoryCreateLink}" />
+                <p:commandLink action="#{categoryController.prepareCreate}" value="#{views.ViewCategoryCreateLink}" />
                 <br />
-                <h:commandLink action="#{categoryController.prepareList}" value="#{views.ViewCategoryShowAllLink}"/>
+                <p:commandLink action="#{categoryController.prepareList}" value="#{views.ViewCategoryShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewCategoryIndexLink}"/>

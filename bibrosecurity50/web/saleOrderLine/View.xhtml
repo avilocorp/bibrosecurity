@@ -29,14 +29,14 @@
                     <h:outputText value="#{saleOrderLineController.selected.productId}" title="#{views.ViewSaleOrderLineTitle_productId}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{saleOrderLineController.destroyAndView}" value="#{views.ViewSaleOrderLineDestroyLink}"/>
+                <p:commandLink action="#{saleOrderLineController.destroyAndView}" value="#{views.ViewSaleOrderLineDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewSaleOrderLineEditLink}"/>
                 <br />
-                <h:commandLink action="#{saleOrderLineController.prepareCreate}" value="#{views.ViewSaleOrderLineCreateLink}" />
+                <p:commandLink action="#{saleOrderLineController.prepareCreate}" value="#{views.ViewSaleOrderLineCreateLink}" />
                 <br />
-                <h:commandLink action="#{saleOrderLineController.prepareList}" value="#{views.ViewSaleOrderLineShowAllLink}"/>
+                <p:commandLink action="#{saleOrderLineController.prepareList}" value="#{views.ViewSaleOrderLineShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewSaleOrderLineIndexLink}"/>

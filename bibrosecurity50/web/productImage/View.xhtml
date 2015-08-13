@@ -25,14 +25,14 @@
                     <h:outputText value="#{productImageController.selected.description}" title="#{views.ViewProductImageTitle_description}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{productImageController.destroyAndView}" value="#{views.ViewProductImageDestroyLink}"/>
+                <p:commandLink action="#{productImageController.destroyAndView}" value="#{views.ViewProductImageDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewProductImageEditLink}"/>
                 <br />
-                <h:commandLink action="#{productImageController.prepareCreate}" value="#{views.ViewProductImageCreateLink}" />
+                <p:commandLink action="#{productImageController.prepareCreate}" value="#{views.ViewProductImageCreateLink}" />
                 <br />
-                <h:commandLink action="#{productImageController.prepareList}" value="#{views.ViewProductImageShowAllLink}"/>
+                <p:commandLink action="#{productImageController.prepareList}" value="#{views.ViewProductImageShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewProductImageIndexLink}"/>
