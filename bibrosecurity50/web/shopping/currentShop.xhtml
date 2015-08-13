@@ -22,7 +22,8 @@
                                <bnu:commandButton action="#{sp.clearCar()}" iconAwesome="fa fa-trash-o" value="Limpiar Carrito" class="btn btn-danger"></bnu:commandButton>
                             </bnu:column>
                             <bnu:column class="col-lg-2 col-xs-6 text-center">
-                                <bnu:commandButton action="#{sp.paymetCar()}" iconAwesome="fa fa-paypal" value="Pagar" class="btn btn-success"></bnu:commandButton>
+                                <ui:include src="payment.xhtml"/>
+                                <!--<bnu:commandButton action="#{sp.paymetCar()}" iconAwesome="fa fa-paypal" value="Pagar" class="btn btn-success"></bnu:commandButton>-->
                             </bnu:column>
                             <bnu:column class="col-lg-2 col-xs-6 text-center">
                                 <bnu:label text="Articulos: "><bnu:badge value="#{sp.carCount()}"></bnu:badge></bnu:label>
@@ -73,7 +74,7 @@
                          
                     </h:form>
                 </f:view>
-                </h:form> 
+                </h:form>
             </ui:define>
         </ui:composition>
 

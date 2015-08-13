@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:bnu="http://bootsfaces.net/ui">
+      xmlns:bnu="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -69,7 +70,10 @@
                     <h:outputText value="#{partnerController.selected.active}" title="#{views.ViewPartnerTitle_active}"/>
                -->
                     <br />
-                <h:commandLink action="#{partnerController.destroyAndView}" value="#{views.ViewPartnerDestroyLink}"/>
+                 <ui:define name="buttons">
+            <bnu:commandButton action="#{partnerController.destroyAndView}" value="#{views.ViewPartnerDestroyLink}" look="info"/><span>      </span>
+            <bnu:commandButton  action="#{partnerController.prepareList}" value="#{views.EditPartnerShowAllLink}" immediate="true" look="danger"/>
+        </ui:define>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewPartnerEditLink}"/>

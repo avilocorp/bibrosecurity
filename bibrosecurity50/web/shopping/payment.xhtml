@@ -26,13 +26,12 @@
             </c:forEach>
             <input type="hidden" name="cmd" value="_cart"/>
             <input type="hidden" name="business" value="bibrosec-facilitator_api1@gmail.com"/>
-            <!--<input type="hidden" name="return" value="http://www.google.com"/>-->
             <input type="hidden" name="return" value="http://localhost:8080/bibrosecurity50/shopping/success.xhtml?payment=success"/>
-            <!--<input type="hidden" name="cancel" value="http://www.youtube.com"/>-->
             <input type="hidden" name="cancel" value="http://localhost:8080/bibrosecurity50/shopping/cancel.xhtml"/>
             <input type="hidden" name="upload" value="1"/>
             <input type="image"
-                   src="https://www.paypal.com/es_ES/i/btn/btn_xpressCheckout.gif"/>
+                   class="img-responsive text-center"
+                   src="https://www.paypal.com/es_ES/i/btn/btn_paynowCC_lg.gif"/>
         </form>
     </h:body>
 </html>

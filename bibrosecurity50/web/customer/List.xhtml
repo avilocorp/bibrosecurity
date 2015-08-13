@@ -60,11 +60,9 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{partnerController.prepareView}" value="#{views.ListPartnerViewLink}"/>
+                            <p:commandLink action="#{partnerController.prepareView}" value="#{views.ListPartnerViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{partnerController.prepareEdit}" value="#{views.ListPartnerEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{partnerController.destroy}" value="#{views.ListPartnerDestroyLink}"/>
+                            <p:commandLink action="#{partnerController.prepareEdit}" value="#{views.ListPartnerEditLink}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>

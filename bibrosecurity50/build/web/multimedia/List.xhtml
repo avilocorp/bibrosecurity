@@ -4,11 +4,15 @@
  xmlns:p="http://primefaces.org/ui"      
 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListMultimediaTitle}"></h:outputText>
+        </ui:define>
+         <ui:define name="buttons">
+            <bnu:commandButton action="#{multimediaController.prepareCreate}" value="#{views.ViewMultimediaCreateLink}" look="info"/><span>      </span>    
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
@@ -20,7 +24,7 @@ xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                     <h:outputText value="#{multimediaController.pagination.pageFirstItem + 1}..#{multimediaController.pagination.pageLastItem + 1}/#{multimediaController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{multimediaController.previous}" value="#{views.Previous} #{multimediaController.pagination.pageSize}" rendered="#{multimediaController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{multimediaController.next}" value="#{views.Next} #{multimediaController.pagination.pageSize}" rendered="#{multimediaController.pagination.hasNextPage}"/>&nbsp;
-                    <p:dataTable value="#{partnerController.items}" 
+                    <p:dataTable value="#{multimediaController.items}" 
                                  var="item" 
                                  class="table table-hover"
                                     rows="15"
@@ -56,11 +60,11 @@ xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{multimediaController.prepareView}" value="#{views.ListMultimediaViewLink}"/>
+                            <p:commandLink action="#{multimediaController.prepareView}" value="#{views.ListMultimediaViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{multimediaController.prepareEdit}" value="#{views.ListMultimediaEditLink}"/>
+                            <p:commandLink action="#{multimediaController.prepareEdit}" value="#{views.ListMultimediaEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{multimediaController.destroy}" value="#{views.ListMultimediaDestroyLink}"/>
+                            <p:commandLink action="#{multimediaController.destroy}" value="#{views.ListMultimediaDestroyLink}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>

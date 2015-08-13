@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:bnu="http://bootsfaces.net/ui" 
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
@@ -9,14 +10,16 @@
         <ui:define name="title">
             <h:outputText value="#{views.CreatePurchaseOrderLineTitle}"></h:outputText>
         </ui:define>
+        <ui:define name="buttons">
+            <bnu:commandButton action="#{purchaseOrderLineController.create}" value="#{views.CreatePurchaseOrderLineSaveLink}" look="info"/><span>      </span>
+            <bnu:commandButton action="#{purchaseOrderLineController.prepareList}" value="#{views.CreatePurchaseOrderLineShowAllLink}" immediate="true" look="danger"/>
+        </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{purchaseOrderLineController.selected.id}" title="#{views.CreatePurchaseOrderLineTitle_id}" required="true" requiredMessage="#{views.CreatePurchaseOrderLineRequiredMessage_id}"/>
                     <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_qty}" for="qty" />
                     <h:inputText id="qty" value="#{purchaseOrderLineController.selected.qty}" title="#{views.CreatePurchaseOrderLineTitle_qty}" />
                     <h:outputLabel value="#{views.CreatePurchaseOrderLineLabel_unitPrice}" for="unitPrice" />
@@ -29,10 +32,6 @@
                     <h:inputText id="purchaseOrderid" value="#{purchaseOrderLineController.selected.purchaseOrderid}" title="#{views.CreatePurchaseOrderLineTitle_purchaseOrderid}" required="true" requiredMessage="#{views.CreatePurchaseOrderLineRequiredMessage_purchaseOrderid}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{purchaseOrderLineController.create}" value="#{views.CreatePurchaseOrderLineSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{purchaseOrderLineController.prepareList}" value="#{views.CreatePurchaseOrderLineShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.CreatePurchaseOrderLineIndexLink}"/>

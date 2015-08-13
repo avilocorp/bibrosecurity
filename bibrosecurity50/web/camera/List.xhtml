@@ -4,12 +4,17 @@
 xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListCameraTitle}"></h:outputText>
         </ui:define>
+ <ui:define name="buttons">
+            <bnu:commandButton action="#{cameraController.prepareCreate}" value="#{views.ListCameraCreateLink}" immediate="true" look="success"/>
+        </ui:define>
+
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
@@ -20,7 +25,7 @@ xmlns:p="http://primefaces.org/ui"
                     <h:outputText value="#{cameraController.pagination.pageFirstItem + 1}..#{cameraController.pagination.pageLastItem + 1}/#{cameraController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{cameraController.previous}" value="#{views.Previous} #{cameraController.pagination.pageSize}" rendered="#{cameraController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{cameraController.next}" value="#{views.Next} #{cameraController.pagination.pageSize}" rendered="#{cameraController.pagination.hasNextPage}"/>&nbsp;
-                     <p:dataTable value="#{partnerController.items}" 
+                     <p:dataTable value="#{cameraController.items}" 
                                  var="item" 
                                  class="table table-hover"
                                     rows="15"
@@ -66,7 +71,6 @@ xmlns:p="http://primefaces.org/ui"
                     </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{cameraController.prepareCreate}" value="#{views.ListCameraCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ListCameraIndexLink}"/>

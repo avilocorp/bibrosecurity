@@ -5,8 +5,6 @@
  */
 package controller;
 
-import DAOS.SaleOrderFacade;
-import DAOS.SaleOrderLineFacade;
 import java.io.Serializable;
 import models.Item;
 import java.util.*;
@@ -21,9 +19,10 @@ import models.SaleOrderLine;
 @SessionScoped
 
 public class ShoppingCart implements Serializable{
-
-    private SaleOrderLineFacade sol_facade;
-    private SaleOrderFacade so_facade;
+    @EJB
+    private DAOS.SaleOrderFacade saleOrderFacade;
+    @EJB
+    private DAOS.SaleOrderLineFacade sol_facade;
     private List<Item> car = new ArrayList<Item>();
     private double subTotal;
     private double total;
@@ -32,7 +31,6 @@ public class ShoppingCart implements Serializable{
     private int partner_id;
 
     public ShoppingCart() {
-        
     }
 
     
@@ -53,6 +51,7 @@ public class ShoppingCart implements Serializable{
         car.add(i);
         return "currentShop";
     }
+    
     
     public void removeItem(Item i){
     
@@ -80,10 +79,12 @@ public class ShoppingCart implements Serializable{
         
         if (result.equals("success")){
             Date date = new Date();
-            ArrayList<SaleOrderLine> sl_ids = new ArrayList<SaleOrderLine>();
+            //List<SaleOrderLine> sl_ids = new ArrayList<SaleOrderLine>();
             //if (usuarioController.getIdcliente() > 0) {
+                
                 SaleOrder so = new SaleOrder(date, subTotal, 0.0 , total, "invoice", 1);
-                getSo_facade().create(so);
+                //so_facade.create(so);
+                System.out.println(saleOrderFacade.count());
                 for (Item  item: car) {
                     SaleOrderLine linea = new SaleOrderLine(
                             so.getId(), item.getP().getId(),
@@ -91,7 +92,7 @@ public class ShoppingCart implements Serializable{
                             item.getP().getPurchasePrice(),
                             item.getSubtotal());
                     //sl_ids.add(linea);
-                    sol_facade.create(linea);
+                    //sol_facade.create(linea);
                 }
             car.clear();
         }
@@ -160,21 +161,5 @@ public class ShoppingCart implements Serializable{
     public void setPartner_id(int partner_id) {
         this.partner_id = partner_id;
     }
-    
-    public SaleOrderLineFacade getSol_facade() {
-        return sol_facade;
-    }
-
-    public void setSol_facade(SaleOrderLineFacade sol_facade) {
-        this.sol_facade = sol_facade;
-    }
-
-    public SaleOrderFacade getSo_facade() {
-        return so_facade;
-    }
-
-    public void setSo_facade(SaleOrderFacade so_facade) {
-        this.so_facade = so_facade;
-    }
-    
+       
 }

@@ -3,11 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.EditProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="buttons">
+            <bnu:commandButton  action="#{productController.update}" value="#{views.EditProductSaveLink}" immediate="true" look="success"/><span>  </span>
+           <bnu:commandButton  action="#{productController.prepareList}" value="#{views.EditProductShowAllLink}" immediate="true" look="info"/>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -42,12 +47,10 @@
                     <h:outputLabel value="#{views.EditProductLabel_partnerId}" for="partnerId" />
                     <h:inputText id="partnerId" value="#{productController.selected.partnerId}" title="#{views.EditProductTitle_partnerId}" required="true" requiredMessage="#{views.EditProductRequiredMessage_partnerId}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{productController.update}" value="#{views.EditProductSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditProductViewLink}"/>
                 <br />
-                <h:commandLink action="#{productController.prepareList}" value="#{views.EditProductShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditProductIndexLink}" />

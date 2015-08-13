@@ -3,12 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ViewProductTitle}"></h:outputText>
         </ui:define>
+         <ui:define name="buttons">
+             <bnu:commandButton  action="#{productController.destroyAndView}" value="#{views.ViewProductDestroyLink}" immediate="true" look="danger"/> <span></span>
+     <bnu:commandButton action="#{productController.prepareCreate}" value="#{views.ViewProductCreateLink}"  immediate="true" look="info"/><span>  </span>
+        <bnu:commandButton  action="#{productController.prepareList}" value="#{views.ViewProductShowAllLink}" immediate="true" look="info"/>
+         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -43,14 +49,11 @@
                     <h:outputText value="#{productController.selected.partnerId}" title="#{views.ViewProductTitle_partnerId}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{productController.destroyAndView}" value="#{views.ViewProductDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewProductEditLink}"/>
                 <br />
-                <h:commandLink action="#{productController.prepareCreate}" value="#{views.ViewProductCreateLink}" />
-                <br />
-                <h:commandLink action="#{productController.prepareList}" value="#{views.ViewProductShowAllLink}"/>
+        
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewProductIndexLink}"/>

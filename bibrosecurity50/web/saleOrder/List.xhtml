@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:p="http://primefaces.org/ui"
+      xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -10,6 +11,9 @@ xmlns:p="http://primefaces.org/ui"
         <ui:define name="title">
             <h:outputText value="#{views.ListSaleOrderTitle}"></h:outputText>
         </ui:define>
+ <ui:define name="buttons">
+             <bnu:commandButton action="#{userTypeController.prepareCreate}" value="#{views.ListUserTypeCreateLink}" immediate="true" look="success"/>
+ </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
@@ -81,11 +85,11 @@ xmlns:p="http://primefaces.org/ui"
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{saleOrderController.prepareView}" value="#{views.ListSaleOrderViewLink}"/>
+                            <p:commandLink action="#{saleOrderController.prepareView}" value="#{views.ListSaleOrderViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{saleOrderController.prepareEdit}" value="#{views.ListSaleOrderEditLink}"/>
+                            <p:commandLink action="#{saleOrderController.prepareEdit}" value="#{views.ListSaleOrderEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{saleOrderController.destroy}" value="#{views.ListSaleOrderDestroyLink}"/>
+                            <p:commandLink action="#{saleOrderController.destroy}" value="#{views.ListSaleOrderDestroyLink}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>

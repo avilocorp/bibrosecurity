@@ -4,11 +4,15 @@
 xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListServiceCameraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="buttons">
+           <bnu:commandButton action="#{serviceCameraController.prepareCreate}" value="#{views.ListServiceCameraCreateLink}" immediate="true" look="success"/>
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
@@ -50,11 +54,11 @@ xmlns:p="http://primefaces.org/ui"
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{serviceCameraController.prepareView}" value="#{views.ListServiceCameraViewLink}"/>
+                            <p:commandLink action="#{serviceCameraController.prepareView}" value="#{views.ListServiceCameraViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{serviceCameraController.prepareEdit}" value="#{views.ListServiceCameraEditLink}"/>
+                            <p:commandLink action="#{serviceCameraController.prepareEdit}" value="#{views.ListServiceCameraEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{serviceCameraController.destroy}" value="#{views.ListServiceCameraDestroyLink}"/>
+                            <p:commandLink action="#{serviceCameraController.destroy}" value="#{views.ListServiceCameraDestroyLink}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>

@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.CreateSaleOrderLineTitle}"></h:outputText>
+        </ui:define>
+
+<ui:define name="buttons">
+            <bnu:commandButton action="#{saleOrderController.create}" value="#{views.CreateSaleOrderSaveLink}" look="info"/><span>      </span>
+            <bnu:commandButton action="#{saleOrderController.prepareList}" value="#{views.CreateSaleOrderShowAllLink}" immediate="true" look="danger"/>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -15,9 +20,7 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{views.CreateSaleOrderLineLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{saleOrderLineController.selected.id}" title="#{views.CreateSaleOrderLineTitle_id}" required="true" requiredMessage="#{views.CreateSaleOrderLineRequiredMessage_id}"/>
-                    <h:outputLabel value="#{views.CreateSaleOrderLineLabel_saleOrderid}" for="saleOrderid" />
+                     <h:outputLabel value="#{views.CreateSaleOrderLineLabel_saleOrderid}" for="saleOrderid" />
                     <h:inputText id="saleOrderid" value="#{saleOrderLineController.selected.saleOrderid}" title="#{views.CreateSaleOrderLineTitle_saleOrderid}" required="true" requiredMessage="#{views.CreateSaleOrderLineRequiredMessage_saleOrderid}"/>
                     <h:outputLabel value="#{views.CreateSaleOrderLineLabel_qty}" for="qty" />
                     <h:inputText id="qty" value="#{saleOrderLineController.selected.qty}" title="#{views.CreateSaleOrderLineTitle_qty}" />
@@ -29,10 +32,6 @@
                     <h:inputText id="productId" value="#{saleOrderLineController.selected.productId}" title="#{views.CreateSaleOrderLineTitle_productId}" required="true" requiredMessage="#{views.CreateSaleOrderLineRequiredMessage_productId}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{saleOrderLineController.create}" value="#{views.CreateSaleOrderLineSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{saleOrderLineController.prepareList}" value="#{views.CreateSaleOrderLineShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.CreateSaleOrderLineIndexLink}"/>

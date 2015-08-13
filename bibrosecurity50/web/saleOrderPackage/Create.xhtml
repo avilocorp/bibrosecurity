@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+ xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
@@ -9,14 +10,17 @@
         <ui:define name="title">
             <h:outputText value="#{views.CreateSaleOrderPackageTitle}"></h:outputText>
         </ui:define>
+<ui:define name="buttons">
+            <bnu:commandButton action="#{saleOrderPackageController.create}" value="#{views.CreateSaleOrderPackageSaveLink}" look="info"/><span>      </span>
+            <bnu:commandButton action="#{saleOrderPackageController.prepareList}" value="#{views.CreateSaleOrderPackageShowAllLink}" immediate="true" look="danger"/>
+        </ui:define>
+
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{views.CreateSaleOrderPackageLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{saleOrderPackageController.selected.id}" title="#{views.CreateSaleOrderPackageTitle_id}" required="true" requiredMessage="#{views.CreateSaleOrderPackageRequiredMessage_id}"/>
                     <h:outputLabel value="#{views.CreateSaleOrderPackageLabel_packageId}" for="packageId" />
                     <h:inputText id="packageId" value="#{saleOrderPackageController.selected.packageId}" title="#{views.CreateSaleOrderPackageTitle_packageId}" required="true" requiredMessage="#{views.CreateSaleOrderPackageRequiredMessage_packageId}"/>
                     <h:outputLabel value="#{views.CreateSaleOrderPackageLabel_saleOrderid}" for="saleOrderid" />
@@ -35,11 +39,7 @@
                     <h:inputText id="status" value="#{saleOrderPackageController.selected.status}" title="#{views.CreateSaleOrderPackageTitle_status}" required="true" requiredMessage="#{views.CreateSaleOrderPackageRequiredMessage_status}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{saleOrderPackageController.create}" value="#{views.CreateSaleOrderPackageSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{saleOrderPackageController.prepareList}" value="#{views.CreateSaleOrderPackageShowAllLink}" immediate="true"/>
-                <br />
+               <br />
                 <br />
                 <h:link outcome="/index" value="#{views.CreateSaleOrderPackageIndexLink}"/>
             </h:form>

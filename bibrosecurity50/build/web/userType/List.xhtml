@@ -4,13 +4,17 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
      xmlns:p="http://primefaces.org/ui"
+      xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListUserTypeTitle}"></h:outputText>
         </ui:define>
-        <ui:define name="body">
+       <ui:define name="buttons">
+          <bnu:commandButton action="#{userTypeController.prepareCreate}" value="#{views.ListUserTypeCreateLink}" immediate="true" look="success"/>
+        </ui:define>       
+ <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -50,11 +54,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{userTypeController.prepareView}" value="#{views.ListUserTypeViewLink}"/>
+                            <p:commandLink action="#{userTypeController.prepareView}" value="#{views.ListUserTypeViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{userTypeController.prepareEdit}" value="#{views.ListUserTypeEditLink}"/>
+                            <p:commandLink action="#{userTypeController.prepareEdit}" value="#{views.ListUserTypeEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{userTypeController.destroy}" value="#{views.ListUserTypeDestroyLink}"/>
+                            <p:commandLink action="#{userTypeController.destroy}" value="#{views.ListUserTypeDestroyLink}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>
