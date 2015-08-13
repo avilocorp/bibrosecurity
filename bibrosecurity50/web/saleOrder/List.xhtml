@@ -12,7 +12,7 @@ xmlns:p="http://primefaces.org/ui"
             <h:outputText value="#{views.ListSaleOrderTitle}"></h:outputText>
         </ui:define>
  <ui:define name="buttons">
-             <bnu:commandButton action="#{userTypeController.prepareCreate}" value="#{views.ListUserTypeCreateLink}" immediate="true" look="success"/>
+             <bnu:commandButton action="#{saleOrderController.prepareCreate}" value="#{views.ListSaleOrderCreateLink}" immediate="true" look="success"/>
  </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">

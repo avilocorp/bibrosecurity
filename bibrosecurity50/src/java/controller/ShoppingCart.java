@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAOS.shoppingSaleOrderDAO;
 import java.io.Serializable;
 import models.Item;
 import java.util.*;
@@ -19,10 +20,6 @@ import models.SaleOrderLine;
 @SessionScoped
 
 public class ShoppingCart implements Serializable{
-    @EJB
-    private DAOS.SaleOrderFacade saleOrderFacade;
-    @EJB
-    private DAOS.SaleOrderLineFacade sol_facade;
     private List<Item> car = new ArrayList<Item>();
     private double subTotal;
     private double total;
@@ -67,6 +64,10 @@ public class ShoppingCart implements Serializable{
         return "payment";
     }
     
+    public String return2List(){
+        return "List";
+    }
+    
     public int carCount(){
         return car.size();
     }
@@ -75,24 +76,26 @@ public class ShoppingCart implements Serializable{
         car.clear();
     }
     
-    public String confirmedShop(String result){
+    public String confirmedShop(String result) throws Exception{
         
         if (result.equals("success")){
             Date date = new Date();
+            int so_id = 0;
             //List<SaleOrderLine> sl_ids = new ArrayList<SaleOrderLine>();
             //if (usuarioController.getIdcliente() > 0) {
                 
                 SaleOrder so = new SaleOrder(date, subTotal, 0.0 , total, "invoice", 1);
                 //so_facade.create(so);
-                System.out.println(saleOrderFacade.count());
+                shoppingSaleOrderDAO insertar = new shoppingSaleOrderDAO();
+                so_id = insertar.registrarSaleOrder(so);
                 for (Item  item: car) {
-                    SaleOrderLine linea = new SaleOrderLine(
-                            so.getId(), item.getP().getId(),
-                            item.getQuantity(),
-                            item.getP().getPurchasePrice(),
-                            item.getSubtotal());
-                    //sl_ids.add(linea);
-                    //sol_facade.create(linea);
+//                    SaleOrderLine linea = new SaleOrderLine(
+//                            so.getId(), item.getP().getId(),
+//                            item.getQuantity(),
+//                            item.getP().getPurchasePrice(),
+//                            item.getSubtotal());
+//                    //sl_ids.add(linea);
+                    insertar.registrarSaleOrderLine(item,so_id);
                 }
             car.clear();
         }
