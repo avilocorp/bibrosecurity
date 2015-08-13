@@ -3,12 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ViewServiceCameraTitle}"></h:outputText>
         </ui:define>
+        <ui:define name="buttons">
+             <bnu:commandButton  action="#{serviceCameraController.destroyAndView}" value="#{views.ViewServiceCameraDestroyLink}" immediate="true" look="danger"/> <span></span>
+     <bnu:commandButton action="#{serviceCameraController.prepareCreate}" value="#{views.ViewServiceCameraCreateLink}"  immediate="true" look="info"/><span>  </span>
+        <bnu:commandButton  action="#{serviceCameraController.prepareList}" value="#{views.ViewServiceCameraShowAllLink}" immediate="true" look="info"/>
+         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -23,14 +29,9 @@
                     <h:outputText value="#{serviceCameraController.selected.cameraId}" title="#{views.ViewServiceCameraTitle_cameraId}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{serviceCameraController.destroyAndView}" value="#{views.ViewServiceCameraDestroyLink}"/>
-                <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewServiceCameraEditLink}"/>
                 <br />
-                <h:commandLink action="#{serviceCameraController.prepareCreate}" value="#{views.ViewServiceCameraCreateLink}" />
-                <br />
-                <h:commandLink action="#{serviceCameraController.prepareList}" value="#{views.ViewServiceCameraShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewServiceCameraIndexLink}"/>

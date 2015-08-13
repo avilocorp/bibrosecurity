@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+ xmlns:p="http://primefaces.org/ui"      
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:bnu="http://bootsfaces.net/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListMultimediaTitle}"></h:outputText>
+        </ui:define>
+         <ui:define name="buttons">
+            <bnu:commandButton action="#{multimediaController.prepareCreate}" value="#{views.ViewMultimediaCreateLink}" look="info"/><span>      </span>    
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
@@ -19,42 +24,49 @@
                     <h:outputText value="#{multimediaController.pagination.pageFirstItem + 1}..#{multimediaController.pagination.pageLastItem + 1}/#{multimediaController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{multimediaController.previous}" value="#{views.Previous} #{multimediaController.pagination.pageSize}" rendered="#{multimediaController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{multimediaController.next}" value="#{views.Next} #{multimediaController.pagination.pageSize}" rendered="#{multimediaController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{multimediaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                    <p:dataTable value="#{multimediaController.items}" 
+                                 var="item" 
+                                 class="table table-hover"
+                                    rows="15"
+                                    reflow="true" 
+                                    paginator="true"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15">
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListMultimediaTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListMultimediaTitle_ruta}"/>
                             </f:facet>
                             <h:outputText value="#{item.ruta}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListMultimediaTitle_tipo}"/>
                             </f:facet>
                             <h:outputText value="#{item.tipo}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListMultimediaTitle_productId}"/>
                             </f:facet>
                             <h:outputText value="#{item.productId}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{multimediaController.prepareView}" value="#{views.ListMultimediaViewLink}"/>
+                            <p:commandLink action="#{multimediaController.prepareView}" value="#{views.ListMultimediaViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{multimediaController.prepareEdit}" value="#{views.ListMultimediaEditLink}"/>
+                            <p:commandLink action="#{multimediaController.prepareEdit}" value="#{views.ListMultimediaEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{multimediaController.destroy}" value="#{views.ListMultimediaDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                            <p:commandLink action="#{multimediaController.destroy}" value="#{views.ListMultimediaDestroyLink}"/>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
                 <h:commandLink action="#{multimediaController.prepareCreate}" value="#{views.ListMultimediaCreateLink}"/>

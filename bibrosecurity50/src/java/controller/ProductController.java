@@ -1,14 +1,19 @@
 package controller;
 
+import DAOS.ProductFacade;
+import models.Product;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -20,18 +25,20 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "productController")
 @SessionScoped
+
 public class ProductController implements Serializable {
 
     private Product current;
     private DataModel items = null;
     @EJB
-    private controller.ProductFacade ejbFacade;
+    private DAOS.ProductFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private ArrayList<Product> productos = new ArrayList<>();
 
     public ProductController() {
     }
+    
 
     public Product getSelected() {
         if (current == null) {
@@ -63,18 +70,6 @@ public class ProductController implements Serializable {
         return pagination;
     }
     
-    public String doListarTodosProductos(){
-        productos.clear();
-        List<Product> lista = getFacade().findAll();
-        for(Product p:lista){
-            productos.add(p);                     
-        }
-        return "carrito";
-    }
-    
-    public Product doBuscarProductoParaElCarrito(int idProducto){
-        return getFacade().find(idProducto);
-    }
 
     public String prepareList() {
         recreateModel();

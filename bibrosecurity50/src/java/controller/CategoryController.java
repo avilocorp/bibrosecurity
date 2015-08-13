@@ -1,5 +1,7 @@
 package controller;
 
+import DAOS.CategoryFacade;
+import models.Category;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
@@ -23,7 +25,7 @@ public class CategoryController implements Serializable {
     private Category current;
     private DataModel items = null;
     @EJB
-    private controller.CategoryFacade ejbFacade;
+    private DAOS.CategoryFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

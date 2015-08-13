@@ -1,5 +1,7 @@
 package controller;
 
+import DAOS.ProductImageFacade;
+import models.ProductImage;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
@@ -23,7 +25,7 @@ public class ProductImageController implements Serializable {
     private ProductImage current;
     private DataModel items = null;
     @EJB
-    private controller.ProductImageFacade ejbFacade;
+    private DAOS.ProductImageFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

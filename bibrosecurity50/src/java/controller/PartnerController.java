@@ -1,5 +1,7 @@
 package controller;
 
+import DAOS.PartnerFacade;
+import models.Partner;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
@@ -23,7 +25,7 @@ public class PartnerController implements Serializable {
     private Partner current;
     private DataModel items = null;
     @EJB
-    private controller.PartnerFacade ejbFacade;
+    private DAOS.PartnerFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

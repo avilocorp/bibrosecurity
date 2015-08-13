@@ -1,5 +1,7 @@
 package controller;
 
+import DAOS.SaleOrderPackageFacade;
+import models.SaleOrderPackage;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
@@ -23,7 +25,7 @@ public class SaleOrderPackageController implements Serializable {
     private SaleOrderPackage current;
     private DataModel items = null;
     @EJB
-    private controller.SaleOrderPackageFacade ejbFacade;
+    private DAOS.SaleOrderPackageFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

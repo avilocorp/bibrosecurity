@@ -1,5 +1,7 @@
 package controller;
 
+import DAOS.MultimediaFacade;
+import models.Multimedia;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
@@ -23,7 +25,7 @@ public class MultimediaController implements Serializable {
     private Multimedia current;
     private DataModel items = null;
     @EJB
-    private controller.MultimediaFacade ejbFacade;
+    private DAOS.MultimediaFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

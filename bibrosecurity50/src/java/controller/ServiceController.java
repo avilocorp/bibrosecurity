@@ -1,5 +1,7 @@
 package controller;
 
+import DAOS.ServiceFacade;
+import models.Service;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
@@ -23,7 +25,7 @@ public class ServiceController implements Serializable {
     private Service current;
     private DataModel items = null;
     @EJB
-    private controller.ServiceFacade ejbFacade;
+    private DAOS.ServiceFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

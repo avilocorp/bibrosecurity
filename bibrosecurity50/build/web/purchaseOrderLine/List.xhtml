@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:p="http://primefaces.org/ui"   
+ xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
@@ -19,44 +20,50 @@
                     <h:outputText value="#{purchaseOrderLineController.pagination.pageFirstItem + 1}..#{purchaseOrderLineController.pagination.pageLastItem + 1}/#{purchaseOrderLineController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{purchaseOrderLineController.previous}" value="#{views.Previous} #{purchaseOrderLineController.pagination.pageSize}" rendered="#{purchaseOrderLineController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{purchaseOrderLineController.next}" value="#{views.Next} #{purchaseOrderLineController.pagination.pageSize}" rendered="#{purchaseOrderLineController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{purchaseOrderLineController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                    <p:dataTable value="#{purchaseOrderLineController.items}" 
+                                 var="item" 
+                                 class="table table-hover"
+                                    rows="15"
+                                    reflow="true" 
+                                    paginator="true"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15"> <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListPurchaseOrderLineTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListPurchaseOrderLineTitle_qty}"/>
                             </f:facet>
                             <h:outputText value="#{item.qty}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListPurchaseOrderLineTitle_unitPrice}"/>
                             </f:facet>
                             <h:outputText value="#{item.unitPrice}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListPurchaseOrderLineTitle_subtotal}"/>
                             </f:facet>
                             <h:outputText value="#{item.subtotal}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListPurchaseOrderLineTitle_productId}"/>
                             </f:facet>
                             <h:outputText value="#{item.productId}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{views.ListPurchaseOrderLineTitle_purchaseOrderid}"/>
                             </f:facet>
                             <h:outputText value="#{item.purchaseOrderid}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
@@ -65,8 +72,8 @@
                             <h:commandLink action="#{purchaseOrderLineController.prepareEdit}" value="#{views.ListPurchaseOrderLineEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{purchaseOrderLineController.destroy}" value="#{views.ListPurchaseOrderLineDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
                 <h:commandLink action="#{purchaseOrderLineController.prepareCreate}" value="#{views.ListPurchaseOrderLineCreateLink}"/>

@@ -1,5 +1,7 @@
 package controller;
 
+import DAOS.CameraFacade;
+import models.Camera;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 
@@ -23,7 +25,7 @@ public class CameraController implements Serializable {
     private Camera current;
     private DataModel items = null;
     @EJB
-    private controller.CameraFacade ejbFacade;
+    private DAOS.CameraFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

@@ -3,37 +3,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.EditCategoryTitle}"></h:outputText>
         </ui:define>
+ <ui:define name="buttons">
+            <bnu:commandButton action="#{packageController.update}" value="#{views.EditPackageSaveLink}"  look="info"/><span>      </span>
+            <bnu:commandButton action="#{categoryController.prepareList}" value="#{views.EditCategoryShowAllLink}" immediate="true" look="danger"/>
+        </ui:define>
+
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{views.EditCategoryLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{categoryController.selected.id}" title="#{views.EditCategoryTitle_id}" required="true" requiredMessage="#{views.EditCategoryRequiredMessage_id}"/>
+                <bnu:row>
+    			 <bnu:column col-xs="6">
                     <h:outputLabel value="#{views.EditCategoryLabel_name}" for="name" />
                     <h:inputText id="name" value="#{categoryController.selected.name}" title="#{views.EditCategoryTitle_name}" required="true" requiredMessage="#{views.EditCategoryRequiredMessage_name}"/>
-                    <h:outputLabel value="#{views.EditCategoryLabel_parentId}" for="parentId" />
+                    </bnu:column>
+                     <bnu:column col-xs="6">
+     		    <h:outputLabel value="#{views.EditCategoryLabel_parentId}" for="parentId" />
                     <h:inputText id="parentId" value="#{categoryController.selected.parentId}" title="#{views.EditCategoryTitle_parentId}" />
+                    </bnu:column>
+                    </bnu:row>
                     <h:outputLabel value="#{views.EditCategoryLabel_fullName}" for="fullName" />
                     <h:inputText id="fullName" value="#{categoryController.selected.fullName}" title="#{views.EditCategoryTitle_fullName}" />
-                </h:panelGrid>
+                
                 <h:commandLink action="#{categoryController.update}" value="#{views.EditCategorySaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditCategoryViewLink}"/>
                 <br />
-                <h:commandLink action="#{categoryController.prepareList}" value="#{views.EditCategoryShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{categoryControler.prepareList}" value="#{views.EditCategoryShowAllLink}" immediate="true"/>
                 <br />
-                <br />
-                <h:link outcome="/index" value="#{views.EditCategoryIndexLink}" />
-            </h:form>
+                <br />           
+                </h:form>
         </ui:define>
     </ui:composition>
 

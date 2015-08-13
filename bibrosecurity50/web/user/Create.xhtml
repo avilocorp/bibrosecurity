@@ -3,11 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.CreateUserTitle}"></h:outputText>
+        </ui:define>
+         <ui:define name="buttons">
+            <bnu:commandButton action="#{userController.create}" value="#{views.CreateUserSaveLink}" look="info"/><span>      </span>
+            <bnu:commandButton action="#{userController.prepareList}" value="#{views.CreateUserShowAllLink}" immediate="true" look="danger"/>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -15,8 +20,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{views.CreateUserLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{userController.selected.id}" title="#{views.CreateUserTitle_id}" required="true" requiredMessage="#{views.CreateUserRequiredMessage_id}"/>
                     <h:outputLabel value="#{views.CreateUserLabel_name}" for="name" />
                     <h:inputText id="name" value="#{userController.selected.name}" title="#{views.CreateUserTitle_name}" required="true" requiredMessage="#{views.CreateUserRequiredMessage_name}"/>
                     <h:outputLabel value="#{views.CreateUserLabel_lastName}" for="lastName" />
@@ -33,10 +36,6 @@
                     <h:inputText id="userTypeid" value="#{userController.selected.userTypeid}" title="#{views.CreateUserTitle_userTypeid}" required="true" requiredMessage="#{views.CreateUserRequiredMessage_userTypeid}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{userController.create}" value="#{views.CreateUserSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{userController.prepareList}" value="#{views.CreateUserShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.CreateUserIndexLink}"/>
