@@ -22,13 +22,17 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-
-                      <li><a href="#{facesContext.externalContext.requestContextPath}/shopping/List.xhtml">Catálogo <span class="sr-only">(current)</span></a></li>
-                      <li><a href="#{facesContext.externalContext.requestContextPath}/installers/index.xhtml">Directorio de instaladores</a></li>
+                      <c:if test="#{mbSession.usuario.userTypeid == null}">
+                        <li><a href="#{facesContext.externalContext.requestContextPath}/shopping/List_dummy.xhtml">Catálogo <span class="sr-only">(current)</span></a></li>
+                      </c:if>   
+                      <c:if test="#{mbSession.usuario.userTypeid == 2}">
+                        <li><a href="#{facesContext.externalContext.requestContextPath}/shopping/List.xhtml">Catálogo <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#{facesContext.externalContext.requestContextPath}/installers/index.xhtml">Directorio de instaladores</a></li>
+                      </c:if> 
                       <li><a href="#{facesContext.externalContext.requestContextPath}/index.xhtml#about-us">Acerca de</a></li>
                       <li><a href="#">Contactanos</a></li>
                       
-                    <c:if test="#{mbLogin.us.userTypeid == 1}">
+                    <c:if test="#{mbSession.usuario.userTypeid == 1}">
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
                           <ul class="dropdown-menu">
@@ -69,11 +73,19 @@
                           </ul>
                     </c:if>                                                  
                 </ul>
-              <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/shopping/currentShop.xhtml"><bnu:label text="Articulos"><bnu:badge value="#{sp.carCount()}"/></bnu:label></a></li>
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/auth/register.xhtml">Registrate</a></li>
-                  <li><a href="#{facesContext.externalContext.requestContextPath}/auth/login.xhtml">Ingresa</a></li>
-                </ul>
+                <c:if test="#{mbSession.usuario.id == null}">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/shopping/currentShop.xhtml"><bnu:label text="Articulos"><bnu:badge value="#{sp.carCount()}"/></bnu:label></a></li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/auth/register.xhtml">Registrate</a></li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/auth/login.xhtml">Ingresa</a></li>
+                    </ul>
+                </c:if>
+                <c:if test="#{mbSession.usuario.id > 0}">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">${mbSession.usuario.name}</a></li>
+                            <li><a href="#{mbSession.cerrarSession()}">Cerrar Sessión</a></li>
+                        </ul>
+                </c:if>    
             </div><!-- /.container-fluid -->
             </div>
           </nav>

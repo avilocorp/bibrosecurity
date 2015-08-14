@@ -6,6 +6,8 @@
 package DAOS;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import models.Item;
@@ -30,24 +32,31 @@ public class shoppingSaleOrderDAO extends DAO{
     }
     
     public int registrarSaleOrder (SaleOrder so) throws Exception{
-        int sale_id = 0;
+        int last_inserted_id =0;
+        //java.sql.RowId sale=null;
         try {
             this.connect();
             String query="insert into saleOrder ( subTotal, discount, total, type, partner_id)"
                     + "values (?,?,?,?,?); ";
-            PreparedStatement st=this.getCon().prepareStatement(query);
+            PreparedStatement st=this.getCon().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             st.setDouble(1, so.getSubTotal());
             st.setDouble(2, so.getDiscount());
             st.setDouble(3, so.getTotal());
             st.setString(4, so.getType());
             st.setInt(5, so.getPartnerId());
-            sale_id = st.executeUpdate();
+            st.executeUpdate();
+            ResultSet rs = st.getGeneratedKeys();
+            if(rs.next())
+            {
+                last_inserted_id = rs.getInt(1);
+            }           
         } catch (Exception e) {
              throw e;
         }finally{
             this.close();
         } 
-        return sale_id;
+        
+        return last_inserted_id;
     }
         
     public void registrarSaleOrderLine (Item item, int sale_order) throws Exception{

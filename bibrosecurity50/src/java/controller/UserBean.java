@@ -89,7 +89,7 @@ public class UserBean{
                             "Registro No Registrado","Registro No Registrado"));
 
         }
-return "http://localhost:8080/bibrosecurity50/index.xhtml";
+        return "/auth/login";
     }
     
  

@@ -5,9 +5,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:bnu="http://bootsfaces.net/ui"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionCliente()}"/>
     <ui:composition template="/template_public.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListProductTitle}"></h:outputText>
@@ -28,28 +28,33 @@
                     </bnu:row>
                     <bnu:row>
                         <h:form>
+                            <!--<c:set var="count" value="1"/>-->
                             <ui:repeat var="item" value="#{productController.items}">
-                                <bnu:column col-sm="6" col-md="3">
+<!--                                <c:if test="${count == 1}">
+                                    <div class="row">
+                                </c:if>
+                                <c:set var="count" value="${count + 1}"/>-->
+                                <bnu:column col-sm="6" col-md="4">
                                     <bnu:thumbnail>
                                         <h3 class="text-center"><b>#{item.name}</b></h3>
-                                        <!--<img src="https://placehold.it/250x200" alt="#{item.name}" width="200" height="250"/>-->
-                                        <img src="../resources/images/#{item.image}" alt="#{item.name}" width="200" height="250"/>
+                                        <img src="../resources/images/#{item.image}" alt="#{item.name}" width="200px" height="250px" class="image img-responsive"/>
                                         <f:facet name="caption">
-                                            <h:outputLabel>#{item.description}</h:outputLabel>
-                                            <h1 class="text-danger text-center"><b>$ #{item.salePrice}</b></h1>
-                                            <bnu:row class="text-center">
-<!--                                                <bnu:column col-sm="3" col-md="6">
-                                                    <bnu:inputText placeholder="Cantidad" class="pull-right">
-                                                        <f:facet name="quantity"></f:facet>
-                                                    </bnu:inputText>
-                                                </bnu:column>-->
-                                                <bnu:column class="row">
-                                                    <h:commandButton action="#{sp.add2car(item)}"  value="Añadir al carrito" class="btn btn-success btn-block pull-left"/>
+                                            <bnu:row style="height: 40px">
+                                                <bnu:column class="col-lg-12">
+                                                    <h:outputLabel>#{item.description}</h:outputLabel>
                                                 </bnu:column>
+                                            </bnu:row>
+                                            <bnu:row>
+                                                <bnu:column class="col-lg-6"><h2 class="text-danger text-center"><b>$ #{item.salePrice}</b></h2></bnu:column>
+                                                <bnu:column class="col-lg-6"><bnu:commandButton action="/auth/register"  value="Registrate" class="btn btn-info pull-left"/></bnu:column>
                                             </bnu:row>
                                         </f:facet>
                                     </bnu:thumbnail>
                                 </bnu:column>
+<!--                                <c:if test="${count == 3}">
+                                    </div>
+                                    <c:set var="count" value="1"/>
+                                </c:if>-->
                             </ui:repeat>
                         </h:form>
                     </bnu:row>

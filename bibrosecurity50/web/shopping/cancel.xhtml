@@ -2,13 +2,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Cencel</title>
     </h:head>
     <h:body>
-        <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
-        Hello from Facelets
+        <f:event type="preRenderView" listener="#{mbSession.buscarSesionCliente()}"/>
+        <ui:composition template="/template_public.xhtml">
+            <ui:define name="body">
+                <div class="jumbotron">
+                    <center>
+                        <img src="../resources/images/BiBroSecurity.png" alt="BibroSecurity"/>
+                    
+                    <h1>Su compra ha sido cancelada !</h1></center>
+                    <p><div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong class="text-center">Tranferencia Cancelada</strong>.
+                    </div>
+                    </p>
+                 </div>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

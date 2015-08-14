@@ -10,8 +10,10 @@ import java.io.Serializable;
 import models.Item;
 import java.util.*;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import models.Product;
 import models.SaleOrder;
 import models.SaleOrderLine;
@@ -26,6 +28,8 @@ public class ShoppingCart implements Serializable{
     private Date datetime;
     private String type;
     private int partner_id;
+    private mbLogin user_login;
+
 
     public ShoppingCart() {
     }
@@ -82,7 +86,7 @@ public class ShoppingCart implements Serializable{
             Date date = new Date();
             int so_id = 0;
             //List<SaleOrderLine> sl_ids = new ArrayList<SaleOrderLine>();
-            //if (usuarioController.getIdcliente() > 0) {
+        if (user_login.getUs().getId() > 0) {
                 
                 SaleOrder so = new SaleOrder(date, subTotal, 0.0 , total, "invoice", 1);
                 shoppingSaleOrderDAO insertar = new shoppingSaleOrderDAO();
@@ -93,11 +97,11 @@ public class ShoppingCart implements Serializable{
             car.clear();
         }
             return "List";
-//        } else {
-//            FacesContext faces = FacesContext.getCurrentInstance();
-//            faces.addMessage("mensajeError", new FacesMessage("Para poder comprar debes registrate o ingresar al sistema"));
-//            return "carrito";
-//        }
+        } else {
+            FacesContext faces = FacesContext.getCurrentInstance();
+            faces.addMessage("mensajeError", new FacesMessage("Para poder comprar debes registrate o ingresar al sistema"));
+            return "List";
+        }
     
     
     }
