@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:bnu="http://bootsfaces.net/ui">
+      xmlns:bnu="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:body>
         <nav class="navbar navbar-default">
@@ -17,7 +19,6 @@
                 </button>
                 <a class="navbar-brand" href="#{facesContext.externalContext.requestContextPath}/index.xhtml">Bibrosecurity</a>
               </div>
-
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
@@ -26,37 +27,8 @@
                       <li><a href="#{facesContext.externalContext.requestContextPath}/installers/index.xhtml">Directorio de instaladores</a></li>
                       <li><a href="#{facesContext.externalContext.requestContextPath}/index.xhtml#about-us">Acerca de</a></li>
                       <li><a href="#">Contactanos</a></li>
-
-                      <!--<li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#{facesContext.externalContext.requestContextPath}/product/List.xhtml">Productos</a></li>
-                            <li><a href="#{facesContext.externalContext.requestContextPath}/category/List.xhtml">Categorías de productos</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#{facesContext.externalContext.requestContextPath}/product/List.xhtml">Productos <span class="sr-only">(current)</span></a></li>
-                      <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Socios <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#{facesContext.externalContext.requestContextPath}/partner/List.xhtml">Clientes</a></li>
-                            <li><a href="#{facesContext.externalContext.requestContextPath}/partner/List.xhtml">Proveedores</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#{facesContext.externalContext.requestContextPath}/multimedia/List.xhtml">Multimedía</a></li>
-                      <li><a href="#{facesContext.externalContext.requestContextPath}/saleOrder/List.xhtml">Ordenes de venta</a></li>
-                      <li><a href="#{facesContext.externalContext.requestContextPath}/purchaseOrder/List.xhtml">Ordenes de compra</a></li>
-
-
-                      <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuración <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li role="separator" class="divider">Usuarios</li>
-                            <li><a href="#{facesContext.externalContext.requestContextPath}/user/List.xhtml">Usuarios</a></li>
-                            <li><a href="#{facesContext.externalContext.requestContextPath}/userType/List.xhtml">Tipos de usuario</a></li>
-                            <li role="separator" class="divider">Paqueterías</li>
-                            <li><a href="#{facesContext.externalContext.requestContextPath}/package/List.xhtml">Paqueterías</a></li>
-                          </ul>
-                      </li>
+                      
+                      <c:if test="#{mbLogin.us.userTypeid == 1}">
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
                           <ul class="dropdown-menu">
@@ -86,8 +58,40 @@
                             <li role="separator" class="divider">Paqueterías</li>
                             <li><a href="#{facesContext.externalContext.requestContextPath}/package/List.xhtml">Paqueterías</a></li>
                           </ul>
-                      </li>-->
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/product/List.xhtml">Productos</a></li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/category/List.xhtml">Categorías de productos</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/product/List.xhtml">Productos <span class="sr-only">(current)</span></a></li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Socios <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/partner/List.xhtml">Clientes</a></li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/partner/List.xhtml">Proveedores</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/multimedia/List.xhtml">Multimedía</a></li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/saleOrder/List.xhtml">Ordenes de venta</a></li>
+                      <li><a href="#{facesContext.externalContext.requestContextPath}/purchaseOrder/List.xhtml">Ordenes de compra</a></li>
+
+
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuración <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li role="separator" class="divider">Usuarios</li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/user/List.xhtml">Usuarios</a></li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/userType/List.xhtml">Tipos de usuario</a></li>
+                            <li role="separator" class="divider">Paqueterías</li>
+                            <li><a href="#{facesContext.externalContext.requestContextPath}/package/List.xhtml">Paqueterías</a></li>
+                          </ul>
+                      </li>
+                    </c:if>                                                  
                 </ul>
+                  
           <!--      <form class="navbar-form navbar-left" role="search">
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search"/>

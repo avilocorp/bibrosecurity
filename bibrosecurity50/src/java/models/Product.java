@@ -97,6 +97,17 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "partner_id")
     private int partnerId;
+    @Size(max = 1000)
+    @Column(name = "image")
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     
     public Product() {
     }

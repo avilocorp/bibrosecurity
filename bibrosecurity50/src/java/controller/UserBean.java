@@ -69,48 +69,27 @@ public class UserBean{
     public UserBean() {
     }
     
-    public String login() throws Exception {
-        UserDAO dao;
-        User temp;
-        try {
-            dao = new UserDAO();
-            temp = dao.login(usuario.getEmail(), usuario.getPassword());
-            if (temp != null) {
-                this.usuario = temp;
-                if(this.usuario.getUserTypeid()==1){
-                    return "menuAdmon";
-                }
-                if(this.usuario.getUserTypeid()==2)
-                {
-                    return "menuCliente";
-                }
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-        
-        return "";
-    }
-    
-    public void registrar(User user) throws Exception {
+    public String registrar() throws Exception {
         UserDAO dao;
         try {
             dao = new UserDAO();
-            dao.registrar(user);
+            dao.registrar(usuario);
             this.message = "Registro exitoso de usuario";
             usuario = null; //Limpiamos los inputs principales
             // Actualizamos la tabla, al momento de registrar un alumno
             //this.listar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO,"Registro Nuevo","Registro Nuevo"));
-            usuario = new User(); //generamos de nuevo el objeto alumno
-        } catch (Exception e) {
+            usuario = new User(); 
+              //generamos de nuevo el objeto alumno
+           
+         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(
                     null, new FacesMessage(
                             FacesMessage.SEVERITY_ERROR,
                             "Registro No Registrado","Registro No Registrado"));
 
         }
-
+return "http://localhost:8080/bibrosecurity50/index.xhtml";
     }
     
  

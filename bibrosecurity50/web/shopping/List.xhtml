@@ -25,26 +25,25 @@
                             <p:commandLink action="#{productController.previous}" value="#{views.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>
                             <p:commandLink action="#{productController.next}" value="#{views.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>
                         </bnu:column>
-                        <p:commandLink action="carritoactual" value="Carrito hasta el momento"/>
-
                     </bnu:row>
                     <bnu:row>
                         <h:form>
                             <ui:repeat var="item" value="#{productController.items}">
-                                <bnu:column col-sm="6" col-md="4">
+                                <bnu:column col-sm="6" col-md="3">
                                     <bnu:thumbnail>
                                         <h3 class="text-center"><b>#{item.name}</b></h3>
-                                        <img src="https://placehold.it/250x200" alt="#{item.name}"/>
+                                        <!--<img src="https://placehold.it/250x200" alt="#{item.name}" width="200" height="250"/>-->
+                                        <img src="../resources/images/#{item.image}" alt="#{item.name}" width="200" height="250"/>
                                         <f:facet name="caption">
                                             <h:outputLabel>#{item.description}</h:outputLabel>
                                             <h1 class="text-danger text-center"><b>$ #{item.salePrice}</b></h1>
                                             <bnu:row class="text-center">
-                                                <bnu:column col-sm="3" col-md="6">
+<!--                                                <bnu:column col-sm="3" col-md="6">
                                                     <bnu:inputText placeholder="Cantidad" class="pull-right">
                                                         <f:facet name="quantity"></f:facet>
                                                     </bnu:inputText>
-                                                </bnu:column>
-                                                <bnu:column col-sm="3" col-md="6">
+                                                </bnu:column>-->
+                                                <bnu:column class="row">
                                                     <h:commandButton action="#{sp.add2car(item)}"  value="Añadir al carrito" class="btn btn-success btn-block pull-left"/>
                                                 </bnu:column>
                                             </bnu:row>

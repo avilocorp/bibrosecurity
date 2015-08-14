@@ -44,15 +44,6 @@ public class mbLogin {
             {
                 facesMessage=new FacesMessage(FacesMessage.SEVERITY_ERROR, "USUARIO NO REGISTRADO", null);
                 faceContext.addMessage(null, facesMessage);
-                /*try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/auth/login" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
                 return "login";
             }
             else if(getUs().getName().equals("USUARIO NO REGISTRADO"))
