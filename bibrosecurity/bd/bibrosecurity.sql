@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
   `partner_id` INT NULL,
-  `active` TINYINT(1) NOT NULL DEFAULT 1,
+  `active` TINYINT(1)  NOT NULL DEFAULT 1,
   `userType_id` INT NOT NULL DEFAULT 2,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -115,6 +115,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `category_id` INT NOT NULL,
   `active` TINYINT(1) NOT NULL,
   `partner_id` INT NOT NULL,
+  `image` VARCHAR(1000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -309,14 +310,6 @@ ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
--- -----------------------------------------------------
--- Data for table `partner`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `bibroSecurity`;
-INSERT INTO `partner` (`id`, `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES (1, 'Administrador', 'Administrador', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin@bibroSecurity.com', 1, 1, NULL, NULL, NULL, NULL, 1);
-
-COMMIT;
 
 
 -- -----------------------------------------------------
@@ -335,9 +328,85 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bibroSecurity`;
-INSERT INTO `user` (`id`, `name`, `lastName`, `email`, `password`, `partner_id`, `active`, `userType_id`) VALUES (1, 'Administrador', 'Administrador', 'admin@bibroSecurity.com', 'admin', 1, 1, 1);
+INSERT INTO `user` (`id`, `name`, `lastName`, `email`, `password`,  `active`, `userType_id`) VALUES (1, 'Administrador', 'Administrador', 'admin@admin.com', 'admin', 1, 1);
 
 COMMIT;
+
+
+
+
+delimiter //
+CREATE TRIGGER utrg_UpdateQtyAvalible AFTER INSERT ON saleOrderLine
+FOR EACH ROW
+BEGIN
+	UPDATE product SET qtyAvailable = qtyAvailable - NEW.qty,virtualAvailable = virtualAvailable - NEW.qty 
+	WHERE id = NEW.product_id;
+END//
+
+
+-- delimiter //
+-- CREATE TRIGGER  Usuario_usertype AFTER INSERT ON user
+-- 	FOR EACH ROW
+-- 	BEGIN
+-- 	UPDATE user SET userType_id=2 where id=new.id;
+-- END//
+
+-- delimiter //
+-- CREATE TRIGGER  Usuario_partner AFTER INSERT ON user
+-- 	FOR EACH ROW
+-- 	BEGIN
+-- 	insert into partner(name,lastName,email,customer) values (new.name, new.lastName, new.email, true);
+-- 	set @id= (select max(id) from partner);
+-- 	UPDATE user SET partner_id=@id where id=new.id;
+-- END//
+
+delimiter ;
+
+
+-- -----------------------------------------------------
+-- Data for table `product`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bibroSecurity`;
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (1, 'Camara IP PTZ', 'Camara IP PTZ', 8500, 10800, 5, 3, 8, 'E918', 'ptz', 1, 1, 3, 'image1.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (2, 'DVR- multicanales', 'DVR- multicanales', 3200, 5000, 4, 2, 6, 'E731A', 'ptz', 1, 1, 3, 'image2.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (3, 'DVR- ADHUA', 'Multiple network monitoring: Web viewer, CMS(DSS/Smart PSS)&Smart Phone(DMSS)', 4500, 5500, 3, 2, 5, 'B64R', 'pz', 1, 1, 10, 'image3.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (4, 'DOMO IP PROFESIONAL EPCOM',  'DOMO IP PROFESIONAL EPCOM', 5000, 5800, 3, 2, 5, 'E65RA', 'PZ', 1, 1, 4, 'image4.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (5, 'CAMARA IP TIPO BALA 3MP', 'CAMARA IP TIPO BALA 3MP', 3000, 4000, 4, 3, 7, 'GR44', 'PZ', 1, 1, 5, 'image5.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (6, 'SOPORTE DE CAMARA TIPO BALA', 'SOPORTE DE CAMARA TIPO BALA', 900, 1300, 2, 3, 5, NULL, 'PZ', 1, 1, 2, 'image6.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (7, 'SOPORTE DE CAMARA PTZ', 'SOPORTE DE CAMARA PTZ', 1000, 1500, 3, 2, 5, NULL, 'PZ', 1, 1, 4, 'image7.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (8, 'CONTROL DE ACCESO OPTICO', 'CONTROL DE ACCESO OPTICO', 12000, 18000, 1, 1, 2, 'ERFF45', 'PZ', 1, 1, 4, 'image8.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (9, 'CONTROL DE ACCESO DE HUELLA', 'CONTROL DE ACCESO DE HUELLA', 1450, 20000, 1, 0, 1, 'SSE345', 'PZ', 1, 1, 6, 'image9.png');
+INSERT INTO `product` (`id`, `name`, `description`, `purchasePrice`, `salePrice`, `qtyAvailable`, `incomingQty`, `virtualAvailable`, `ean13`, `uom`, `category_id`, `active`, `partner_id`, `image`) VALUES (10, 'CAMARA ADHUA PARA EXTERIORES', 'CAMARA ADHUA PARA EXTERIORES', 6700, 7500, 2, 1, 3, 'EQW3', 'PZ', 1, 1, 10, 'image10.png');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `partner`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bibroSecurity`;
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'HIKVISION', '', 'Avenida Industrial', '372', NULL, 'Industrial', '87662', 'JALISCO', '2345612', NULL, 'contacto@hikvision.com.mx', 0, 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'EPCOM', '', 'Avenida de los Insurgentes', '1504', NULL, 'Insurgentes', '47843', 'D.F', '3456782', NULL, 'ventas@epcom.com.mx', 0, 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'IDIS', 'IDIS', 'Avenida de las Lomas', '293', NULL, 'Las Lomas', '34985', 'EDO. MEXICO', '4 566253', NULL, 'Brendalopez@idis.com', 0, 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` (`name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'ACTI', 'ACTI', 'Revolucion', '1001', NULL, 'Arcos del Sol', '56719', 'MONTERREY', NULL, NULL, 'ventas@acti.com', 0, 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` (`name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'NUUO', 'NUUO', 'Paseo de los Insurgentes', '102', '29', 'Insurgentes', '47923', 'D.F', '3568213', NULL, 'contacto@nuuo.com.mx', 0, 1, '', NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'JVC', 'JVC', 'Lomas de Ginea', '1101', NULL, 'Lomas de Barcelona', '56774', 'MONTERREY', '3425117', NULL, 'contacto@jvc.com.mx', 0, 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'BELDEN', 'BELDEN', 'Alcatraz', '2652', NULL, 'Los Romeros', '87252', 'JALISCO', '2366621', NULL, 'gonzalo@belden.com.mx', 0, 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'HOCHIKI', 'HOCHIKI', 'Altamirano', '231', NULL, 'Reforma', '56722', 'CUERNAVACA', '2342561', NULL, 'miriam@hochiki.com.mx', 0, 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ('HONEYWELL', 'HONEYWELL', 'Plan de Ayala', '554', NULL, 'Mexico', '72622', 'EDO. MEXICO', '4352366', NULL, 'ventas@honeywell.com.mx', 0, 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'DAHUA', 'DAHUA', 'Loma Antigua', '314', NULL, 'Las Lomas', '34985', 'EDO. MEXXICO', '3456116', NULL, 'ventas@dahua.com.mx', 0, 1, '', NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'IVAN', 'GOMEZ', 'La martinica', '1322', NULL, 'Lopez Mateos Blvd.', '37889', 'LEON', '3221144', NULL, 'ivang@hotmail.com', 1, 0, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'DANIEL', 'GARCIA', 'Jardinez del moral', '321', NULL, 'Paseos del moral', '78358', 'LEON', '7778821', NULL, 'miss@hotail.com', 1, 0, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'CURTIDOZ DE ALTA CALIDAD', 'algo', 'Burundanga', '1221', NULL, 'El Cohecillo', '37892', 'LEON', '7882173', NULL, 'yuliana@gac.com', 1, 0, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'PATRONATO DE LA FERIA DE LEON Y PARQUE EXPLORA', 'algo', 'La Martinica', '2309', NULL, 'Lopez Mateos Blvd', '37000', 'LEON', '7466098', NULL, 'comunicaciones@ferialeon.org', 1, 0, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'EDUARDO ', 'PEREZ', '5 de Febrero', '4323', NULL, 'Centro', '37000', 'LEON', '7009273', NULL, 'perez9000@outlook.com', 1, 0, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ( 'YESENIA', 'LAZALDE', 'Lomas del Campestre', '767', NULL, 'Campestre', '37090', 'LEON', '7882244', NULL, 'lazalde19@hotmail.com', 1, 0, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `partner` ( `name`, `lastName`, `street`, `noExt`, `noInt`, `colony`, `zip`, `locality`, `phone`, `mobile`, `email`, `customer`, `supplier`, `image`, `city_id`, `state_id`, `country_id`, `active`) VALUES ('administrador', 'administrador', NULL, NULL, NULL, NULL, NULL, 'LEON', '7989834', NULL, 'administrador@bibrosecurity.com', 1, 0, NULL, NULL, NULL, NULL, 1);
+
+COMMIT;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

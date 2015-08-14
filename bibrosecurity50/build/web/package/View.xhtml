@@ -3,8 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ViewPackageTitle}"></h:outputText>
@@ -25,14 +27,14 @@
                     <h:outputText value="#{packageController.selected.active}" title="#{views.ViewPackageTitle_active}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{packageController.destroyAndView}" value="#{views.ViewPackageDestroyLink}"/>
+                <p:commandLink action="#{packageController.destroyAndView}" value="#{views.ViewPackageDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewPackageEditLink}"/>
                 <br />
-                <h:commandLink action="#{packageController.prepareCreate}" value="#{views.ViewPackageCreateLink}" />
+                <p:commandLink action="#{packageController.prepareCreate}" value="#{views.ViewPackageCreateLink}" />
                 <br />
-                <h:commandLink action="#{packageController.prepareList}" value="#{views.ViewPackageShowAllLink}"/>
+                <p:commandLink action="#{packageController.prepareList}" value="#{views.ViewPackageShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewPackageIndexLink}"/>

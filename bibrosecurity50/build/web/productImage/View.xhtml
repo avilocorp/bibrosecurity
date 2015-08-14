@@ -3,8 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ViewProductImageTitle}"></h:outputText>
@@ -25,14 +27,14 @@
                     <h:outputText value="#{productImageController.selected.description}" title="#{views.ViewProductImageTitle_description}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{productImageController.destroyAndView}" value="#{views.ViewProductImageDestroyLink}"/>
+                <p:commandLink action="#{productImageController.destroyAndView}" value="#{views.ViewProductImageDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewProductImageEditLink}"/>
                 <br />
-                <h:commandLink action="#{productImageController.prepareCreate}" value="#{views.ViewProductImageCreateLink}" />
+                <p:commandLink action="#{productImageController.prepareCreate}" value="#{views.ViewProductImageCreateLink}" />
                 <br />
-                <h:commandLink action="#{productImageController.prepareList}" value="#{views.ViewProductImageShowAllLink}"/>
+                <p:commandLink action="#{productImageController.prepareList}" value="#{views.ViewProductImageShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewProductImageIndexLink}"/>

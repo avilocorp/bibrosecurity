@@ -52,7 +52,7 @@ public class UserDAO extends DAO{
             st.setString(2, user.getLastName());
             st.setString(3, user.getEmail());
             st.setString(4, user.getPassword());
-            st.setInt(5, user.getUserTypeid());
+            st.setInt(5, 2);
             st.executeUpdate();
         } catch (Exception e) {
             throw e;

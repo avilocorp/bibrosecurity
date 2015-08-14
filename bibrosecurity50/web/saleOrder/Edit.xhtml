@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.EditSaleOrderTitle}"></h:outputText>
@@ -35,12 +36,12 @@
                     <h:outputLabel value="#{views.EditSaleOrderLabel_partnerId}" for="partnerId" />
                     <h:inputText id="partnerId" value="#{saleOrderController.selected.partnerId}" title="#{views.EditSaleOrderTitle_partnerId}" required="true" requiredMessage="#{views.EditSaleOrderRequiredMessage_partnerId}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{saleOrderController.update}" value="#{views.EditSaleOrderSaveLink}"/>
+                <p:commandLink action="#{saleOrderController.update}" value="#{views.EditSaleOrderSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditSaleOrderViewLink}"/>
                 <br />
-                <h:commandLink action="#{saleOrderController.prepareList}" value="#{views.EditSaleOrderShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{saleOrderController.prepareList}" value="#{views.EditSaleOrderShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditSaleOrderIndexLink}" />

@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.EditProductImageTitle}"></h:outputText>
@@ -25,12 +26,12 @@
                     <h:outputLabel value="#{views.EditProductImageLabel_description}" for="description" />
                     <h:inputText id="description" value="#{productImageController.selected.description}" title="#{views.EditProductImageTitle_description}" />
                 </h:panelGrid>
-                <h:commandLink action="#{productImageController.update}" value="#{views.EditProductImageSaveLink}"/>
+                <p:commandLink action="#{productImageController.update}" value="#{views.EditProductImageSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditProductImageViewLink}"/>
                 <br />
-                <h:commandLink action="#{productImageController.prepareList}" value="#{views.EditProductImageShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{productImageController.prepareList}" value="#{views.EditProductImageShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditProductImageIndexLink}" />

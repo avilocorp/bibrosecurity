@@ -7,7 +7,7 @@
       xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListPartnerTitle}"></h:outputText>
@@ -23,8 +23,8 @@
                 <h:outputText escape="false" value="#{views.ListPartnerEmpty}" rendered="#{partnerController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{partnerController.items.rowCount > 0}">
                     <h:outputText value="#{partnerController.pagination.pageFirstItem + 1}..#{partnerController.pagination.pageLastItem + 1}/#{partnerController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{partnerController.previous}" value="#{views.Previous} #{partnerController.pagination.pageSize}" rendered="#{partnerController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{partnerController.next}" value="#{views.Next} #{partnerController.pagination.pageSize}" rendered="#{partnerController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{partnerController.previous}" value="#{views.Previous} #{partnerController.pagination.pageSize}" rendered="#{partnerController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{partnerController.next}" value="#{views.Next} #{partnerController.pagination.pageSize}" rendered="#{partnerController.pagination.hasNextPage}"/>&nbsp;
                     <p:dataTable value="#{partnerController.items}" 
                                  var="item" 
                                  class="table table-hover"

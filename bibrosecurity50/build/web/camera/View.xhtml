@@ -5,6 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ViewCameraTitle}"></h:outputText>
@@ -25,14 +26,14 @@
                     <h:outputText value="#{cameraController.selected.active}" title="#{views.ViewCameraTitle_active}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{cameraController.destroyAndView}" value="#{views.ViewCameraDestroyLink}"/>
+                <p:commandLink action="#{cameraController.destroyAndView}" value="#{views.ViewCameraDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewCameraEditLink}"/>
                 <br />
-                <h:commandLink action="#{cameraController.prepareCreate}" value="#{views.ViewCameraCreateLink}" />
+                <p:commandLink action="#{cameraController.prepareCreate}" value="#{views.ViewCameraCreateLink}" />
                 <br />
-                <h:commandLink action="#{cameraController.prepareList}" value="#{views.ViewCameraShowAllLink}"/>
+                <p:commandLink action="#{cameraController.prepareList}" value="#{views.ViewCameraShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewCameraIndexLink}"/>

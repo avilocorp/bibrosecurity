@@ -5,6 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.EditCategoryTitle}"></h:outputText>
@@ -32,12 +34,12 @@
                     <h:outputLabel value="#{views.EditCategoryLabel_fullName}" for="fullName" />
                     <h:inputText id="fullName" value="#{categoryController.selected.fullName}" title="#{views.EditCategoryTitle_fullName}" />
                 
-                <h:commandLink action="#{categoryController.update}" value="#{views.EditCategorySaveLink}"/>
+                <p:commandLink action="#{categoryController.update}" value="#{views.EditCategorySaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditCategoryViewLink}"/>
                 <br />
-                <h:commandLink action="#{categoryControler.prepareList}" value="#{views.EditCategoryShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{categoryControler.prepareList}" value="#{views.EditCategoryShowAllLink}" immediate="true"/>
                 <br />
                 <br />           
                 </h:form>

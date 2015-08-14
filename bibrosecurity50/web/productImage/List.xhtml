@@ -7,7 +7,7 @@
       xmlns:bnu="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListProductImageTitle}"></h:outputText>
@@ -24,8 +24,8 @@
                 <h:outputText escape="false" value="#{views.ListProductImageEmpty}" rendered="#{productImageController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{productImageController.items.rowCount > 0}">
                     <h:outputText value="#{productImageController.pagination.pageFirstItem + 1}..#{productImageController.pagination.pageLastItem + 1}/#{productImageController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{productImageController.previous}" value="#{views.Previous} #{productImageController.pagination.pageSize}" rendered="#{productImageController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{productImageController.next}" value="#{views.Next} #{productImageController.pagination.pageSize}" rendered="#{productImageController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{productImageController.previous}" value="#{views.Previous} #{productImageController.pagination.pageSize}" rendered="#{productImageController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{productImageController.next}" value="#{views.Next} #{productImageController.pagination.pageSize}" rendered="#{productImageController.pagination.hasNextPage}"/>&nbsp;
                      <p:dataTable value="#{productImageController.items}" 
                                  var="item" 
                                  class="table table-hover"
@@ -62,16 +62,16 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{productImageController.prepareView}" value="#{views.ListProductImageViewLink}"/>
+                            <p:commandLink action="#{productImageController.prepareView}" value="#{views.ListProductImageViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{productImageController.prepareEdit}" value="#{views.ListProductImageEditLink}"/>
+                            <p:commandLink action="#{productImageController.prepareEdit}" value="#{views.ListProductImageEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{productImageController.destroy}" value="#{views.ListProductImageDestroyLink}"/>
+                            <p:commandLink action="#{productImageController.destroy}" value="#{views.ListProductImageDestroyLink}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{productImageController.prepareCreate}" value="#{views.ListProductImageCreateLink}"/>
+                <p:commandLink action="#{productImageController.prepareCreate}" value="#{views.ListProductImageCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ListProductImageIndexLink}"/>

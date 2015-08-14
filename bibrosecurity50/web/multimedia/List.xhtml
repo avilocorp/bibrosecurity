@@ -7,7 +7,7 @@ xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:bnu="http://bootsfaces.net/ui">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListMultimediaTitle}"></h:outputText>
@@ -23,8 +23,8 @@ xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 <h:outputText escape="false" value="#{views.ListMultimediaEmpty}" rendered="#{multimediaController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{multimediaController.items.rowCount > 0}">
                     <h:outputText value="#{multimediaController.pagination.pageFirstItem + 1}..#{multimediaController.pagination.pageLastItem + 1}/#{multimediaController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{multimediaController.previous}" value="#{views.Previous} #{multimediaController.pagination.pageSize}" rendered="#{multimediaController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{multimediaController.next}" value="#{views.Next} #{multimediaController.pagination.pageSize}" rendered="#{multimediaController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{multimediaController.previous}" value="#{views.Previous} #{multimediaController.pagination.pageSize}" rendered="#{multimediaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{multimediaController.next}" value="#{views.Next} #{multimediaController.pagination.pageSize}" rendered="#{multimediaController.pagination.hasNextPage}"/>&nbsp;
                     <p:dataTable value="#{multimediaController.items}" 
                                  var="item" 
                                  class="table table-hover"
@@ -70,7 +70,7 @@ xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                     </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{multimediaController.prepareCreate}" value="#{views.ListMultimediaCreateLink}"/>
+                <p:commandLink action="#{multimediaController.prepareCreate}" value="#{views.ListMultimediaCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ListMultimediaIndexLink}"/>

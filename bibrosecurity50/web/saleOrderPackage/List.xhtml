@@ -8,7 +8,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListSaleOrderPackageTitle}"></h:outputText>
@@ -26,8 +26,8 @@
                 <h:outputText escape="false" value="#{views.ListSaleOrderPackageEmpty}" rendered="#{saleOrderPackageController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{saleOrderPackageController.items.rowCount > 0}">
                     <h:outputText value="#{saleOrderPackageController.pagination.pageFirstItem + 1}..#{saleOrderPackageController.pagination.pageLastItem + 1}/#{saleOrderPackageController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{saleOrderPackageController.previous}" value="#{views.Previous} #{saleOrderPackageController.pagination.pageSize}" rendered="#{saleOrderPackageController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{saleOrderPackageController.next}" value="#{views.Next} #{saleOrderPackageController.pagination.pageSize}" rendered="#{saleOrderPackageController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{saleOrderPackageController.previous}" value="#{views.Previous} #{saleOrderPackageController.pagination.pageSize}" rendered="#{saleOrderPackageController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{saleOrderPackageController.next}" value="#{views.Next} #{saleOrderPackageController.pagination.pageSize}" rendered="#{saleOrderPackageController.pagination.hasNextPage}"/>&nbsp;
                                 <p:dataTable value="#{saleOrderPackageController.items}" 
                                  var="item" 
                                  class="table table-hover"
@@ -86,16 +86,16 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{saleOrderPackageController.prepareView}" value="#{views.ListSaleOrderPackageViewLink}"/>
+                            <p:commandLink action="#{saleOrderPackageController.prepareView}" value="#{views.ListSaleOrderPackageViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{saleOrderPackageController.prepareEdit}" value="#{views.ListSaleOrderPackageEditLink}"/>
+                            <p:commandLink action="#{saleOrderPackageController.prepareEdit}" value="#{views.ListSaleOrderPackageEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{saleOrderPackageController.destroy}" value="#{views.ListSaleOrderPackageDestroyLink}"/>
+                            <p:commandLink action="#{saleOrderPackageController.destroy}" value="#{views.ListSaleOrderPackageDestroyLink}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{saleOrderPackageController.prepareCreate}" value="#{views.ListSaleOrderPackageCreateLink}"/>
+                <p:commandLink action="#{saleOrderPackageController.prepareCreate}" value="#{views.ListSaleOrderPackageCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ListSaleOrderPackageIndexLink}"/>

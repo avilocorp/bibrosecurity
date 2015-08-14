@@ -3,8 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.EditPurchaseOrderLineTitle}"></h:outputText>
@@ -28,12 +30,12 @@
                     <h:outputLabel value="#{views.EditPurchaseOrderLineLabel_purchaseOrderid}" for="purchaseOrderid" />
                     <h:inputText id="purchaseOrderid" value="#{purchaseOrderLineController.selected.purchaseOrderid}" title="#{views.EditPurchaseOrderLineTitle_purchaseOrderid}" required="true" requiredMessage="#{views.EditPurchaseOrderLineRequiredMessage_purchaseOrderid}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{purchaseOrderLineController.update}" value="#{views.EditPurchaseOrderLineSaveLink}"/>
+                <p:commandLink action="#{purchaseOrderLineController.update}" value="#{views.EditPurchaseOrderLineSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{views.EditPurchaseOrderLineViewLink}"/>
                 <br />
-                <h:commandLink action="#{purchaseOrderLineController.prepareList}" value="#{views.EditPurchaseOrderLineShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{purchaseOrderLineController.prepareList}" value="#{views.EditPurchaseOrderLineShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.EditPurchaseOrderLineIndexLink}" />

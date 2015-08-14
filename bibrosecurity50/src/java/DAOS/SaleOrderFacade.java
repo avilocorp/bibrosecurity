@@ -5,6 +5,7 @@
  */
 package DAOS;
 
+import java.sql.PreparedStatement;
 import models.SaleOrder;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,4 +29,6 @@ public class SaleOrderFacade extends AbstractFacade<SaleOrder> {
         super(SaleOrder.class);
     }
     
-}
+    }
+    
+

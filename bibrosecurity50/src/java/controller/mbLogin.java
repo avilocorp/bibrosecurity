@@ -44,62 +44,9 @@ public class mbLogin {
             {
                 facesMessage=new FacesMessage(FacesMessage.SEVERITY_ERROR, "USUARIO NO REGISTRADO", null);
                 faceContext.addMessage(null, facesMessage);
-                /*try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/auth/login" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
-                return "login";
+                return "index";
             }
-            else if(getUs().getName().equals("USUARIO NO REGISTRADO"))
-            {
-                facesMessage=new FacesMessage(FacesMessage.SEVERITY_ERROR, "USUARIO NO REGISTRADO", null);
-                faceContext.addMessage(null, facesMessage);
-                /* try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/auth/login" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
-                    return "login";
-            }
-            else if(getUs().getName().equals("USUARIO NO ACTIVO"))
-            {
-                facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "USUARIO NO ACTIVO", null);
-                faceContext.addMessage(null, facesMessage);
-                /* try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/auth/login" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
-                return "login";
-            }
-            else if(getUs().getName().equals("CONTRASEÑA ERRÓNEA"))
-            {
-                facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "CONTRASEÑA ERRÓNEA", null);
-                faceContext.addMessage(null, facesMessage);
-                 /*try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/auth/login" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
-                return "login";
-            }
+            
             else
             {
                 if(getUs().getUserTypeid()==1)
@@ -107,47 +54,14 @@ public class mbLogin {
                     httpServletRequest.getSession().setAttribute("sessionUsuario", getUs());
                     facesMessage=new FacesMessage(FacesMessage.SEVERITY_ERROR, "BIENVENIDO(A) AL SISTEMA "+getUs().getName()+" "+getUs().getLastName(), null);
                     faceContext.addMessage(null, facesMessage);
-                    /*try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/admin/AdminIndex" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
-                    return "/admin/AdminIndex";
+                      return "/admin/AdminIndex";
                 }
                 else if(getUs().getUserTypeid()==2)
                 {
                     httpServletRequest.getSession().setAttribute("sessionUsuario", getUs());
                     facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "BIENVENIDO(A) AL SISTEMA "+getUs().getName()+" "+getUs().getLastName(), null);
                     faceContext.addMessage(null, facesMessage);
-                    /*try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/admin/AdminIndex" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
-                    return "/client/ClientIndex";
-                }
-                else
-                {
-                    facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "ACCESO DENEGADO", null);
-                    faceContext.addMessage(null, facesMessage);
-                    /*try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/auth/login" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
-                    return "login";
+                    return "/shopping/List";
                 }
             }
         }
@@ -155,17 +69,9 @@ public class mbLogin {
         {
             facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "LLENE LOS CAMPOS REQUERIDOS ANTES DE TRATAR DE INGRESAR", null);
             faceContext.addMessage(null, facesMessage);
-             /*try
-                    {
-                        FacesContext contex = FacesContext.getCurrentInstance();
-                        contex.getExternalContext().redirect( "/auth/login" );
-                    }
-                    catch(  Exception e )
-                    {
-                        
-                    }*/
-            return "login";
+            return "index";
         }
+        return "index";
     }
 
     public String getUsuario() {

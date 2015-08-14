@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ViewPurchaseOrderTitle}"></h:outputText>
@@ -32,14 +33,14 @@
                     <h:outputText value="#{purchaseOrderController.selected.partnerId}" title="#{views.ViewPurchaseOrderTitle_partnerId}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{purchaseOrderController.destroyAndView}" value="#{views.ViewPurchaseOrderDestroyLink}"/>
+                <p:commandLink action="#{purchaseOrderController.destroyAndView}" value="#{views.ViewPurchaseOrderDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewPurchaseOrderEditLink}"/>
                 <br />
-                <h:commandLink action="#{purchaseOrderController.prepareCreate}" value="#{views.ViewPurchaseOrderCreateLink}" />
+                <p:commandLink action="#{purchaseOrderController.prepareCreate}" value="#{views.ViewPurchaseOrderCreateLink}" />
                 <br />
-                <h:commandLink action="#{purchaseOrderController.prepareList}" value="#{views.ViewPurchaseOrderShowAllLink}"/>
+                <p:commandLink action="#{purchaseOrderController.prepareList}" value="#{views.ViewPurchaseOrderShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewPurchaseOrderIndexLink}"/>

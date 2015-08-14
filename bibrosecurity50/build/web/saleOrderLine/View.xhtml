@@ -3,8 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ViewSaleOrderLineTitle}"></h:outputText>
@@ -29,14 +31,14 @@
                     <h:outputText value="#{saleOrderLineController.selected.productId}" title="#{views.ViewSaleOrderLineTitle_productId}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{saleOrderLineController.destroyAndView}" value="#{views.ViewSaleOrderLineDestroyLink}"/>
+                <p:commandLink action="#{saleOrderLineController.destroyAndView}" value="#{views.ViewSaleOrderLineDestroyLink}"/>
                 <br />
                 <br />
                 <h:link outcome="Edit" value="#{views.ViewSaleOrderLineEditLink}"/>
                 <br />
-                <h:commandLink action="#{saleOrderLineController.prepareCreate}" value="#{views.ViewSaleOrderLineCreateLink}" />
+                <p:commandLink action="#{saleOrderLineController.prepareCreate}" value="#{views.ViewSaleOrderLineCreateLink}" />
                 <br />
-                <h:commandLink action="#{saleOrderLineController.prepareList}" value="#{views.ViewSaleOrderLineShowAllLink}"/>
+                <p:commandLink action="#{saleOrderLineController.prepareList}" value="#{views.ViewSaleOrderLineShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ViewSaleOrderLineIndexLink}"/>

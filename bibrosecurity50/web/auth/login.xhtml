@@ -31,7 +31,7 @@
                                     <bnu:inputSecret id="nonFeedback" placeholder="Password" value="#{mbLogin.contrasenia}"/>
                                 </bnu:column>
                                 <bnu:column span="9" offset="3" class="pull-right text-center">
-                                    <bnu:commandButton value="Enter" class="btn btn-primary btn-lg" action="#{mbLogin.login()}"/>
+                                    <p:commandButton value="Enter" class="btn btn-primary btn-lg" action="#{mbLogin.login()}" ajax="true"/>
                                 </bnu:column>
                             </bnu:row>
                         </bnu:column>

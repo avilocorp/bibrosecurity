@@ -7,7 +7,7 @@ xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:bnu="http://bootsfaces.net/ui">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListServiceCameraTitle}"></h:outputText>
@@ -23,8 +23,8 @@ xmlns:p="http://primefaces.org/ui"
                 <h:outputText escape="false" value="#{views.ListServiceCameraEmpty}" rendered="#{serviceCameraController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{serviceCameraController.items.rowCount > 0}">
                     <h:outputText value="#{serviceCameraController.pagination.pageFirstItem + 1}..#{serviceCameraController.pagination.pageLastItem + 1}/#{serviceCameraController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{serviceCameraController.previous}" value="#{views.Previous} #{serviceCameraController.pagination.pageSize}" rendered="#{serviceCameraController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{serviceCameraController.next}" value="#{views.Next} #{serviceCameraController.pagination.pageSize}" rendered="#{serviceCameraController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{serviceCameraController.previous}" value="#{views.Previous} #{serviceCameraController.pagination.pageSize}" rendered="#{serviceCameraController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{serviceCameraController.next}" value="#{views.Next} #{serviceCameraController.pagination.pageSize}" rendered="#{serviceCameraController.pagination.hasNextPage}"/>&nbsp;
                      <p:dataTable value="#{serviceCameraController.items}" 
                                  var="item" 
                                  class="table table-hover"
@@ -64,7 +64,7 @@ xmlns:p="http://primefaces.org/ui"
                     </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{serviceCameraController.prepareCreate}" value="#{views.ListServiceCameraCreateLink}"/>
+                <p:commandLink action="#{serviceCameraController.prepareCreate}" value="#{views.ListServiceCameraCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.ListServiceCameraIndexLink}"/>

@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:bnu="http://bootsfaces.net/ui">
 
-    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ListCategoryTitle}"></h:outputText>
@@ -23,8 +23,8 @@
                 <h:outputText escape="false" value="#{views.ListCategoryEmpty}" rendered="#{categoryController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{categoryController.items.rowCount > 0}">
                     <h:outputText value="#{categoryController.pagination.pageFirstItem + 1}..#{categoryController.pagination.pageLastItem + 1}/#{categoryController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{categoryController.previous}" value="#{views.Previous} #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{categoryController.next}" value="#{views.Next} #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasNextPage}"/>&nbsp;
+                    <p:commandLink action="#{categoryController.previous}" value="#{views.Previous} #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasPreviousPage}"/>&nbsp;
+                    <p:commandLink action="#{categoryController.next}" value="#{views.Next} #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasNextPage}"/>&nbsp;
                      <p:dataTable value="#{categoryController.items}" 
                                  var="item" 
                                  class="table table-hover"
@@ -62,11 +62,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{categoryController.prepareView}" value="#{views.ListCategoryViewLink}"/>
+                            <p:commandLink action="#{categoryController.prepareView}" value="#{views.ListCategoryViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{categoryController.prepareEdit}" value="#{views.ListCategoryEditLink}"/>
+                            <p:commandLink action="#{categoryController.prepareEdit}" value="#{views.ListCategoryEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{categoryController.destroy}" value="#{views.ListCategoryDestroyLink}"/>
+                            <p:commandLink action="#{categoryController.destroy}" value="#{views.ListCategoryDestroyLink}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>

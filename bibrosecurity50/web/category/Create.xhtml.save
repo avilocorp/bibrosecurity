@@ -25,10 +25,10 @@
                     <h:inputText id="fullName" value="#{categoryController.selected.fullName}" title="#{views.CreateCategoryTitle_fullName}" />
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{categoryController.create}" value="#{views.CreateCategorySaveLink}" />
+                <p:commandLink action="#{categoryController.create}" value="#{views.CreateCategorySaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{categoryController.prepareList}" value="#{views.CreateCategoryShowAllLink}" immediate="true"/>
+                <p:commandLink action="#{categoryController.prepareList}" value="#{views.CreateCategoryShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{views.CreateCategoryIndexLink}"/>
