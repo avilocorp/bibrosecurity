@@ -28,27 +28,19 @@ public class Logeo extends DAO{
     {
         //Object[] datos=null;
         User us=null;
-        String consulta="SELECT * FROM user WHERE email LIKE ?;";
+        String consulta="SELECT * FROM user WHERE email LIKE ? and password=?;";
         user=user.replace("'", "");
         this.connect();
         try
         {
             PreparedStatement pst=this.getCon().prepareCall(consulta);
             pst.setString(1, user);
+            pst.setString(2, password);
             ResultSet rs=pst.executeQuery();
             
             if(rs.next())
             {
                 us=new User();
-                /*datos=new Object[8];
-                datos[0]=rs.getInt(1);
-                datos[1]=rs.getString(2);
-                datos[2]=rs.getString(3);
-                datos[3]=rs.getString(4);
-                datos[4]=rs.getString(5);
-                datos[5]=rs.getInt(6);
-                datos[6]=rs.getInt(7);
-                datos[7]=rs.getInt(8);*/
                 us.setId(rs.getInt(1));
                 us.setName(rs.getString(2));
                 us.setLastName(rs.getString(3));

@@ -25,47 +25,18 @@ public class MbSession {
     private final FacesContext faceContext;
     private FacesMessage facesMessage;
      
-    public MbSession() 
+    public MbSession()
     {
         faceContext=FacesContext.getCurrentInstance();
         httpServletRequest=(HttpServletRequest)faceContext.getExternalContext().getRequest();
         if(httpServletRequest.getSession().getAttribute("sessionUsuario")!=null)
         {
+            System.out.println(""+httpServletRequest.getSession().getAttribute("sessionUsuario"));
             usuario=(User) httpServletRequest.getSession().getAttribute("sessionUsuario");
-        }
-        else
-        {
-            usuario=null;
         }
     }
      
-//    public void buscarSesionAdmin()
-//    {
-//        if(usuario==null || usuario.getUserTypeid()!=1)
-//        {
-//            try
-//            {
-//                faceContext.getExternalContext().redirect("/auth/login.xhtml");
-//            }
-//            catch(  Exception e )
-//            {
-//            }
-//        }
-//    }
-//    public void buscarSesionCliente()
-//    {
-//        if(usuario==null || usuario.getUserTypeid()!=2)
-//        {
-//            try
-//            {
-//                faceContext.getExternalContext().redirect("/auth/login.xhtml");
-//            }
-//            catch(  Exception e )
-//            {
-//            }
-//        }
-//    }
-    public String cerrarSession()
+   public String cerrarSession()
     {
         httpServletRequest.getSession().removeAttribute("sessionUsuario");
         facesMessage=new FacesMessage(FacesMessage.SEVERITY_INFO, "Session cerrada correctamente", null);

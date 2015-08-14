@@ -44,27 +44,9 @@ public class mbLogin {
             {
                 facesMessage=new FacesMessage(FacesMessage.SEVERITY_ERROR, "USUARIO NO REGISTRADO", null);
                 faceContext.addMessage(null, facesMessage);
-                return "login";
+                return "index";
             }
-            else if(getUs().getName().equals("USUARIO NO REGISTRADO"))
-            {
-                facesMessage=new FacesMessage(FacesMessage.SEVERITY_ERROR, "USUARIO NO REGISTRADO", null);
-                faceContext.addMessage(null, facesMessage);
-                    return "login";
-            }
-            else if(getUs().getName().equals("USUARIO NO ACTIVO"))
-            {
-                facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "USUARIO NO ACTIVO", null);
-                faceContext.addMessage(null, facesMessage);
-                return "login";
-            }
-            else if(getUs().getName().equals("CONTRASEÑA ERRÓNEA"))
-            {
-                facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "CONTRASEÑA ERRÓNEA", null);
-                faceContext.addMessage(null, facesMessage);
-
-                return "login";
-            }
+            
             else
             {
                 if(getUs().getUserTypeid()==1)
@@ -81,20 +63,15 @@ public class mbLogin {
                     faceContext.addMessage(null, facesMessage);
                     return "/shopping/List";
                 }
-                else
-                {
-                    facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "ACCESO DENEGADO", null);
-                    faceContext.addMessage(null, facesMessage);
-                    return "login";
-                }
             }
         }
         else
         {
             facesMessage=new FacesMessage(FacesMessage.SEVERITY_WARN, "LLENE LOS CAMPOS REQUERIDOS ANTES DE TRATAR DE INGRESAR", null);
             faceContext.addMessage(null, facesMessage);
-            return "login";
+            return "index";
         }
+        return "index";
     }
 
     public String getUsuario() {

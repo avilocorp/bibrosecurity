@@ -9,4 +9,11 @@
             <var>views</var>
         </resource-bundle>
     </application>
+    <navigation-rule>
+        <from-view-id>/auth/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/shopping/List.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
