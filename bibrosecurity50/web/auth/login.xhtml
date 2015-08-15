@@ -9,7 +9,8 @@
 
     <h:body>
 
-        <ui:composition template="/template_public.xhtml">
+        <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+        <ui:composition template="/template_Public.xhtml">
 
             <ui:define name="title">
                 Logueo

@@ -11,7 +11,7 @@
     </h:head>
     <h:body>
         
-        <ui:composition template="/template_public.xhtml">
+        <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/><ui:composition template="/template_Public.xhtml">
         <ui:define name="title">Pago</ui:define>
         <ui:define name="body">
             <div class="row" style="margin-bottom:50px;margin-top: 50px">

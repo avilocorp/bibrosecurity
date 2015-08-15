@@ -5,7 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/template.xhtml">
+    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    <ui:composition template="/template_Admin.xhtml">
         
         
         <ui:define name="title">

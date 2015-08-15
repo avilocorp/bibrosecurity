@@ -7,7 +7,8 @@
       xmlns:bnu="http://bootsfaces.net/ui">
 
     
-    <ui:composition template="/template.xhtml">
+    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    <ui:composition template="/template_Admin.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.ViewProductTitle}"></h:outputText>
         </ui:define>
@@ -23,29 +24,29 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputText value="#{views.ViewProductLabel_id}"/>
-                    <h:outputText value="#{productController.selected.id}" title="#{views.ViewProductTitle_id}"/>
+                    <h:outputText value="#{productController.selected.id}" title="#{views.ViewProductTitle_id}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_name}"/>
-                    <h:outputText value="#{productController.selected.name}" title="#{views.ViewProductTitle_name}"/>
+                    <h:outputText value="#{productController.selected.name}" title="#{views.ViewProductTitle_name}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_description}"/>
-                    <h:outputText value="#{productController.selected.description}" title="#{views.ViewProductTitle_description}"/>
+                    <h:outputText value="#{productController.selected.description}" title="#{views.ViewProductTitle_description}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_purchasePrice}"/>
-                    <h:outputText value="#{productController.selected.purchasePrice}" title="#{views.ViewProductTitle_purchasePrice}"/>
+                    <h:outputText value="#{productController.selected.purchasePrice}" title="#{views.ViewProductTitle_purchasePrice}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_salePrice}"/>
-                    <h:outputText value="#{productController.selected.salePrice}" title="#{views.ViewProductTitle_salePrice}"/>
+                    <h:outputText value="#{productController.selected.salePrice}" title="#{views.ViewProductTitle_salePrice}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_qtyAvailable}"/>
-                    <h:outputText value="#{productController.selected.qtyAvailable}" title="#{views.ViewProductTitle_qtyAvailable}"/>
+                    <h:outputText value="#{productController.selected.qtyAvailable}" title="#{views.ViewProductTitle_qtyAvailable}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_incomingQty}"/>
-                    <h:outputText value="#{productController.selected.incomingQty}" title="#{views.ViewProductTitle_incomingQty}"/>
+                    <h:outputText value="#{productController.selected.incomingQty}" title="#{views.ViewProductTitle_incomingQty}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_virtualAvailable}"/>
-                    <h:outputText value="#{productController.selected.virtualAvailable}" title="#{views.ViewProductTitle_virtualAvailable}"/>
+                    <h:outputText value="#{productController.selected.virtualAvailable}" title="#{views.ViewProductTitle_virtualAvailable}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_ean13}"/>
-                    <h:outputText value="#{productController.selected.ean13}" title="#{views.ViewProductTitle_ean13}"/>
+                    <h:outputText value="#{productController.selected.ean13}" title="#{views.ViewProductTitle_ean13}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_uom}"/>
-                    <h:outputText value="#{productController.selected.uom}" title="#{views.ViewProductTitle_uom}"/>
+                    <h:outputText value="#{productController.selected.uom}" title="#{views.ViewProductTitle_uom}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_categoryId}"/>
-                    <h:outputText value="#{productController.selected.categoryId}" title="#{views.ViewProductTitle_categoryId}"/>
+                    <h:outputText value="#{productController.selected.categoryId}" title="#{views.ViewProductTitle_categoryId}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_active}"/>
-                    <h:outputText value="#{productController.selected.active}" title="#{views.ViewProductTitle_active}"/>
+                    <h:outputText value="#{productController.selected.active}" title="#{views.ViewProductTitle_active}"/><br />
                     <h:outputText value="#{views.ViewProductLabel_partnerId}"/>
                     <h:outputText value="#{productController.selected.partnerId}" title="#{views.ViewProductTitle_partnerId}"/>
                 </h:panelGrid>

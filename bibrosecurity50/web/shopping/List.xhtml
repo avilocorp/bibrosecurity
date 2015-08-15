@@ -8,8 +8,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    
-    <ui:composition template="/template_public.xhtml">
+    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/><ui:composition template="/template_Client.xhtml">
         
         <ui:define name="title">
             <h:outputText value="#{views.ListProductTitle}"></h:outputText>

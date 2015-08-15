@@ -86,8 +86,7 @@ public class ShoppingCart implements Serializable{
             Date date = new Date();
             int so_id = 0;
             //List<SaleOrderLine> sl_ids = new ArrayList<SaleOrderLine>();
-        if (user_login.getUs().getId() > 0) {
-                
+               
                 SaleOrder so = new SaleOrder(date, subTotal, 0.0 , total, "invoice", 1);
                 shoppingSaleOrderDAO insertar = new shoppingSaleOrderDAO();
                 so_id = insertar.registrarSaleOrder(so);
@@ -97,13 +96,7 @@ public class ShoppingCart implements Serializable{
             car.clear();
         }
             return "List";
-        } else {
-            FacesContext faces = FacesContext.getCurrentInstance();
-            faces.addMessage("mensajeError", new FacesMessage("Para poder comprar debes registrate o ingresar al sistema"));
-            return "List";
-        }
-    
-    
+
     }
     
     public List<Item> getCar() {
