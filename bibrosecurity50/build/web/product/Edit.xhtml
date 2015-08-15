@@ -7,7 +7,8 @@
       xmlns:bnu="http://bootsfaces.net/ui">
 
     
-    <ui:composition template="/template.xhtml">
+    <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+    <ui:composition template="/template_Admin.xhtml">
         <ui:define name="title">
             <h:outputText value="#{views.EditProductTitle}"></h:outputText>
         </ui:define>

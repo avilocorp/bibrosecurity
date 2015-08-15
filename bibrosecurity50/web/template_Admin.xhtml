@@ -21,12 +21,37 @@
     <h:body>
         
         <!-- Added the navtop in all page-->
-        <ui:include src="navtop.xhtml"></ui:include>
+        <ui:include src="navtop_Admin.xhtml"></ui:include>
         <!-- This is a container seccion -->
-            <ui:insert name="gallery"></ui:insert>
+            <h:form enctype="multipart/form-data">
             <div class="container">
-                <ui:insert name="body"></ui:insert>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>
+                            <ui:insert name="title"></ui:insert>
+                        </h3>
+                        <div class="row" style="margin-left: 3px">
+                            <div class="col-lg-6 pull-left">
+                                <div class="row">
+                                    <div class="pull-right">
+                                        <ui:insert name="button_delete"></ui:insert>
+                                    </div>
+                                    <div class="pull-left">
+                                        <ui:insert name="buttons"></ui:insert>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pull-right">
+                                <ui:insert name="filters"></ui:insert>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ui:insert name="body"></ui:insert>
+                    </div>
+                </div>
             </div>
+        </h:form>
             <!-- Add the footer for page -->
             <ui:include src="footer.xhtml"></ui:include>
         

@@ -8,6 +8,7 @@ package controller;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import models.User;
@@ -20,7 +21,7 @@ import models.User;
 @RequestScoped
 public class MbSession {
  
-    private User usuario;
+    private static User usuario;
     private final HttpServletRequest httpServletRequest;
     private final FacesContext faceContext;
     private FacesMessage facesMessage;
@@ -31,17 +32,48 @@ public class MbSession {
         httpServletRequest=(HttpServletRequest)faceContext.getExternalContext().getRequest();
         if(httpServletRequest.getSession().getAttribute("sessionUsuario")!=null)
         {
-            System.out.println(""+httpServletRequest.getSession().getAttribute("sessionUsuario"));
             usuario=(User) httpServletRequest.getSession().getAttribute("sessionUsuario");
+        }
+        else
+        {
+            usuario=null;
         }
     }
      
-   public String cerrarSession()
+    public void buscarSesionAdmin()
+    {
+        if(usuario==null || usuario.getUserTypeid()!=1)
+        {
+            try
+            {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/auth/login.xhtml");
+            }
+            catch(Exception ex)
+            {
+                facesMessage=new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR BUSCANDO SESIONES PARA ADMIN", ex.getMessage());
+                faceContext.addMessage(null, facesMessage);
+            }
+        }
+    }
+    
+    public void buscarSesionCliente()
+    {
+        if(usuario==null || usuario.getUserTypeid()!=2)
+        {
+            try
+            {
+                faceContext.getExternalContext().redirect("/auth/login.xhtml");
+            }
+            catch(Exception ex){}
+        }
+    }
+    
+    public String cerrarSession()
     {
         httpServletRequest.getSession().removeAttribute("sessionUsuario");
         facesMessage=new FacesMessage(FacesMessage.SEVERITY_INFO, "Session cerrada correctamente", null);
         faceContext.addMessage(null, facesMessage);
-        return "/auth/login";
+        return "/bibrosecurity50/auth/login";
     }
  
     public User getUsuario() {

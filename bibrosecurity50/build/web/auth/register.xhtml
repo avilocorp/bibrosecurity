@@ -4,9 +4,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:bnu="http://bootsfaces.net/ui">
+      xmlns:bnu="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
-        <ui:composition template="/template_public.xhtml">
+        <f:event type="preRenderView" listener="#{mbSession.buscarSesionAdmin()}"/>
+        <ui:composition template="/template_Public.xhtml">
 
             <ui:define name="title">
                 Registrar
